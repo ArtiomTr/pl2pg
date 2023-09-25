@@ -1,6 +1,6 @@
 <S> ::= <program>
 
-<program> ::= BEGIN
+<program> ::= <plsql_block>
 
 <plsql_block> ::= <body>
 <label_block> ::= "" | "<<" <label> ">>" | "<<" <label> ">>" <opt_whitespace> <label_block>
