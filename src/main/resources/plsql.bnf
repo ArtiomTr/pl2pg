@@ -1,0 +1,144 @@
+<S> ::= <program>
+
+<program> ::= BEGIN
+
+<plsql_block> ::= <body>
+<label_block> ::= "" | "<<" <label> ">>" | "<<" <label> ">>" <opt_whitespace> <label_block>
+<label> ::= <identifier>
+<opt_label> ::= "" | <label>
+<declaration_block> ::= "" | "DECLARE" <declare_section> | "DECLARE" <declare_section> <whitespace> <declaration_block>
+<declare_section> ::= <item_list_1> | <item_list_1> <item_list_2> | <item_list_2>
+<item_list_1> ::= <item_list_1_sub> | <item_list_1_sub> <item_list_1>
+<item_list_1_sub> ::= <type_definition> | <cursor_declaration> | <item_declaration> | <function_declaration> | <procedure_declaration>
+<item_list_2> ::= <item_list_2_sub> | <item_list_2_sub> <opt_whitespace> <item_list_2>
+<item_list_2_sub> ::= <cursor_declaration> | <cursor_definition> | <function_declaration> | <function_definition> | <procedure_declaration> | <procedure_definition>
+
+<type_definition> ::= "TODO"
+<cursor_declaration> ::= "TODO"
+<cursor_definition> ::= "TODO"
+<item_declaration> ::= "TODO"
+<function_declaration> ::= "TODO"
+<function_definition> ::= "TODO"
+<procedure_declaration> ::= "TODO"
+<procedure_definition> ::= "TODO"
+
+<body> ::= "BEGIN" <whitespace> <statement_list> <whitespace> "END" <opt_label> ";"
+
+<statement_list> ::= <statement> | <statement> <opt_whitespace> <statement_list>
+<statement> ::= <label_block> <statement_atom>
+<statement_atom> ::= <assignment_statement> | <basic_loop_statement> | <if_statement> | <return_statement> | <plsql_block>
+
+<basic_loop_statement> ::= "LOOP" <whitespace> <statement_list> <whitespace> "END" <whitespace> "LOOP" <whitespace> <opt_label> <opt_whitespace> ";"
+<if_statement> ::= "IF" <whitespace> <boolean_expression> <whitespace> "THEN" <whitespace> <statement_list> <opt_elsif_statement_list> <opt_else_statement> <whitespace> "END" <whitespace> "IF" <opt_whitespace> ";"
+<opt_elsif_statement_list> ::= "" | <elsif_statement_list>
+<elsif_statement_list> ::= <elsif_statement> | <elsif_statement> <whitespace> <elsif_statement_list>
+<elsif_statement> ::= "ELSIF" <whitespace> <boolean_expression> <whitespace> "THEN" <whitespace> <statement_list>
+<opt_else_statement> ::= "" | "ELSE" <whitespace> <statement_list>
+<return_statement> ::= "RETURN" <opt_whitespace> ";" | "RETURN" <whitespace> <expression> <opt_whitespace> ";"
+
+<case_statement> ::= "TODO"
+<close_statement> ::= "TODO"
+<collection_method_call> ::= "TODO"
+<continue_statement> ::= "TODO"
+<cursor_for_loop_statement> ::= "TODO"
+<exit_statement> ::= "TODO"
+<fetch_statement> ::= "TODO"
+<for_loop_statement> ::= "TODO"
+<forall_statement> ::= "TODO"
+<goto_statement> ::= "TODO"
+<null_statement> ::= "TODO"
+<open_statement> ::= "TODO"
+<open_for_statement> ::= "TODO"
+<pipe_row_statement> ::= "TODO"
+<procedure_call> ::= "TODO"
+<raise_statement> ::= "TODO"
+<select_into_statement> ::= "TODO"
+<sql_statement> ::= "TODO"
+<while_loop_statement> ::= "TODO"
+
+<assignment_statement> ::= <assignment_statement_target> <opt_whitespace> ":=" <opt_whitespace> <expression> <opt_whitespace> ";"
+
+<assignment_statement_target> ::= <identifier> | <identifier> <opt_whitespace> "(" <opt_whitespace> <index> <opt_whitespace> ")" | <placeholder> | <identifier> "." <identifier>
+
+<expression> ::= <boolean_expression> | <character_expression> | <collection_constructor> | <date_expression> | <searched_case_expression> | <simple_case_expression> | "(" <expression> ")"
+
+<boolean_expression> ::= <opt_boolean_not> <boolean_expression_atom> | <opt_boolean_not> <boolean_expression_atom> <whitespace> <boolean_expression_right_operands>
+<boolean_expression_right_operands> ::= <binary_boolean_operator> <whitespace> <opt_boolean_not> <boolean_expression_atom> | <binary_boolean_operator> <whitespace> <opt_boolean_not> <boolean_expression_atom> <whitespace> <boolean_expression_right_operands>
+<opt_boolean_not> ::= <unary_boolean_operator> <whitespace> | ""
+<unary_boolean_operator> ::= "NOT"
+<binary_boolean_operator> ::= "AND" | "OR"
+<boolean_expression_atom> ::= <identifier> | <boolean_literal> | <function_call> | <conditional_predicate> | <other_boolean_form>
+<conditional_predicate> ::= "INSERTING" | "UPDATING" | "UPDATING" "(" <opt_whitespace> "'" <identifier> "'" <opt_whitespace> ")" | "DELETING"
+<other_boolean_form> ::= <boolean_expression_collection> | <boolean_expression_null_check> | <boolean_expression_between> | <boolean_expression_in> | <boolean_expression_like> | <boolean_expression_relational_operator> | <boolean_expression_sql>
+<boolean_expression_collection> ::= <identifier> "." "EXISTS" "(" <index> ")"
+<boolean_expression_null_check> ::= <expression> <whitespace> "IS" <whitespace> <opt_boolean_not> "NULL"
+<boolean_expression_between> ::= <expression> <whitespace> <opt_boolean_not> "BETWEEN" <whitespace> <expression> <whitespace> "AND" <whitespace> <expression>
+<boolean_expression_in> ::= <expression> <whitespace> <opt_boolean_not> "IN" <whitespace> "(" <opt_whitespace> <in_expression_arguments> <opt_whitespace> ")"
+<in_expression_arguments> ::= <expression> | <expression> <opt_whitespace> "," <opt_whitespace> <in_expression_arguments>
+<boolean_expression_sql> ::= "SQL" "%" <boolean_expression_sql_operator> | <named_cursor> "%" <boolean_expression_sql_operator>
+<boolean_expression_sql_operator> ::= "FOUND" | "ISOPEN" | "NOTFOUND"
+
+<boolean_expression_like> ::= <expression> <whitespace> <opt_boolean_not> "LIKE" <whitespace> <pattern>
+<pattern> ::= "'" <pattern_content> "'"
+<pattern_content> ::= "" | <pattern_characters> | <pattern_characters> <pattern_content>
+<pattern_characters> ::= <letter> | <digit> | "%" | "_" | " " | "$"
+
+<boolean_expression_relational_operator> ::= <expression> <opt_whitespace> <relational_operator> <opt_whitespace> <expression>
+<relational_operator> ::= "=" | "<>" | "!=" | "~=" | "^=" | "<" | ">" | "<=" | ">="
+
+<character_expression> ::= <character_expression_atom> | <character_expression_atom> <opt_whitespace> "||" <opt_whitespace> <character_expression>
+<character_expression_atom> ::= <identifier> | <function_call> | <character_literal> | <placeholder>
+
+<collection_constructor> ::= <identifier> "(" <opt_whitespace> <collection_constructor_values> <opt_whitespace> ")" | <identifier> "(" <opt_whitespace> ")"
+<collection_constructor_values> ::= <value> | <value> <opt_whitespace> "," <opt_whitespace> <collection_constructor_values>
+
+<date_expression> ::= <date_expression_atom> | <date_expression_atom> <opt_whitespace> <date_subexpression>
+<date_subexpression> ::= <date_binary_operator> <opt_whitespace> <numeric_expression> | <date_binary_operator> <opt_whitespace> <numeric_expression> <opt_whitespace> <date_subexpression>
+<date_binary_operator> ::= "+" | "-"
+<date_expression_atom> ::= <identifier> | <date_literal> | <function_call> | <placeholder>
+
+<numeric_expression> ::= <numeric_subexpression> | <numeric_subexpression> <numeric_subexpression_right>
+<numeric_subexpression_right> ::= <numeric_binary_operator> <opt_whitespace> <numeric_subexpression> | <numeric_binary_operator> <opt_whitespace> <numeric_subexpression> <opt_whitespace> <numeric_subexpression_right>
+<numeric_subexpression> ::= <numeric_opt_unary_operator> <numeric_subexpression_atom> <numeric_opt_exponent_expression>
+<numeric_subexpression_atom> ::= <identifier> "." <numeric_collection_expression> | <named_cursor> "%" "ROWCOUNT" | <identifier> | <function_call> | <placeholder> | "SQL" "%" "ROWCOUNT" | "SQL" "%" "BULK_ROWCOUNT" "(" <opt_whitespace> <index> <opt_whitespace> ")"
+<numeric_collection_expression> ::= "COUNT" | "FIRST" | "LAST" | "LIMIT" | "NEXT" "(" <opt_whitespace> <index> <opt_whitespace> ")" | "PRIOR" "(" <opt_whitespace> <index> <opt_whitespace> ")"
+<numeric_opt_unary_operator> ::= "" | "+" | "-"
+<numeric_opt_exponent_expression> ::= "" | <opt_whitespace> "**" <opt_whitespace> <exponent>
+<numeric_binary_operator> ::= "+" | "-" | "/" | "*"
+<exponent> ::= <numeric_expression>
+
+<searched_case_expression> ::= "CASE" <whitespace> <searched_case_expression_where_clause_list> <whitespace> <case_else_clause_expression> "END"
+<searched_case_expression_where_clause_list> ::= <searched_case_expression_where_clause> | <searched_case_expression_where_clause> <whitespace> <searched_case_expression_where_clause_list>
+<searched_case_expression_where_clause> ::= "WHEN" <whitespace> <boolean_expression> <whitespace> "THEN" <whitespace> <result>
+
+<simple_case_expression> ::= "CASE" <whitespace> <value> <whitespace> <simple_case_expression_where_clause_list> <whitespace> <case_else_clause_expression> "END"
+<simple_case_expression_where_clause_list> ::= <simple_case_expression_where_clause> | <simple_case_expression_where_clause> <whitespace> <simple_case_expression_where_clause_list>
+<simple_case_expression_where_clause> ::= "WHEN" <whitespace> <value> <whitespace> "THEN" <whitespace> <result>
+
+<case_else_clause_expression> ::= "" | "ELSE" <whitespace> <result> <whitespace>
+
+<function_call> ::= <identifier> | <identifier> "(" <opt_whitespace> <function_call_parameters_array> <opt_whitespace> ")"
+<function_call_parameters_array> ::= <function_call_parameter> | <function_call_parameter> <opt_whitespace> "," <opt_whitespace> <function_call_parameters_array>
+<function_call_parameter> ::= <value> | <identifier> <opt_whitespace> "=>" <opt_whitespace> <value>
+<result> ::= <value>
+
+<named_cursor> ::= <identifier> | ":" <identifier>
+
+<value> ::= <identifier> | <character_literal> | <numeric_literal> | <date_literal> | <boolean_literal>
+<character_literal> ::= "'" <letter> "'"
+<numeric_literal> ::= <digit> | <digit> <numeric_literal>
+<boolean_literal> ::= "TRUE" | "FALSE" | "NULL"
+<date_literal> ::= "'" <digit> <digit> <digit> <digit> "-" <digit> <digit> "-" <digit> <digit> "'"
+<placeholder> ::= ":" <identifier> | ":" <identifier> ":" <identifier>
+
+<index> ::= <digit>
+
+<identifier> ::= <letter> | <letter> <identifier_body>
+<identifier_body> ::= <identifier_body_symbol> | <identifier_body_symbol> <identifier_body>
+<identifier_body_symbol> ::= <letter> | <digit> | "$" | "_"
+
+<opt_whitespace> ::= "" | <whitespace>
+<whitespace> ::= " " | " " <whitespace>
+
+<letter> ::= "A" | "B" | "C" | "D" | "E" | "F" | "G" | "H" | "I" | "J" | "K" | "L" | "M" | "N" | "O" | "P" | "Q" | "R" | "S" | "T" | "U" | "V" | "W" | "X" | "Y" | "Z" | "a" | "b" | "c" | "d" | "e" | "f" | "g" | "h" | "i" | "j" | "k" | "l" | "m" | "n" | "o" | "p" | "q" | "r" | "s" | "t" | "u" | "v" | "w" | "x" | "y" | "z"
+<digit> ::= "0" | "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9"
