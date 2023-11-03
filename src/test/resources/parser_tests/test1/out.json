@@ -1,0 +1,20 @@
+{
+  "blocks": [
+    {
+      "body": {
+        "statements": [
+          {
+            "target": {
+              "name": "x"
+            },
+            "value": {
+              "value": "Hello, world!",
+              "class": "org.example.plsql.ast.StringLiteral"
+            },
+            "class": "org.example.plsql.ast.AssignmentStatement"
+          }
+        ]
+      }
+    }
+  ]
+}

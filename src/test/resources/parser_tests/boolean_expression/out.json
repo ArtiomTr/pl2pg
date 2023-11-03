@@ -1,0 +1,67 @@
+{
+  "blocks": [
+    {
+      "body": {
+        "statements": [
+          {
+            "target": {
+              "name": "a"
+            },
+            "value": {
+              "left": {
+                "value": true,
+                "class": "org.example.plsql.ast.BooleanLiteral"
+              },
+              "right": {
+                "value": false,
+                "class": "org.example.plsql.ast.BooleanLiteral"
+              },
+              "operator": "OR",
+              "class": "org.example.plsql.ast.BinaryExpression"
+            },
+            "class": "org.example.plsql.ast.AssignmentStatement"
+          },
+          {
+            "target": {
+              "name": "b"
+            },
+            "value": {
+              "argument": {
+                "value": true,
+                "class": "org.example.plsql.ast.BooleanLiteral"
+              },
+              "operator": "NOT",
+              "class": "org.example.plsql.ast.UnaryExpression"
+            },
+            "class": "org.example.plsql.ast.AssignmentStatement"
+          },
+          {
+            "target": {
+              "name": "c"
+            },
+            "value": {
+              "left": {
+                "value": false,
+                "class": "org.example.plsql.ast.BooleanLiteral"
+              },
+              "right": {
+                "left": {
+                  "value": true,
+                  "class": "org.example.plsql.ast.BooleanLiteral"
+                },
+                "right": {
+                  "class": "org.example.plsql.ast.NullLiteral"
+                },
+                "operator": "AND",
+                "class": "org.example.plsql.ast.BinaryExpression"
+              },
+              "operator": "OR",
+              "class": "org.example.plsql.ast.BinaryExpression"
+            },
+            "class": "org.example.plsql.ast.AssignmentStatement"
+          }
+        ]
+      }
+    }
+  ]
+}

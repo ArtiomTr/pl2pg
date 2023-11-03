@@ -1,19 +1,55 @@
 package org.example;
 
-// Press Shift twice to open the Search Everywhere dialog and type `show whitespaces`,
-// then press Enter. You can now see whitespace characters in your code.
+import java_cup.runtime.ComplexSymbolFactory;
+import java_cup.runtime.ScannerBuffer;
+import java.io.BufferedReader;
+import java.io.StringReader;
+
 public class Main {
     public static void main(String[] args) {
-        // Press Alt+Enter with your caret at the highlighted text to see how
-        // IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
+//        StringReader reader = new StringReader("BEGIN\n" +
+//                "    items := arr(1, 2, 3, 4, 5);\n" +
+//                "    i := items.COUNT;\n" +
+//                "    sum := 0;\n" +
+//                "\n" +
+//                "    LOOP\n" +
+//                "        IF i = 0 THEN\n" +
+//                "            RETURN sum;\n" +
+//                "        END IF;\n" +
+//                "\n" +
+//                "        sum := sum + items(i);\n" +
+//                "        i := i - 1;\n" +
+//                "    END LOOP;\n" +
+//                "END;");
+        StringReader reader = new StringReader("BEGIN\n" +
+                "    items := 'Hello, world!';\n" +
+                "END;");
+        ComplexSymbolFactory csf = new ComplexSymbolFactory();
+        // create a buffering scanner wrapper
+        ScannerBuffer lexer = new ScannerBuffer(new PLSQLScanner(new BufferedReader(reader), csf));
+        PLSQLParser parser = new PLSQLParser(lexer, csf);
 
-        // Press Shift+F10 or click the green arrow button in the gutter to run the code.
-        for (int i = 1; i <= 5; i++) {
+//        while (!scanner.yyatEOF()) {
+//            try {
+//                Symbol s = scanner.next_token();
+//                if (s != null)
+//                    System.out.println(sym.terminalNames[s.sym]);
+//            } catch (IOException e) {
+//                e.printStackTrace();
+//            }
+//        }
 
-            // Press Shift+F9 to start debugging your code. We have set one breakpoint
-            // for you, but you can always add more by pressing Ctrl+F8.
-            System.out.println("i = " + i);
+        try {
+            ComplexSymbolFactory.ComplexSymbol v = (ComplexSymbolFactory.ComplexSymbol) parser.parse();
+            System.out.println("Parsed: " + v.value);
+//            XMLElement e = (XMLElement) v.value;
+//            XMLOutputFactory f = XMLOutputFactory.newInstance();
+//            XMLStreamWriter sw = f.createXMLStreamWriter(new FileOutputStream("a.xml"));
+//            System.out.println(v + " " + e);
+//            XMLElement.dump(lexer, sw, e);
+//            Transformer transformer = TransformerFactory.newInstance().newTransformer(new StreamSource())
+        } catch (Exception exception) {
+            exception.printStackTrace();
         }
     }
 }

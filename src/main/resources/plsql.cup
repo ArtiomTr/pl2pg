@@ -1,0 +1,119 @@
+package org.example;
+
+import java.util.List;
+import java.util.ArrayList;
+import org.example.plsql.ast.*;
+
+// Keywords
+terminal BEGIN, END, LOOP, IF, THEN, ELSIF, ELSE, RETURN;
+// Punctuation
+terminal SEMI, COMMA, DOT, LEFT_PARENTHESIS, RIGHT_PARENTHESIS;
+// Operators
+terminal ASSIGNMENT_OPERATOR, EQUAL_OPERATOR, NOT_EQUAL_OPERATOR, LESS_THAN_OPERATOR, GREATER_THAN_OPERATOR,
+         LESS_THAN_OR_EQUAL_OPERATOR, GREATER_THAN_OR_EQUAL_OPERATOR, CONCATENATION_OPERATOR, ADDITION_OPERATOR,
+         SUBTRACTION_OPERATOR, MULTIPLICATION_OPERATOR, DIVISION_OPERATOR, AND_OPERATOR, OR_OPERATOR, NOT_OPERATOR,
+         EXPONENTIATION_OPERATOR;
+
+// Literals
+terminal NULL_LITERAL;
+terminal String STRING_LITERAL;
+terminal String NUMBER_LITERAL;
+terminal Boolean BOOLEAN_LITERAL;
+// Identifiers
+terminal NAMED_CURSOR, LABEL;
+terminal Identifier IDENTIFIER;
+
+non terminal Program program;
+non terminal List<Statement> statement_list;
+non terminal Statement statement;
+non terminal AssignmentStatement assignment_statement;
+non terminal Body body;
+non terminal Block plsql_block;
+non terminal List<Block> plsql_block_list;
+non terminal Expression expression, boolean_or_expression, boolean_and_expression, boolean_not_expression,
+                        comparison_expression, additive_expression, multiplicative_expression, unary_numeric_expression,
+                        exponentiation_expression, expression_atom;
+
+start with program;
+
+program ::= plsql_block_list:b                                  {: RESULT = new Program(b); :};
+
+plsql_block_list ::= plsql_block_list:l plsql_block:b           {: l.add(b); RESULT = l; :}
+    | /* empty plsql_block list */                              {: RESULT = new ArrayList<Block>(); :};
+
+plsql_block ::= body:b                                          {: RESULT = new Block(b); :};
+
+body ::= BEGIN statement_list:sl END SEMI                       {: RESULT = new Body(sl); :};
+
+statement_list ::= statement_list:sl statement:s                {: sl.add(s); RESULT = sl; :}
+    | /* empty statement list */                                {: RESULT = new ArrayList<Statement>(); :};
+
+statement ::= assignment_statement:s                            {: RESULT = s; :};
+
+assignment_statement ::=
+    IDENTIFIER:id ASSIGNMENT_OPERATOR expression:value SEMI     {: RESULT = new AssignmentStatement(id, value); :};
+
+expression ::= boolean_or_expression:expr                       {: RESULT = expr; :};
+
+boolean_or_expression ::=
+      boolean_or_expression:lhs
+          OR_OPERATOR boolean_and_expression:rhs                {: RESULT = new BinaryExpression(lhs, rhs, BinaryExpression.Operator.OR); :}
+    | boolean_and_expression:expr                               {: RESULT = expr; :};
+
+boolean_and_expression ::=
+      boolean_and_expression:lhs
+          AND_OPERATOR boolean_not_expression:rhs               {: RESULT = new BinaryExpression(lhs, rhs, BinaryExpression.Operator.AND); :}
+    | boolean_not_expression:expr                               {: RESULT = expr; :};
+
+boolean_not_expression ::=
+      NOT_OPERATOR boolean_not_expression:arg                   {: RESULT = new UnaryExpression(arg, UnaryExpression.Operator.NOT); :}
+    | comparison_expression:expr                                {: RESULT = expr; :};
+
+comparison_expression ::=
+      comparison_expression:lhs
+          LESS_THAN_OPERATOR additive_expression:rhs            {: RESULT = new BinaryExpression(lhs, rhs, BinaryExpression.Operator.LESS_THAN); :}
+    | comparison_expression:lhs
+          LESS_THAN_OR_EQUAL_OPERATOR additive_expression:rhs   {: RESULT = new BinaryExpression(lhs, rhs, BinaryExpression.Operator.LESS_THAN_OR_EQUAL); :}
+    | comparison_expression:lhs
+          GREATER_THAN_OPERATOR additive_expression:rhs         {: RESULT = new BinaryExpression(lhs, rhs, BinaryExpression.Operator.GREATER_THAN); :}
+    | comparison_expression:lhs GREATER_THAN_OR_EQUAL_OPERATOR
+          additive_expression:rhs                               {: RESULT = new BinaryExpression(lhs, rhs, BinaryExpression.Operator.GREATER_THAN_OR_EQUAL); :}
+    | comparison_expression:lhs
+          EQUAL_OPERATOR additive_expression:rhs                {: RESULT = new BinaryExpression(lhs, rhs, BinaryExpression.Operator.EQUAL); :}
+    | comparison_expression:lhs
+          NOT_EQUAL_OPERATOR additive_expression:rhs            {: RESULT = new BinaryExpression(lhs, rhs, BinaryExpression.Operator.NOT_EQUAL); :}
+    | additive_expression:expr                                  {: RESULT = expr; :};
+
+additive_expression ::=
+      additive_expression:lhs
+          ADDITION_OPERATOR multiplicative_expression:rhs       {: RESULT = new BinaryExpression(lhs, rhs, BinaryExpression.Operator.ADDITION); :}
+    | additive_expression:lhs
+          SUBTRACTION_OPERATOR multiplicative_expression:rhs    {: RESULT = new BinaryExpression(lhs, rhs, BinaryExpression.Operator.SUBTRACTION); :}
+    | additive_expression:lhs
+          CONCATENATION_OPERATOR multiplicative_expression:rhs  {: RESULT = new BinaryExpression(lhs, rhs, BinaryExpression.Operator.CONCATENATION); :}
+    | multiplicative_expression:expr                            {: RESULT = expr; :};
+
+multiplicative_expression ::=
+      multiplicative_expression:lhs
+          MULTIPLICATION_OPERATOR unary_numeric_expression:rhs  {: RESULT = new BinaryExpression(lhs, rhs, BinaryExpression.Operator.MULTIPLICATION); :}
+    | multiplicative_expression:lhs
+          DIVISION_OPERATOR unary_numeric_expression:rhs        {: RESULT = new BinaryExpression(lhs, rhs, BinaryExpression.Operator.DIVISION); :}
+    | unary_numeric_expression:expr                             {: RESULT = expr; :};
+
+unary_numeric_expression ::=
+      ADDITION_OPERATOR unary_numeric_expression:arg            {: RESULT = new UnaryExpression(arg, UnaryExpression.Operator.IDENTITY); :}
+    | SUBTRACTION_OPERATOR unary_numeric_expression:arg         {: RESULT = new UnaryExpression(arg, UnaryExpression.Operator.NEGATION); :}
+    | exponentiation_expression:expr                            {: RESULT = expr; :};
+
+exponentiation_expression ::=
+      exponentiation_expression:lhs
+          EXPONENTIATION_OPERATOR expression_atom:rhs           {: RESULT = new BinaryExpression(lhs, rhs, BinaryExpression.Operator.EXPONENTIATION); :}
+    | expression_atom:expr                                      {: RESULT = expr; :};
+
+expression_atom ::=
+      IDENTIFIER:id                                             {: RESULT = new ExpressionIdentifier(id); :}
+    | BOOLEAN_LITERAL:val                                       {: RESULT = new BooleanLiteral(val); :}
+    | NULL_LITERAL                                              {: RESULT = new NullLiteral(); :}
+    | STRING_LITERAL:val                                        {: RESULT = new StringLiteral(val); :}
+    | NUMBER_LITERAL:val                                        {: RESULT = new NumberLiteral(val); :}
+    | LEFT_PARENTHESIS expression:expr RIGHT_PARENTHESIS        {: RESULT = expr; :};

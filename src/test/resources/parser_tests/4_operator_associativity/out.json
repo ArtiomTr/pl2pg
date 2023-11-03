@@ -1,0 +1,284 @@
+{
+  "blocks": [
+    {
+      "body": {
+        "statements": [
+          {
+            "target": {
+              "name": "a"
+            },
+            "value": {
+              "left": {
+                "left": {
+                  "left": {
+                    "value": true,
+                    "class": "org.example.plsql.ast.BooleanLiteral"
+                  },
+                  "right": {
+                    "value": false,
+                    "class": "org.example.plsql.ast.BooleanLiteral"
+                  },
+                  "operator": "OR",
+                  "class": "org.example.plsql.ast.BinaryExpression"
+                },
+                "right": {
+                  "class": "org.example.plsql.ast.NullLiteral"
+                },
+                "operator": "OR",
+                "class": "org.example.plsql.ast.BinaryExpression"
+              },
+              "right": {
+                "identifier": {
+                  "name": "someval"
+                },
+                "class": "org.example.plsql.ast.ExpressionIdentifier"
+              },
+              "operator": "OR",
+              "class": "org.example.plsql.ast.BinaryExpression"
+            },
+            "class": "org.example.plsql.ast.AssignmentStatement"
+          },
+          {
+            "target": {
+              "name": "b"
+            },
+            "value": {
+              "left": {
+                "left": {
+                  "left": {
+                    "value": true,
+                    "class": "org.example.plsql.ast.BooleanLiteral"
+                  },
+                  "right": {
+                    "value": false,
+                    "class": "org.example.plsql.ast.BooleanLiteral"
+                  },
+                  "operator": "AND",
+                  "class": "org.example.plsql.ast.BinaryExpression"
+                },
+                "right": {
+                  "class": "org.example.plsql.ast.NullLiteral"
+                },
+                "operator": "AND",
+                "class": "org.example.plsql.ast.BinaryExpression"
+              },
+              "right": {
+                "identifier": {
+                  "name": "someval"
+                },
+                "class": "org.example.plsql.ast.ExpressionIdentifier"
+              },
+              "operator": "AND",
+              "class": "org.example.plsql.ast.BinaryExpression"
+            },
+            "class": "org.example.plsql.ast.AssignmentStatement"
+          },
+          {
+            "target": {
+              "name": "c"
+            },
+            "value": {
+              "left": {
+                "left": {
+                  "value": "Hello",
+                  "class": "org.example.plsql.ast.StringLiteral"
+                },
+                "right": {
+                  "value": "\u0027world\u0027",
+                  "class": "org.example.plsql.ast.StringLiteral"
+                },
+                "operator": "CONCATENATION",
+                "class": "org.example.plsql.ast.BinaryExpression"
+              },
+              "right": {
+                "value": "!",
+                "class": "org.example.plsql.ast.StringLiteral"
+              },
+              "operator": "CONCATENATION",
+              "class": "org.example.plsql.ast.BinaryExpression"
+            },
+            "class": "org.example.plsql.ast.AssignmentStatement"
+          },
+          {
+            "target": {
+              "name": "d"
+            },
+            "value": {
+              "left": {
+                "left": {
+                  "left": {
+                    "value": "1",
+                    "class": "org.example.plsql.ast.NumberLiteral"
+                  },
+                  "right": {
+                    "value": "5",
+                    "class": "org.example.plsql.ast.NumberLiteral"
+                  },
+                  "operator": "ADDITION",
+                  "class": "org.example.plsql.ast.BinaryExpression"
+                },
+                "right": {
+                  "value": "7",
+                  "class": "org.example.plsql.ast.NumberLiteral"
+                },
+                "operator": "ADDITION",
+                "class": "org.example.plsql.ast.BinaryExpression"
+              },
+              "right": {
+                "value": "8",
+                "class": "org.example.plsql.ast.NumberLiteral"
+              },
+              "operator": "ADDITION",
+              "class": "org.example.plsql.ast.BinaryExpression"
+            },
+            "class": "org.example.plsql.ast.AssignmentStatement"
+          },
+          {
+            "target": {
+              "name": "e"
+            },
+            "value": {
+              "left": {
+                "left": {
+                  "left": {
+                    "value": "1",
+                    "class": "org.example.plsql.ast.NumberLiteral"
+                  },
+                  "right": {
+                    "value": "2",
+                    "class": "org.example.plsql.ast.NumberLiteral"
+                  },
+                  "operator": "EXPONENTIATION",
+                  "class": "org.example.plsql.ast.BinaryExpression"
+                },
+                "right": {
+                  "left": {
+                    "value": "2",
+                    "class": "org.example.plsql.ast.NumberLiteral"
+                  },
+                  "right": {
+                    "value": "2",
+                    "class": "org.example.plsql.ast.NumberLiteral"
+                  },
+                  "operator": "EXPONENTIATION",
+                  "class": "org.example.plsql.ast.BinaryExpression"
+                },
+                "operator": "SUBTRACTION",
+                "class": "org.example.plsql.ast.BinaryExpression"
+              },
+              "right": {
+                "left": {
+                  "value": "3",
+                  "class": "org.example.plsql.ast.NumberLiteral"
+                },
+                "right": {
+                  "value": "2",
+                  "class": "org.example.plsql.ast.NumberLiteral"
+                },
+                "operator": "EXPONENTIATION",
+                "class": "org.example.plsql.ast.BinaryExpression"
+              },
+              "operator": "SUBTRACTION",
+              "class": "org.example.plsql.ast.BinaryExpression"
+            },
+            "class": "org.example.plsql.ast.AssignmentStatement"
+          },
+          {
+            "target": {
+              "name": "f"
+            },
+            "value": {
+              "left": {
+                "value": "3",
+                "class": "org.example.plsql.ast.NumberLiteral"
+              },
+              "right": {
+                "left": {
+                  "left": {
+                    "left": {
+                      "left": {
+                        "value": "1",
+                        "class": "org.example.plsql.ast.NumberLiteral"
+                      },
+                      "right": {
+                        "value": "4",
+                        "class": "org.example.plsql.ast.NumberLiteral"
+                      },
+                      "operator": "ADDITION",
+                      "class": "org.example.plsql.ast.BinaryExpression"
+                    },
+                    "right": {
+                      "value": "6",
+                      "class": "org.example.plsql.ast.NumberLiteral"
+                    },
+                    "operator": "SUBTRACTION",
+                    "class": "org.example.plsql.ast.BinaryExpression"
+                  },
+                  "right": {
+                    "value": "7",
+                    "class": "org.example.plsql.ast.NumberLiteral"
+                  },
+                  "operator": "SUBTRACTION",
+                  "class": "org.example.plsql.ast.BinaryExpression"
+                },
+                "right": {
+                  "value": "8",
+                  "class": "org.example.plsql.ast.NumberLiteral"
+                },
+                "operator": "ADDITION",
+                "class": "org.example.plsql.ast.BinaryExpression"
+              },
+              "operator": "EXPONENTIATION",
+              "class": "org.example.plsql.ast.BinaryExpression"
+            },
+            "class": "org.example.plsql.ast.AssignmentStatement"
+          },
+          {
+            "target": {
+              "name": "g"
+            },
+            "value": {
+              "left": {
+                "left": {
+                  "left": {
+                    "left": {
+                      "value": "4",
+                      "class": "org.example.plsql.ast.NumberLiteral"
+                    },
+                    "right": {
+                      "value": "2",
+                      "class": "org.example.plsql.ast.NumberLiteral"
+                    },
+                    "operator": "MULTIPLICATION",
+                    "class": "org.example.plsql.ast.BinaryExpression"
+                  },
+                  "right": {
+                    "value": "3",
+                    "class": "org.example.plsql.ast.NumberLiteral"
+                  },
+                  "operator": "DIVISION",
+                  "class": "org.example.plsql.ast.BinaryExpression"
+                },
+                "right": {
+                  "identifier": {
+                    "name": "d"
+                  },
+                  "class": "org.example.plsql.ast.ExpressionIdentifier"
+                },
+                "operator": "MULTIPLICATION",
+                "class": "org.example.plsql.ast.BinaryExpression"
+              },
+              "right": {
+                "value": "1",
+                "class": "org.example.plsql.ast.NumberLiteral"
+              },
+              "operator": "ADDITION",
+              "class": "org.example.plsql.ast.BinaryExpression"
+            },
+            "class": "org.example.plsql.ast.AssignmentStatement"
+          }
+        ]
+      }
+    }
+  ]
+}

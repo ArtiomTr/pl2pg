@@ -1,0 +1,269 @@
+{
+  "blocks": [
+    {
+      "body": {
+        "statements": [
+          {
+            "target": {
+              "name": "double_quote_string_literal"
+            },
+            "value": {
+              "value": "Hello, \"world\"!",
+              "class": "org.example.plsql.ast.StringLiteral"
+            },
+            "class": "org.example.plsql.ast.AssignmentStatement"
+          },
+          {
+            "target": {
+              "name": "single_quote_string_literal"
+            },
+            "value": {
+              "value": "Hello, 'world'!",
+              "class": "org.example.plsql.ast.StringLiteral"
+            },
+            "class": "org.example.plsql.ast.AssignmentStatement"
+          },
+          {
+            "target": {
+              "name": "custom_delimiter_string_literal_1"
+            },
+            "value": {
+              "value": "Hello, 'world\"!",
+              "class": "org.example.plsql.ast.StringLiteral"
+            },
+            "class": "org.example.plsql.ast.AssignmentStatement"
+          },
+          {
+            "target": {
+              "name": "custom_delimiter_string_literal_2"
+            },
+            "value": {
+              "value": "Hello, \"world'",
+              "class": "org.example.plsql.ast.StringLiteral"
+            },
+            "class": "org.example.plsql.ast.AssignmentStatement"
+          },
+          {
+            "target": {
+              "name": "custom_delimiter_string_literal_3"
+            },
+            "value": {
+              "value": "Hello, \"world'!",
+              "class": "org.example.plsql.ast.StringLiteral"
+            },
+            "class": "org.example.plsql.ast.AssignmentStatement"
+          },
+          {
+            "target": {
+              "name": "null_string_literal"
+            },
+            "value": {
+              "value": "",
+              "class": "org.example.plsql.ast.StringLiteral"
+            },
+            "class": "org.example.plsql.ast.AssignmentStatement"
+          },
+          {
+            "target": {
+              "name": "a"
+            },
+            "value": {
+              "value": true,
+              "class": "org.example.plsql.ast.BooleanLiteral"
+            },
+            "class": "org.example.plsql.ast.AssignmentStatement"
+          },
+          {
+            "target": {
+              "name": "b"
+            },
+            "value": {
+              "value": false,
+              "class": "org.example.plsql.ast.BooleanLiteral"
+            },
+            "class": "org.example.plsql.ast.AssignmentStatement"
+          },
+          {
+            "target": {
+              "name": "c"
+            },
+            "value": {
+              "class": "org.example.plsql.ast.NullLiteral"
+            },
+            "class": "org.example.plsql.ast.AssignmentStatement"
+          },
+          {
+            "target": {
+              "name": "integer_1"
+            },
+            "value": {
+              "value": "147",
+              "class": "org.example.plsql.ast.NumberLiteral"
+            },
+            "class": "org.example.plsql.ast.AssignmentStatement"
+          },
+          {
+            "target": {
+              "name": "integer_2"
+            },
+            "value": {
+              "value": "-15",
+              "class": "org.example.plsql.ast.NumberLiteral"
+            },
+            "class": "org.example.plsql.ast.AssignmentStatement"
+          },
+          {
+            "target": {
+              "name": "integer_3"
+            },
+            "value": {
+              "value": "+15",
+              "class": "org.example.plsql.ast.NumberLiteral"
+            },
+            "class": "org.example.plsql.ast.AssignmentStatement"
+          },
+          {
+            "target": {
+              "name": "real_1"
+            },
+            "value": {
+              "value": "1.123",
+              "class": "org.example.plsql.ast.NumberLiteral"
+            },
+            "class": "org.example.plsql.ast.AssignmentStatement"
+          },
+          {
+            "target": {
+              "name": "real_2"
+            },
+            "value": {
+              "value": "+0.0015",
+              "class": "org.example.plsql.ast.NumberLiteral"
+            },
+            "class": "org.example.plsql.ast.AssignmentStatement"
+          },
+          {
+            "target": {
+              "name": "real_3"
+            },
+            "value": {
+              "value": "-173.12",
+              "class": "org.example.plsql.ast.NumberLiteral"
+            },
+            "class": "org.example.plsql.ast.AssignmentStatement"
+          },
+          {
+            "target": {
+              "name": "real_4"
+            },
+            "value": {
+              "value": "19.",
+              "class": "org.example.plsql.ast.NumberLiteral"
+            },
+            "class": "org.example.plsql.ast.AssignmentStatement"
+          },
+          {
+            "target": {
+              "name": "real_5"
+            },
+            "value": {
+              "value": ".1",
+              "class": "org.example.plsql.ast.NumberLiteral"
+            },
+            "class": "org.example.plsql.ast.AssignmentStatement"
+          },
+          {
+            "target": {
+              "name": "real_6"
+            },
+            "value": {
+              "value": "-.47",
+              "class": "org.example.plsql.ast.NumberLiteral"
+            },
+            "class": "org.example.plsql.ast.AssignmentStatement"
+          },
+          {
+            "target": {
+              "name": "real_7"
+            },
+            "value": {
+              "value": "+156.",
+              "class": "org.example.plsql.ast.NumberLiteral"
+            },
+            "class": "org.example.plsql.ast.AssignmentStatement"
+          },
+          {
+            "target": {
+              "name": "scientific_1"
+            },
+            "value": {
+              "value": "12e19",
+              "class": "org.example.plsql.ast.NumberLiteral"
+            },
+            "class": "org.example.plsql.ast.AssignmentStatement"
+          },
+          {
+            "target": {
+              "name": "scientific_2"
+            },
+            "value": {
+              "value": "-15E8",
+              "class": "org.example.plsql.ast.NumberLiteral"
+            },
+            "class": "org.example.plsql.ast.AssignmentStatement"
+          },
+          {
+            "target": {
+              "name": "scientific_3"
+            },
+            "value": {
+              "value": "1e-8",
+              "class": "org.example.plsql.ast.NumberLiteral"
+            },
+            "class": "org.example.plsql.ast.AssignmentStatement"
+          },
+          {
+            "target": {
+              "name": "scientific_4"
+            },
+            "value": {
+              "value": "93e+8",
+              "class": "org.example.plsql.ast.NumberLiteral"
+            },
+            "class": "org.example.plsql.ast.AssignmentStatement"
+          },
+          {
+            "target": {
+              "name": "scientific_5"
+            },
+            "value": {
+              "value": "1.152e-2",
+              "class": "org.example.plsql.ast.NumberLiteral"
+            },
+            "class": "org.example.plsql.ast.AssignmentStatement"
+          },
+          {
+            "target": {
+              "name": "scientific_6"
+            },
+            "value": {
+              "value": ".3E+12",
+              "class": "org.example.plsql.ast.NumberLiteral"
+            },
+            "class": "org.example.plsql.ast.AssignmentStatement"
+          },
+          {
+            "target": {
+              "name": "scientific_7"
+            },
+            "value": {
+              "value": "12.e3",
+              "class": "org.example.plsql.ast.NumberLiteral"
+            },
+            "class": "org.example.plsql.ast.AssignmentStatement"
+          }
+        ]
+      }
+    }
+  ]
+}
