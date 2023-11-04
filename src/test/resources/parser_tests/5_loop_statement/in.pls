@@ -7,6 +7,10 @@ BEGIN
         x := 5;
     END LOOP;
 
+    -- Loop with no statements
+    LOOP
+    END LOOP;
+
     -- Multiple statements in loop
     LOOP
         x := 5;

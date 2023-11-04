@@ -29,6 +29,9 @@ non terminal List<Statement> statement_list;
 non terminal Statement statement;
 non terminal AssignmentStatement assignment_statement;
 non terminal LoopStatement loop_statement;
+non terminal IfStatement if_statement;
+non terminal List<IfStatement.Elsif> elsif_list;
+non terminal IfStatement.Else else_block;
 non terminal Body body;
 non terminal Block plsql_block;
 non terminal List<Block> plsql_block_list;
@@ -54,14 +57,28 @@ statement_list ::= statement_list:sl statement:s                {: sl.add(s); RE
     ;
 
 statement ::=
-      assignment_statement:s                            {: RESULT = s; :}
-    | loop_statement:s                                  {: RESULT = s; :}
+      assignment_statement:s                                    {: RESULT = s; :}
+    | loop_statement:s                                          {: RESULT = s; :}
+    | if_statement:s                                            {: RESULT = s; :}
     ;
 
 assignment_statement ::=
     IDENTIFIER:id ASSIGNMENT_OPERATOR expression:value SEMI     {: RESULT = new AssignmentStatement(id, value); :};
 
 loop_statement ::= LOOP statement_list:sl END LOOP SEMI         {: RESULT = new LoopStatement(sl); :};
+
+if_statement ::=
+    IF expression:cond THEN statement_list:sl
+        elsif_list:el else_block:alt END IF SEMI                {: RESULT = new IfStatement(cond, sl, el, alt); :};
+
+elsif_list ::=
+      elsif_list:l ELSIF expression:cond THEN statement_list:sl {: l.add(new IfStatement.Elsif(cond, sl)); RESULT = l; :}
+    | /* empty elsif list */                                    {: RESULT = new ArrayList<IfStatement.Elsif>(); :}
+    ;
+else_block ::=
+      ELSE statement_list:sl                                    {: RESULT = new IfStatement.Else(sl); :}
+    | /* no else block */
+    ;
 
 expression ::= boolean_or_expression:expr                       {: RESULT = expr; :};
 

@@ -19,6 +19,10 @@
             "class": "org.example.plsql.ast.LoopStatement"
           },
           {
+            "statements": [],
+            "class": "org.example.plsql.ast.LoopStatement"
+          },
+          {
             "statements": [
               {
                 "target": {
