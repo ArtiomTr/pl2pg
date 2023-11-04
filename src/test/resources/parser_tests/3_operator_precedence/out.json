@@ -83,6 +83,35 @@
           },
           {
             "target": {
+              "name": "k"
+            },
+            "value": {
+              "value": {
+                "value": "10",
+                "class": "org.example.plsql.ast.NumberLiteral"
+              },
+              "left": {
+                "left": {
+                  "value": "12",
+                  "class": "org.example.plsql.ast.NumberLiteral"
+                },
+                "right": {
+                  "value": "5",
+                  "class": "org.example.plsql.ast.NumberLiteral"
+                },
+                "operator": "MULTIPLICATION",
+                "class": "org.example.plsql.ast.BinaryExpression"
+              },
+              "right": {
+                "value": "6",
+                "class": "org.example.plsql.ast.NumberLiteral"
+              },
+              "class": "org.example.plsql.ast.BetweenExpression"
+            },
+            "class": "org.example.plsql.ast.AssignmentStatement"
+          },
+          {
+            "target": {
               "name": "d"
             },
             "value": {

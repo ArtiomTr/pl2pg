@@ -6,6 +6,7 @@ BEGIN
     a := TRUE OR FALSE AND TRUE;   -- AND operator has higher precedence
     b := NOT TRUE AND NOT FALSE;   -- NOT operator has higher precedence
     c := NOT (TRUE AND NOT FALSE); -- Parentheses alter default operator precedence
+    k := 10 BETWEEN 12 * 5 AND 6;  -- Multiplication has higher precedence
 
     -- Arithmetic operators
     d := 5 + 3 * 8;                -- Multiplication has higher precedence

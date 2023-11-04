@@ -7,6 +7,11 @@ BEGIN
     and_op := TRUE AND FALSE;
     not_op := NOT TRUE;
     not_op_2 := NOT (NOT FALSE);
+    existence := coll.EXISTS(4);
+    between_op := id BETWEEN 10 AND 20;
+    not_between_op := 6 NOT BETWEEN -2.3 AND 5.32e8;
+    is_op := id IS NULL;
+    is_not_op := id IS NOT NULL;
 
     -- String operators
     concatenation := 'Hello' || q'['world'!]';
@@ -31,4 +36,12 @@ BEGIN
     negation_2 := - - -a;
     identity := +some_identifier;
     exponentiation := 2 ** 3.8e-12;
+
+    -- Cursor operators
+    found := SQL%FOUND;
+    found_named := :somecursor%FOUND;
+    notfound := SQL%NOTFOUND;
+    notfound_named := :somecursor%NOTFOUND;
+    isopen := SQL%ISOPEN;
+    isopen_named := :somecursor%ISOPEN;
 END;

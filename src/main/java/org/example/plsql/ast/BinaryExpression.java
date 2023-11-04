@@ -14,6 +14,7 @@ public class BinaryExpression extends Expression {
         GREATER_THAN_OR_EQUAL,
         EQUAL,
         NOT_EQUAL,
+        IS,
         NOT,
         AND,
         OR,

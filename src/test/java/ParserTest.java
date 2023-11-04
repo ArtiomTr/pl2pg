@@ -5,6 +5,7 @@ import java_cup.runtime.ComplexSymbolFactory;
 import java_cup.runtime.ScannerBuffer;
 import org.example.PLSQLParser;
 import org.example.PLSQLScanner;
+import org.example.plsql.ast.Cursor;
 import org.example.plsql.ast.Expression;
 import org.example.plsql.ast.Program;
 import org.example.plsql.ast.Statement;
@@ -58,6 +59,7 @@ public class ParserTest {
         Gson gson = new GsonBuilder()
                 .registerTypeAdapter(Statement.class, new SerdePreservingClass())
                 .registerTypeAdapter(Expression.class, new SerdePreservingClass())
+                .registerTypeAdapter(Cursor.class, new SerdePreservingClass())
                 .create();
 
         for (String test : tests) {
@@ -92,6 +94,7 @@ public class ParserTest {
             } catch (JsonIOException | JsonSyntaxException exception) {
                 Assertions.fail("Failed to parse \"" + testPath.resolve("out.json") + "\" file." + exception);
             } catch (Exception exception) {
+                exception.printStackTrace();
                 Assertions.fail("Failed to parse \"" + testPath.resolve("in.pls") + "\" file. " + exception);
             }
         }

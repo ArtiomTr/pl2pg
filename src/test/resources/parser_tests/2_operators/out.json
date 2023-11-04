@@ -75,6 +75,112 @@
           },
           {
             "target": {
+              "name": "existence"
+            },
+            "value": {
+              "collection": {
+                "name": "coll"
+              },
+              "index": {
+                "value": "4",
+                "class": "org.example.plsql.ast.NumberLiteral"
+              },
+              "class": "org.example.plsql.ast.CollectionExistExpression"
+            },
+            "class": "org.example.plsql.ast.AssignmentStatement"
+          },
+          {
+            "target": {
+              "name": "between_op"
+            },
+            "value": {
+              "value": {
+                "identifier": {
+                  "name": "id"
+                },
+                "class": "org.example.plsql.ast.ExpressionIdentifier"
+              },
+              "left": {
+                "value": "10",
+                "class": "org.example.plsql.ast.NumberLiteral"
+              },
+              "right": {
+                "value": "20",
+                "class": "org.example.plsql.ast.NumberLiteral"
+              },
+              "class": "org.example.plsql.ast.BetweenExpression"
+            },
+            "class": "org.example.plsql.ast.AssignmentStatement"
+          },
+          {
+            "target": {
+              "name": "not_between_op"
+            },
+            "value": {
+              "argument": {
+                "value": {
+                  "value": "6",
+                  "class": "org.example.plsql.ast.NumberLiteral"
+                },
+                "left": {
+                  "value": "-2.3",
+                  "class": "org.example.plsql.ast.NumberLiteral"
+                },
+                "right": {
+                  "value": "5.32e8",
+                  "class": "org.example.plsql.ast.NumberLiteral"
+                },
+                "class": "org.example.plsql.ast.BetweenExpression"
+              },
+              "operator": "NOT",
+              "class": "org.example.plsql.ast.UnaryExpression"
+            },
+            "class": "org.example.plsql.ast.AssignmentStatement"
+          },
+          {
+            "target": {
+              "name": "is_op"
+            },
+            "value": {
+              "left": {
+                "identifier": {
+                  "name": "id"
+                },
+                "class": "org.example.plsql.ast.ExpressionIdentifier"
+              },
+              "right": {
+                "class": "org.example.plsql.ast.NullLiteral"
+              },
+              "operator": "IS",
+              "class": "org.example.plsql.ast.BinaryExpression"
+            },
+            "class": "org.example.plsql.ast.AssignmentStatement"
+          },
+          {
+            "target": {
+              "name": "is_not_op"
+            },
+            "value": {
+              "argument": {
+                "left": {
+                  "identifier": {
+                    "name": "id"
+                  },
+                  "class": "org.example.plsql.ast.ExpressionIdentifier"
+                },
+                "right": {
+                  "class": "org.example.plsql.ast.NullLiteral"
+                },
+                "operator": "IS",
+                "class": "org.example.plsql.ast.BinaryExpression"
+              },
+              "operator": "NOT",
+              "class": "org.example.plsql.ast.UnaryExpression"
+            },
+            "class": "org.example.plsql.ast.AssignmentStatement"
+          },
+          {
+            "target": {
               "name": "concatenation"
             },
             "value": {
@@ -398,6 +504,87 @@
               },
               "operator": "EXPONENTIATION",
               "class": "org.example.plsql.ast.BinaryExpression"
+            },
+            "class": "org.example.plsql.ast.AssignmentStatement"
+          },
+          {
+            "target": {
+              "name": "found"
+            },
+            "value": {
+              "operator": "FOUND",
+              "cursor": {
+                "class": "org.example.plsql.ast.ImplicitCursor"
+              },
+              "class": "org.example.plsql.ast.CursorExpression"
+            },
+            "class": "org.example.plsql.ast.AssignmentStatement"
+          },
+          {
+            "target": {
+              "name": "found_named"
+            },
+            "value": {
+              "operator": "FOUND",
+              "cursor": {
+                "name": "somecursor",
+                "class": "org.example.plsql.ast.NamedCursor"
+              },
+              "class": "org.example.plsql.ast.CursorExpression"
+            },
+            "class": "org.example.plsql.ast.AssignmentStatement"
+          },
+          {
+            "target": {
+              "name": "notfound"
+            },
+            "value": {
+              "operator": "NOTFOUND",
+              "cursor": {
+                "class": "org.example.plsql.ast.ImplicitCursor"
+              },
+              "class": "org.example.plsql.ast.CursorExpression"
+            },
+            "class": "org.example.plsql.ast.AssignmentStatement"
+          },
+          {
+            "target": {
+              "name": "notfound_named"
+            },
+            "value": {
+              "operator": "NOTFOUND",
+              "cursor": {
+                "name": "somecursor",
+                "class": "org.example.plsql.ast.NamedCursor"
+              },
+              "class": "org.example.plsql.ast.CursorExpression"
+            },
+            "class": "org.example.plsql.ast.AssignmentStatement"
+          },
+          {
+            "target": {
+              "name": "isopen"
+            },
+            "value": {
+              "operator": "ISOPEN",
+              "cursor": {
+                "class": "org.example.plsql.ast.ImplicitCursor"
+              },
+              "class": "org.example.plsql.ast.CursorExpression"
+            },
+            "class": "org.example.plsql.ast.AssignmentStatement"
+          },
+          {
+            "target": {
+              "name": "isopen_named"
+            },
+            "value": {
+              "operator": "ISOPEN",
+              "cursor": {
+                "name": "somecursor",
+                "class": "org.example.plsql.ast.NamedCursor"
+              },
+              "class": "org.example.plsql.ast.CursorExpression"
             },
             "class": "org.example.plsql.ast.AssignmentStatement"
           }

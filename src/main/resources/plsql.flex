@@ -74,7 +74,7 @@ import org.example.plsql.ast.*;
 
 EOL                 = \R
 WHITE_SPACE         = \s+
-NUMBER_LITERAL      = [+-]?((\d+(\.(\d+)?)?([eE][+-]?\d+)?)|(\.\d+([eE][+-]?\d+)?))
+NUMBER_LITERAL      = [+-]?((\d+(\.\d*)?([eE][+-]?\d+)?)|(\.\d+([eE][+-]?\d+)?))
 IDENTIFIER          = [A-Za-z_$][\w_$]*
 NAMED_CURSOR        = :{IDENTIFIER}
 LABEL               = "<<" {IDENTIFIER} ">>"
@@ -99,6 +99,7 @@ DELIMITER           = .
   "ELSIF"  { return symbol("elsif", sym.ELSIF); }
   "ELSE"   { return symbol("else", sym.ELSE); }
   "RETURN" { return symbol("return", sym.RETURN); }
+  "SQL"    { return symbol("implicitcursor", sym.IMPLICIT_CURSOR); }
 
   /* separators */
   ";" { return symbol("semi", sym.SEMI); }
@@ -124,6 +125,14 @@ DELIMITER           = .
   "AND"                     { return symbol("booloperator", sym.AND_OPERATOR); }
   "OR"                      { return symbol("booloperator", sym.OR_OPERATOR); }
   "**"                      { return symbol("exp", sym.EXPONENTIATION_OPERATOR); }
+  "EXISTS"                  { return symbol("exists", sym.EXISTS_OPERATOR); }
+  "BETWEEN"                 { return symbol("between", sym.BETWEEN_OPERATOR); }
+  "IS"                      { return symbol("is", sym.IS_OPERATOR); }
+
+  /* cursor operators */
+  "%FOUND"                  { return symbol("found", sym.FOUND_OPERATOR); }
+  "%ISOPEN"                 { return symbol("isopen", sym.ISOPEN_OPERATOR); }
+  "%NOTFOUND"               { return symbol("notfound", sym.NOTFOUND_OPERATOR); }
 
   /* literals */
   "TRUE"              { return symbol("boolliteral", sym.BOOLEAN_LITERAL, true); }
