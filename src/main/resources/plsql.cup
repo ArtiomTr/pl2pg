@@ -28,6 +28,7 @@ non terminal Program program;
 non terminal List<Statement> statement_list;
 non terminal Statement statement;
 non terminal AssignmentStatement assignment_statement;
+non terminal LoopStatement loop_statement;
 non terminal Body body;
 non terminal Block plsql_block;
 non terminal List<Block> plsql_block_list;
@@ -52,10 +53,15 @@ statement_list ::= statement_list:sl statement:s                {: sl.add(s); RE
     | /* empty statement list */                                {: RESULT = new ArrayList<Statement>(); :}
     ;
 
-statement ::= assignment_statement:s                            {: RESULT = s; :};
+statement ::=
+      assignment_statement:s                            {: RESULT = s; :}
+    | loop_statement:s                                  {: RESULT = s; :}
+    ;
 
 assignment_statement ::=
     IDENTIFIER:id ASSIGNMENT_OPERATOR expression:value SEMI     {: RESULT = new AssignmentStatement(id, value); :};
+
+loop_statement ::= LOOP statement_list:sl END LOOP SEMI         {: RESULT = new LoopStatement(sl); :};
 
 expression ::= boolean_or_expression:expr                       {: RESULT = expr; :};
 
