@@ -100,6 +100,8 @@ DELIMITER           = .
   "ELSE"   { return symbol("else", sym.ELSE); }
   "RETURN" { return symbol("return", sym.RETURN); }
   "SQL"    { return symbol("implicitcursor", sym.IMPLICIT_CURSOR); }
+  "CASE"   { return symbol("case", sym.CASE); }
+  "WHEN"   { return symbol("when", sym.WHEN); }
 
   /* separators */
   ";" { return symbol("semi", sym.SEMI); }

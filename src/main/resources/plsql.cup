@@ -2,10 +2,11 @@ package org.example;
 
 import java.util.List;
 import java.util.ArrayList;
+import java.util.Arrays;
 import org.example.plsql.ast.*;
 
 // Keywords
-terminal BEGIN, END, LOOP, IF, THEN, ELSIF, ELSE, RETURN, IMPLICIT_CURSOR;
+terminal BEGIN, END, LOOP, IF, THEN, ELSIF, ELSE, RETURN, IMPLICIT_CURSOR, CASE, WHEN;
 // Punctuation
 terminal SEMI, COMMA, DOT, LEFT_PARENTHESIS, RIGHT_PARENTHESIS;
 // Operators
@@ -32,6 +33,10 @@ non terminal LoopStatement loop_statement;
 non terminal IfStatement if_statement;
 non terminal List<IfStatement.Elsif> elsif_list;
 non terminal IfStatement.Else else_block;
+non terminal CaseStatement case_statement;
+non terminal CaseStatement.When case_when;
+non terminal List<CaseStatement.When> case_when_list;
+non terminal CaseStatement.Else case_else;
 non terminal Body body;
 non terminal Block plsql_block;
 non terminal List<Block> plsql_block_list;
@@ -60,6 +65,7 @@ statement ::=
       assignment_statement:s                                    {: RESULT = s; :}
     | loop_statement:s                                          {: RESULT = s; :}
     | if_statement:s                                            {: RESULT = s; :}
+    | case_statement:s                                          {: RESULT = s; :}
     ;
 
 assignment_statement ::=
@@ -70,6 +76,24 @@ loop_statement ::= LOOP statement_list:sl END LOOP SEMI         {: RESULT = new 
 if_statement ::=
     IF expression:cond THEN statement_list:sl
         elsif_list:el else_block:alt END IF SEMI                {: RESULT = new IfStatement(cond, sl, el, alt); :};
+
+case_statement ::=
+      CASE expression:selector
+          case_when_list:cl case_else:el END CASE SEMI          {: RESULT = new CaseStatement(selector, cl, el); :}
+    | CASE case_when_list:cl case_else:el END CASE SEMI         {: RESULT = new CaseStatement(null, cl, el); :}
+    ;
+
+case_when_list ::=
+      case_when_list:l case_when:c                              {: l.add(c); RESULT = l; :}
+    | case_when:c                                               {: RESULT = new ArrayList<CaseStatement.When>(Arrays.asList(c)); :}
+    ;
+
+case_when ::= WHEN expression:val THEN statement:st             {: RESULT = new CaseStatement.When(val, st); :};
+
+case_else ::=
+      ELSE statement:st                                         {: RESULT = new CaseStatement.Else(st); :}
+    | /* no else statement */
+    ;
 
 elsif_list ::=
       elsif_list:l ELSIF expression:cond THEN statement_list:sl {: l.add(new IfStatement.Elsif(cond, sl)); RESULT = l; :}
