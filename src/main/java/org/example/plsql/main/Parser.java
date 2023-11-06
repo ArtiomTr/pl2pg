@@ -21,7 +21,7 @@ public class Parser {
         try {
             Symbol s = parser.parse();
             return (Program) s.value;
-        } catch (Exception e) {
+        } catch (Exception | Error e) {
             throw new ParseException(e);
         }
     }
