@@ -1,0 +1,7 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="Generate" type="CompoundRunConfigurationType">
+    <toRun name="Generate parser" type="MavenRunConfiguration" />
+    <toRun name="Generate scanner" type="MavenRunConfiguration" />
+    <method v="2" />
+  </configuration>
+</component>

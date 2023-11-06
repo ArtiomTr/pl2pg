@@ -58,7 +58,13 @@ public class ParserTest {
                 .create();
 
         for (String test : tests) {
-            Path testPath = Path.of(url.getFile().substring(1), test);
+            File testFolder = new File(url.getFile());
+
+            if (!testFolder.isDirectory()) {
+                continue;
+            }
+
+            Path testPath = Path.of(testFolder.getPath(), test);
             File inputFile = testPath.resolve("in.pls").toFile();
             File outputFile = testPath.resolve("out.json").toFile();
 
@@ -70,7 +76,7 @@ public class ParserTest {
                 Assertions.fail("Invalid test resources folder structure - folder \"" + testPath + "\" must contain:\n" +
                         " - `in.pls` file, which contains parser input;\n" +
                         " - `out.json` file, which contains expected AST output of parser.\n" +
-                        "File `out.json` is missing.");
+                        "File `" + testPath.resolve("out.json") + "` is missing.");
             } catch (IOException exception) {
                 Assertions.fail("Failed to read \"" + testPath.resolve("out.json") + "\". Unexpected error occurred:\n" +
                         "    " + exception);
