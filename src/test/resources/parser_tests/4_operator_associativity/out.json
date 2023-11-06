@@ -36,6 +36,7 @@
               "operator": "OR",
               "class": "org.example.plsql.ast.BinaryExpression"
             },
+            "labels": [],
             "class": "org.example.plsql.ast.AssignmentStatement"
           },
           {
@@ -71,6 +72,7 @@
               "operator": "AND",
               "class": "org.example.plsql.ast.BinaryExpression"
             },
+            "labels": [],
             "class": "org.example.plsql.ast.AssignmentStatement"
           },
           {
@@ -97,6 +99,7 @@
               "operator": "CONCATENATION",
               "class": "org.example.plsql.ast.BinaryExpression"
             },
+            "labels": [],
             "class": "org.example.plsql.ast.AssignmentStatement"
           },
           {
@@ -131,6 +134,7 @@
               "operator": "ADDITION",
               "class": "org.example.plsql.ast.BinaryExpression"
             },
+            "labels": [],
             "class": "org.example.plsql.ast.AssignmentStatement"
           },
           {
@@ -181,6 +185,7 @@
               "operator": "SUBTRACTION",
               "class": "org.example.plsql.ast.BinaryExpression"
             },
+            "labels": [],
             "class": "org.example.plsql.ast.AssignmentStatement"
           },
           {
@@ -231,6 +236,7 @@
               "operator": "EXPONENTIATION",
               "class": "org.example.plsql.ast.BinaryExpression"
             },
+            "labels": [],
             "class": "org.example.plsql.ast.AssignmentStatement"
           },
           {
@@ -275,10 +281,12 @@
               "operator": "ADDITION",
               "class": "org.example.plsql.ast.BinaryExpression"
             },
+            "labels": [],
             "class": "org.example.plsql.ast.AssignmentStatement"
           }
         ]
-      }
+      },
+      "labels": []
     }
   ]
 }

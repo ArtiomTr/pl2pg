@@ -75,7 +75,8 @@
                     </execution>
                 </executions>
                 <configuration>
-                    <parserName>PLSQLParser</parserName>
+                    <parserName>Parser</parserName>
+                    <symbolsName>PlSymbol</symbolsName>
                     <generatedSourcesDirectory>${project.basedir}/src/main/java</generatedSourcesDirectory>
                     <cupSourceDirectory>${project.basedir}/src/main/resources</cupSourceDirectory>
                     <cupSourceFilesFilter>plsql\.cup</cupSourceFilesFilter>

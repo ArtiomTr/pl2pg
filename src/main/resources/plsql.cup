@@ -1,4 +1,4 @@
-package org.example;
+package org.example.plsql.main.generated;
 
 import java.util.List;
 import java.util.ArrayList;
@@ -27,7 +27,9 @@ terminal Identifier IDENTIFIER;
 
 non terminal Program program;
 non terminal List<Statement> statement_list;
-non terminal Statement statement;
+non terminal Statement statement, statement_inner;
+non terminal List<Label> label_list;
+non terminal Label closing_label;
 non terminal AssignmentStatement assignment_statement;
 non terminal LoopStatement loop_statement;
 non terminal IfStatement if_statement;
@@ -55,17 +57,25 @@ plsql_block_list ::= plsql_block_list:l plsql_block:b           {: l.add(b); RES
 
 plsql_block ::= body:b                                          {: RESULT = new Block(b); :};
 
-body ::= BEGIN statement_list:sl END SEMI                       {: RESULT = new Body(sl); :};
+body ::= BEGIN statement_list:sl END closing_label:l SEMI       {: RESULT = new Body(sl, l); :};
 
 statement_list ::= statement_list:sl statement:s                {: sl.add(s); RESULT = sl; :}
     | /* empty statement list */                                {: RESULT = new ArrayList<Statement>(); :}
     ;
 
-statement ::=
+statement ::= label_list:l statement_inner:s                    {: s.setLabels(l); RESULT = s; :};
+
+statement_inner ::=
       assignment_statement:s                                    {: RESULT = s; :}
     | loop_statement:s                                          {: RESULT = s; :}
     | if_statement:s                                            {: RESULT = s; :}
     | case_statement:s                                          {: RESULT = s; :}
+    | plsql_block:s                                             {: RESULT = s; :}
+    ;
+
+label_list ::=
+      label_list:ls LABEL:l                                     {: ls.add(new Label(l)); RESULT = ls; :}
+    | /* empty label list */                                    {: RESULT = new ArrayList<Label>(); :}
     ;
 
 assignment_statement ::=
@@ -201,4 +211,9 @@ expression_atom ::=
     | cursor:c ISOPEN_OPERATOR                                  {: RESULT = new CursorExpression(c, CursorExpression.Operator.ISOPEN); :}
     | cursor:c NOTFOUND_OPERATOR                                {: RESULT = new CursorExpression(c, CursorExpression.Operator.NOTFOUND); :}
     | LEFT_PARENTHESIS expression:expr RIGHT_PARENTHESIS        {: RESULT = expr; :}
+    ;
+
+closing_label ::=
+      IDENTIFIER:l                                              {: RESULT = new Label(l); :}
+    | /* no closing label */
     ;

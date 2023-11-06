@@ -24,10 +24,12 @@
                     "value": "10",
                     "class": "org.example.plsql.ast.NumberLiteral"
                   },
+                  "labels": [],
                   "class": "org.example.plsql.ast.AssignmentStatement"
                 }
               }
             ],
+            "labels": [],
             "class": "org.example.plsql.ast.CaseStatement"
           },
           {
@@ -55,10 +57,12 @@
                     "value": "10",
                     "class": "org.example.plsql.ast.NumberLiteral"
                   },
+                  "labels": [],
                   "class": "org.example.plsql.ast.AssignmentStatement"
                 }
               }
             ],
+            "labels": [],
             "class": "org.example.plsql.ast.CaseStatement"
           },
           {
@@ -140,10 +144,12 @@
                     "value": "10",
                     "class": "org.example.plsql.ast.NumberLiteral"
                   },
+                  "labels": [],
                   "class": "org.example.plsql.ast.AssignmentStatement"
                 }
               }
             ],
+            "labels": [],
             "class": "org.example.plsql.ast.CaseStatement"
           },
           {
@@ -167,6 +173,7 @@
                     "value": "10",
                     "class": "org.example.plsql.ast.NumberLiteral"
                   },
+                  "labels": [],
                   "class": "org.example.plsql.ast.AssignmentStatement"
                 }
               }
@@ -180,9 +187,11 @@
                   "value": "2",
                   "class": "org.example.plsql.ast.NumberLiteral"
                 },
+                "labels": [],
                 "class": "org.example.plsql.ast.AssignmentStatement"
               }
             },
+            "labels": [],
             "class": "org.example.plsql.ast.CaseStatement"
           },
           {
@@ -210,6 +219,7 @@
                     "value": "10",
                     "class": "org.example.plsql.ast.NumberLiteral"
                   },
+                  "labels": [],
                   "class": "org.example.plsql.ast.AssignmentStatement"
                 }
               }
@@ -223,9 +233,11 @@
                   "value": "2",
                   "class": "org.example.plsql.ast.NumberLiteral"
                 },
+                "labels": [],
                 "class": "org.example.plsql.ast.AssignmentStatement"
               }
             },
+            "labels": [],
             "class": "org.example.plsql.ast.CaseStatement"
           },
           {
@@ -249,6 +261,7 @@
                     "value": "1",
                     "class": "org.example.plsql.ast.NumberLiteral"
                   },
+                  "labels": [],
                   "class": "org.example.plsql.ast.AssignmentStatement"
                 }
               },
@@ -265,6 +278,7 @@
                     "value": "2",
                     "class": "org.example.plsql.ast.NumberLiteral"
                   },
+                  "labels": [],
                   "class": "org.example.plsql.ast.AssignmentStatement"
                 }
               },
@@ -281,6 +295,7 @@
                     "value": "3",
                     "class": "org.example.plsql.ast.NumberLiteral"
                   },
+                  "labels": [],
                   "class": "org.example.plsql.ast.AssignmentStatement"
                 }
               },
@@ -297,10 +312,12 @@
                     "value": "4",
                     "class": "org.example.plsql.ast.NumberLiteral"
                   },
+                  "labels": [],
                   "class": "org.example.plsql.ast.AssignmentStatement"
                 }
               }
             ],
+            "labels": [],
             "class": "org.example.plsql.ast.CaseStatement"
           },
           {
@@ -328,6 +345,7 @@
                     "value": "3",
                     "class": "org.example.plsql.ast.NumberLiteral"
                   },
+                  "labels": [],
                   "class": "org.example.plsql.ast.AssignmentStatement"
                 }
               },
@@ -354,6 +372,7 @@
                     "value": "4",
                     "class": "org.example.plsql.ast.NumberLiteral"
                   },
+                  "labels": [],
                   "class": "org.example.plsql.ast.AssignmentStatement"
                 }
               },
@@ -380,10 +399,12 @@
                     "value": "5",
                     "class": "org.example.plsql.ast.NumberLiteral"
                   },
+                  "labels": [],
                   "class": "org.example.plsql.ast.AssignmentStatement"
                 }
               }
             ],
+            "labels": [],
             "class": "org.example.plsql.ast.CaseStatement"
           },
           {
@@ -407,6 +428,7 @@
                     "value": "1",
                     "class": "org.example.plsql.ast.NumberLiteral"
                   },
+                  "labels": [],
                   "class": "org.example.plsql.ast.AssignmentStatement"
                 }
               },
@@ -423,6 +445,7 @@
                     "value": "2",
                     "class": "org.example.plsql.ast.NumberLiteral"
                   },
+                  "labels": [],
                   "class": "org.example.plsql.ast.AssignmentStatement"
                 }
               }
@@ -436,9 +459,11 @@
                   "value": "3",
                   "class": "org.example.plsql.ast.NumberLiteral"
                 },
+                "labels": [],
                 "class": "org.example.plsql.ast.AssignmentStatement"
               }
             },
+            "labels": [],
             "class": "org.example.plsql.ast.CaseStatement"
           },
           {
@@ -466,6 +491,7 @@
                     "value": "3",
                     "class": "org.example.plsql.ast.NumberLiteral"
                   },
+                  "labels": [],
                   "class": "org.example.plsql.ast.AssignmentStatement"
                 }
               },
@@ -492,6 +518,7 @@
                     "value": "4",
                     "class": "org.example.plsql.ast.NumberLiteral"
                   },
+                  "labels": [],
                   "class": "org.example.plsql.ast.AssignmentStatement"
                 }
               }
@@ -505,13 +532,16 @@
                   "value": "5",
                   "class": "org.example.plsql.ast.NumberLiteral"
                 },
+                "labels": [],
                 "class": "org.example.plsql.ast.AssignmentStatement"
               }
             },
+            "labels": [],
             "class": "org.example.plsql.ast.CaseStatement"
           }
         ]
-      }
+      },
+      "labels": []
     }
   ]
 }

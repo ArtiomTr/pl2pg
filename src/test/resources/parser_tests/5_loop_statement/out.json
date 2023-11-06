@@ -13,13 +13,16 @@
                   "value": "5",
                   "class": "org.example.plsql.ast.NumberLiteral"
                 },
+                "labels": [],
                 "class": "org.example.plsql.ast.AssignmentStatement"
               }
             ],
+            "labels": [],
             "class": "org.example.plsql.ast.LoopStatement"
           },
           {
             "statements": [],
+            "labels": [],
             "class": "org.example.plsql.ast.LoopStatement"
           },
           {
@@ -32,6 +35,7 @@
                   "value": "5",
                   "class": "org.example.plsql.ast.NumberLiteral"
                 },
+                "labels": [],
                 "class": "org.example.plsql.ast.AssignmentStatement"
               },
               {
@@ -68,9 +72,11 @@
                   "operator": "SUBTRACTION",
                   "class": "org.example.plsql.ast.BinaryExpression"
                 },
+                "labels": [],
                 "class": "org.example.plsql.ast.AssignmentStatement"
               }
             ],
+            "labels": [],
             "class": "org.example.plsql.ast.LoopStatement"
           },
           {
@@ -83,6 +89,7 @@
                   "value": "1",
                   "class": "org.example.plsql.ast.NumberLiteral"
                 },
+                "labels": [],
                 "class": "org.example.plsql.ast.AssignmentStatement"
               },
               {
@@ -105,16 +112,20 @@
                       "operator": "ADDITION",
                       "class": "org.example.plsql.ast.BinaryExpression"
                     },
+                    "labels": [],
                     "class": "org.example.plsql.ast.AssignmentStatement"
                   }
                 ],
+                "labels": [],
                 "class": "org.example.plsql.ast.LoopStatement"
               }
             ],
+            "labels": [],
             "class": "org.example.plsql.ast.LoopStatement"
           }
         ]
-      }
+      },
+      "labels": []
     }
   ]
 }

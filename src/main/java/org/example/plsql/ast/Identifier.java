@@ -12,4 +12,8 @@ public class Identifier extends Node {
     public boolean areEqual(Node node) {
         return (node instanceof Identifier) && ((Identifier) node).name.equals(this.name);
     }
+
+    public String getName() {
+        return name;
+    }
 }

@@ -18,6 +18,10 @@ public class LoopStatement extends Statement {
 
         LoopStatement other = (LoopStatement) node;
 
+        if (!this.labelsEqual(other)) {
+            return false;
+        }
+
         if (other.statements.size() != this.statements.size()) {
             return false;
         }

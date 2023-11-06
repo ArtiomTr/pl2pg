@@ -1,0 +1,81 @@
+{
+  "blocks": [
+    {
+      "body": {
+        "statements": [
+          {
+            "target": {
+              "name": "a"
+            },
+            "value": {
+              "left": {
+                "value": "10",
+                "class": "org.example.plsql.ast.NumberLiteral"
+              },
+              "right": {
+                "value": "15",
+                "class": "org.example.plsql.ast.NumberLiteral"
+              },
+              "operator": "ADDITION",
+              "class": "org.example.plsql.ast.BinaryExpression"
+            },
+            "labels": [
+              {
+                "name": "hello"
+              }
+            ],
+            "class": "org.example.plsql.ast.AssignmentStatement"
+          },
+          {
+            "target": {
+              "name": "b"
+            },
+            "value": {
+              "value": "4",
+              "class": "org.example.plsql.ast.NumberLiteral"
+            },
+            "labels": [
+              {
+                "name": "stmt_label_1"
+              },
+              {
+                "name": "stmt_label_2"
+              },
+              {
+                "name": "stmt_label_3"
+              }
+            ],
+            "class": "org.example.plsql.ast.AssignmentStatement"
+          },
+          {
+            "body": {
+              "statements": [
+                {
+                  "target": {
+                    "name": "a"
+                  },
+                  "value": {
+                    "value": "2",
+                    "class": "org.example.plsql.ast.NumberLiteral"
+                  },
+                  "labels": [],
+                  "class": "org.example.plsql.ast.AssignmentStatement"
+                }
+              ],
+              "closingLabel": {
+                "name": "block_label"
+              }
+            },
+            "labels": [
+              {
+                "name": "block_label"
+              }
+            ],
+            "class": "org.example.plsql.ast.Block"
+          }
+        ]
+      },
+      "labels": []
+    }
+  ]
+}

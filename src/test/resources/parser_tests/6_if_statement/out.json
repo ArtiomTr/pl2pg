@@ -12,6 +12,7 @@
             },
             "statements": [],
             "elsifList": [],
+            "labels": [],
             "class": "org.example.plsql.ast.IfStatement"
           },
           {
@@ -30,10 +31,12 @@
                   "value": "15",
                   "class": "org.example.plsql.ast.NumberLiteral"
                 },
+                "labels": [],
                 "class": "org.example.plsql.ast.AssignmentStatement"
               }
             ],
             "elsifList": [],
+            "labels": [],
             "class": "org.example.plsql.ast.IfStatement"
           },
           {
@@ -92,10 +95,12 @@
                   "value": "2",
                   "class": "org.example.plsql.ast.NumberLiteral"
                 },
+                "labels": [],
                 "class": "org.example.plsql.ast.AssignmentStatement"
               }
             ],
             "elsifList": [],
+            "labels": [],
             "class": "org.example.plsql.ast.IfStatement"
           },
           {
@@ -112,6 +117,7 @@
                   "value": "2",
                   "class": "org.example.plsql.ast.NumberLiteral"
                 },
+                "labels": [],
                 "class": "org.example.plsql.ast.AssignmentStatement"
               }
             ],
@@ -126,10 +132,12 @@
                     "value": "3",
                     "class": "org.example.plsql.ast.NumberLiteral"
                   },
+                  "labels": [],
                   "class": "org.example.plsql.ast.AssignmentStatement"
                 }
               ]
             },
+            "labels": [],
             "class": "org.example.plsql.ast.IfStatement"
           },
           {
@@ -166,6 +174,7 @@
                   "operator": "ADDITION",
                   "class": "org.example.plsql.ast.BinaryExpression"
                 },
+                "labels": [],
                 "class": "org.example.plsql.ast.AssignmentStatement"
               }
             ],
@@ -204,11 +213,13 @@
                       "operator": "SUBTRACTION",
                       "class": "org.example.plsql.ast.BinaryExpression"
                     },
+                    "labels": [],
                     "class": "org.example.plsql.ast.AssignmentStatement"
                   }
                 ]
               }
             ],
+            "labels": [],
             "class": "org.example.plsql.ast.IfStatement"
           },
           {
@@ -235,6 +246,7 @@
                   "value": "1",
                   "class": "org.example.plsql.ast.NumberLiteral"
                 },
+                "labels": [],
                 "class": "org.example.plsql.ast.AssignmentStatement"
               }
             ],
@@ -263,6 +275,7 @@
                       "value": "2",
                       "class": "org.example.plsql.ast.NumberLiteral"
                     },
+                    "labels": [],
                     "class": "org.example.plsql.ast.AssignmentStatement"
                   }
                 ]
@@ -291,6 +304,7 @@
                       "value": "3",
                       "class": "org.example.plsql.ast.NumberLiteral"
                     },
+                    "labels": [],
                     "class": "org.example.plsql.ast.AssignmentStatement"
                   }
                 ]
@@ -319,11 +333,13 @@
                       "value": "4",
                       "class": "org.example.plsql.ast.NumberLiteral"
                     },
+                    "labels": [],
                     "class": "org.example.plsql.ast.AssignmentStatement"
                   }
                 ]
               }
             ],
+            "labels": [],
             "class": "org.example.plsql.ast.IfStatement"
           },
           {
@@ -350,6 +366,7 @@
                   "value": "1",
                   "class": "org.example.plsql.ast.NumberLiteral"
                 },
+                "labels": [],
                 "class": "org.example.plsql.ast.AssignmentStatement"
               }
             ],
@@ -378,6 +395,7 @@
                       "value": "4",
                       "class": "org.example.plsql.ast.NumberLiteral"
                     },
+                    "labels": [],
                     "class": "org.example.plsql.ast.AssignmentStatement"
                   }
                 ]
@@ -406,6 +424,7 @@
                       "value": "5",
                       "class": "org.example.plsql.ast.NumberLiteral"
                     },
+                    "labels": [],
                     "class": "org.example.plsql.ast.AssignmentStatement"
                   }
                 ]
@@ -420,14 +439,17 @@
                   "value": {
                     "class": "org.example.plsql.ast.NullLiteral"
                   },
+                  "labels": [],
                   "class": "org.example.plsql.ast.AssignmentStatement"
                 }
               ]
             },
+            "labels": [],
             "class": "org.example.plsql.ast.IfStatement"
           }
         ]
-      }
+      },
+      "labels": []
     }
   ]
 }

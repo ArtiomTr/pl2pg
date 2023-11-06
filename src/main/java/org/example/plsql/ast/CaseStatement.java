@@ -60,22 +60,14 @@ public class CaseStatement extends Statement {
 
         CaseStatement other = (CaseStatement) node;
 
-        if ((other.selector == null) != (this.selector == null)) {
+        if (!Node.checkEqualityWithNull(other.selector, this.selector)) {
             return false;
         }
 
-        if (other.selector != null && !other.selector.areEqual(this.selector)) {
+        if (!Node.checkEqualityWithNull(other.elseBlock, this.elseBlock)) {
             return false;
         }
 
-        if ((other.elseBlock == null) != (this.elseBlock == null)) {
-            return false;
-        }
-
-        if (other.elseBlock != null && !other.elseBlock.areEqual(this.elseBlock)) {
-            return false;
-        }
-
-        return Node.areListsEqual(other.whens, this.whens);
+        return this.labelsEqual(other) && Node.areListsEqual(other.whens, this.whens);
     }
 }

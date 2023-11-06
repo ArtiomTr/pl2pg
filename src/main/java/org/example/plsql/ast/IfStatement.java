@@ -68,14 +68,10 @@ public class IfStatement extends Statement {
             return false;
         }
 
-        if ((this.elseBlock == null) != (other.elseBlock == null)) {
+        if (!Node.checkEqualityWithNull(this.elseBlock, other.elseBlock)) {
             return false;
         }
 
-        if (this.elseBlock != null && !this.elseBlock.areEqual(other.elseBlock)) {
-            return false;
-        }
-
-        return Node.areListsEqual(this.elsifList, other.elsifList) && Node.areListsEqual(this.statements, other.statements);
+        return this.labelsEqual(other) && Node.areListsEqual(this.elsifList, other.elsifList) && Node.areListsEqual(this.statements, other.statements);
     }
 }

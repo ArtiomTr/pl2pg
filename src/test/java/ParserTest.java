@@ -1,29 +1,24 @@
 import com.google.gson.*;
 import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
-import java_cup.runtime.ComplexSymbolFactory;
-import java_cup.runtime.ScannerBuffer;
-import org.example.PLSQLParser;
-import org.example.PLSQLScanner;
 import org.example.plsql.ast.Cursor;
 import org.example.plsql.ast.Expression;
 import org.example.plsql.ast.Program;
 import org.example.plsql.ast.Statement;
+import org.example.plsql.main.ParseException;
+import org.example.plsql.main.Parser;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
+import java.io.*;
 import java.lang.reflect.Type;
 import java.net.URL;
 import java.nio.file.Path;
-import java_cup.runtime.Symbol;
 
 public class ParserTest {
 
-    private static final Type PROGRAM_TYPE = new TypeToken<Program>() {}.getType();
+    private static final Type PROGRAM_TYPE = new TypeToken<Program>() {
+    }.getType();
 
     private static class SerdePreservingClass implements JsonSerializer<Object>, JsonDeserializer<Object> {
         private static final String CLASS_META_KEY = "class";
@@ -49,7 +44,7 @@ public class ParserTest {
     }
 
     @Test
-    void dosmth() {
+    void parseVariousInputs() {
         URL url = this.getClass().getResource("/parser_tests");
         Assertions.assertNotNull(url);
         File testsFolder = new File(url.getFile());
@@ -67,35 +62,42 @@ public class ParserTest {
             File inputFile = testPath.resolve("in.pls").toFile();
             File outputFile = testPath.resolve("out.json").toFile();
 
-            try {
-                FileReader reader = new FileReader(inputFile);
+            Program expected = null;
 
-                ComplexSymbolFactory csf = new ComplexSymbolFactory();
-                ScannerBuffer lexer = new ScannerBuffer(new PLSQLScanner(new BufferedReader(reader), csf));
-                PLSQLParser parser = new PLSQLParser(lexer, csf);
-
-                Symbol output = parser.parse();
-
-                Assertions.assertTrue(output.value instanceof Program);
-
-                Program program = (Program) output.value;
-
-                System.out.println(gson.toJson(program, PROGRAM_TYPE));
-
-                JsonReader outputReader = new JsonReader(new FileReader(outputFile));
-
-                Program expected = gson.fromJson(outputReader, PROGRAM_TYPE);
-
-                Assertions.assertTrue(expected.areEqual(program));
+            try (JsonReader reader = new JsonReader(new FileReader(outputFile))) {
+                expected = gson.fromJson(reader, PROGRAM_TYPE);
             } catch (FileNotFoundException exception) {
                 Assertions.fail("Invalid test resources folder structure - folder \"" + testPath + "\" must contain:\n" +
                         " - `in.pls` file, which contains parser input;\n" +
-                        " - `out.json` file, which contains expected AST output of parser.");
-            } catch (JsonIOException | JsonSyntaxException exception) {
-                Assertions.fail("Failed to parse \"" + testPath.resolve("out.json") + "\" file." + exception);
-            } catch (Exception exception) {
-                exception.printStackTrace();
-                Assertions.fail("Failed to parse \"" + testPath.resolve("in.pls") + "\" file. " + exception);
+                        " - `out.json` file, which contains expected AST output of parser.\n" +
+                        "File `out.json` is missing.");
+            } catch (IOException exception) {
+                Assertions.fail("Failed to read \"" + testPath.resolve("out.json") + "\". Unexpected error occurred:\n" +
+                        "    " + exception);
+            }
+
+            Program received = null;
+            try (FileReader reader = new FileReader(inputFile)) {
+                Parser parser = new Parser();
+                received = parser.parse(reader);
+            } catch (FileNotFoundException exception) {
+                Assertions.fail("Invalid test resources folder structure - folder \"" + testPath + "\" must contain:\n" +
+                        " - `in.pls` file, which contains parser input;\n" +
+                        " - `out.json` file, which contains expected AST output of parser." +
+                        "File `in.pls` is missing.");
+            } catch (IOException exception) {
+                Assertions.fail("Failed to read \"" + testPath.resolve("in.pls") + "\". Unexpected error occurred:\n" +
+                        "    " + exception);
+            } catch (ParseException e) {
+                if (expected != null) {
+                    Assertions.fail("Failed to parse file \"" + testPath.resolve("in.pls") + "\". " + e);
+                }
+            }
+
+            if (expected == null) {
+                Assertions.assertEquals(expected, received, "Expected parser to fail, but instead, it returned " + gson.toJson(received, PROGRAM_TYPE));
+            } else {
+                Assertions.assertTrue(expected.areEqual(received), "Expected parser to return " + gson.toJson(expected, PROGRAM_TYPE) + ", but instead it returned " + gson.toJson(received, PROGRAM_TYPE));
             }
         }
     }

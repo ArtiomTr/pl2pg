@@ -18,6 +18,6 @@ public class AssignmentStatement extends Statement {
 
         AssignmentStatement other = (AssignmentStatement) node;
 
-        return other.target.areEqual(this.target) && other.value.areEqual(this.value);
+        return this.labelsEqual(other) && other.target.areEqual(this.target) && other.value.areEqual(this.value);
     }
 }

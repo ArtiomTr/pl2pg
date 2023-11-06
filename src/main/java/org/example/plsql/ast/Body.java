@@ -5,8 +5,11 @@ import java.util.List;
 public class Body extends Node {
     private List<Statement> statements;
 
-    public Body(List<Statement> statements) {
+    private Label closingLabel;
+
+    public Body(List<Statement> statements, Label closingLabel) {
         this.statements = statements;
+        this.closingLabel = closingLabel;
     }
 
     @Override
@@ -16,6 +19,10 @@ public class Body extends Node {
         }
 
         Body b = (Body) node;
+
+        if (!Node.checkEqualityWithNull(this.closingLabel, b.closingLabel)) {
+            return false;
+        }
 
         if (this.statements.size() != b.statements.size()) {
             return false;
