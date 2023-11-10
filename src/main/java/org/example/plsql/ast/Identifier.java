@@ -8,12 +8,12 @@ public class Identifier extends Node {
         this.name = name;
     }
 
-    @Override
-    public boolean areEqual(Node node) {
-        return (node instanceof Identifier) && ((Identifier) node).name.equals(this.name);
-    }
-
     public String getName() {
         return name;
+    }
+
+    @Override
+    public <T> T accept(Visitor<T> visitor) {
+        return visitor.visit(this);
     }
 }

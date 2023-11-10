@@ -8,9 +8,12 @@ public class StringLiteral extends Expression {
         this.value = value;
     }
 
-
     @Override
-    public boolean areEqual(Node node) {
-        return (node instanceof StringLiteral) && ((StringLiteral) node).value.equals(this.value);
+    public <T> T accept(Visitor<T> visitor) {
+        return visitor.visit(this);
+    }
+
+    public String getValue() {
+        return value;
     }
 }

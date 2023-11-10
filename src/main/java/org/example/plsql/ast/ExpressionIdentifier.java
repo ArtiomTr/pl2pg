@@ -8,9 +8,12 @@ public class ExpressionIdentifier extends Expression {
         this.identifier = identifier;
     }
 
-
     @Override
-    public boolean areEqual(Node node) {
-        return (node instanceof ExpressionIdentifier) && ((ExpressionIdentifier) node).identifier.areEqual(this.identifier);
+    public <T> T accept(Visitor<T> visitor) {
+        return visitor.visit(this);
+    }
+
+    public Identifier getIdentifier() {
+        return identifier;
     }
 }

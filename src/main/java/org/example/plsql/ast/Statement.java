@@ -11,17 +11,7 @@ public abstract class Statement extends Node {
         this.labels = labels;
     }
 
-    protected boolean labelsEqual(Statement st) {
-        if (st.labels.size() != this.labels.size()) {
-            return false;
-        }
-
-        for (int i = 0; i < this.labels.size(); ++i) {
-            if (!st.labels.get(i).areEqual(this.labels.get(i))) {
-                return false;
-            }
-        }
-
-        return true;
+    public List<Label> getLabels() {
+        return labels;
     }
 }

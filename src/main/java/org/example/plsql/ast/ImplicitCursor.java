@@ -4,9 +4,8 @@ public class ImplicitCursor extends Cursor {
 
     public ImplicitCursor() {}
 
-
     @Override
-    public boolean areEqual(Node node) {
-        return node instanceof ImplicitCursor;
+    public <T> T accept(Visitor<T> visitor) {
+        return visitor.visit(this);
     }
 }

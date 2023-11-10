@@ -10,14 +10,17 @@ public class AssignmentStatement extends Statement {
         this.value = value;
     }
 
+
     @Override
-    public boolean areEqual(Node node) {
-        if (!(node instanceof AssignmentStatement)) {
-            return false;
-        }
+    public <T> T accept(Visitor<T> visitor) {
+        return visitor.visit(this);
+    }
 
-        AssignmentStatement other = (AssignmentStatement) node;
+    public Identifier getTarget() {
+        return target;
+    }
 
-        return this.labelsEqual(other) && other.target.areEqual(this.target) && other.value.areEqual(this.value);
+    public Expression getValue() {
+        return value;
     }
 }

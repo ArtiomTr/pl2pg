@@ -1,10 +1,7 @@
 import com.google.gson.*;
 import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
-import org.example.plsql.ast.Cursor;
-import org.example.plsql.ast.Expression;
-import org.example.plsql.ast.Program;
-import org.example.plsql.ast.Statement;
+import org.example.plsql.ast.*;
 import org.example.plsql.main.ParseException;
 import org.example.plsql.main.Parser;
 import org.junit.jupiter.api.Assertions;
@@ -103,7 +100,7 @@ public class ParserTest {
             if (expected == null) {
                 Assertions.assertEquals(expected, received, "Expected parser to fail, but instead, it returned " + gson.toJson(received, PROGRAM_TYPE));
             } else {
-                Assertions.assertTrue(expected.areEqual(received), "Expected parser to return " + gson.toJson(expected, PROGRAM_TYPE) + ", but instead it returned " + gson.toJson(received, PROGRAM_TYPE));
+                Assertions.assertTrue(AstCompare.areEqual(expected, received), "Expected parser to return " + gson.toJson(expected, PROGRAM_TYPE) + ", but instead it returned " + gson.toJson(received, PROGRAM_TYPE));
             }
         }
     }

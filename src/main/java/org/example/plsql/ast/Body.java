@@ -13,27 +13,15 @@ public class Body extends Node {
     }
 
     @Override
-    public boolean areEqual(Node node) {
-        if (!(node instanceof Body)) {
-            return false;
-        }
+    public <T> T accept(Visitor<T> visitor) {
+        return visitor.visit(this);
+    }
 
-        Body b = (Body) node;
+    public Label getClosingLabel() {
+        return closingLabel;
+    }
 
-        if (!Node.checkEqualityWithNull(this.closingLabel, b.closingLabel)) {
-            return false;
-        }
-
-        if (this.statements.size() != b.statements.size()) {
-            return false;
-        }
-
-        for (int i = 0; i < this.statements.size(); ++i) {
-            if (!this.statements.get(i).areEqual(b.statements.get(i))) {
-                return false;
-            }
-        }
-
-        return true;
+    public List<Statement> getStatements() {
+        return statements;
     }
 }

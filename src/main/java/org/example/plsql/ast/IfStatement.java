@@ -3,7 +3,6 @@ package org.example.plsql.ast;
 import java.util.List;
 
 public class IfStatement extends Statement {
-
     public static class Elsif extends Node {
 
         private Expression condition;
@@ -16,14 +15,16 @@ public class IfStatement extends Statement {
         }
 
         @Override
-        public boolean areEqual(Node node) {
-            if (!(node instanceof Elsif)) {
-                return false;
-            }
+        public <T> T accept(Visitor<T> visitor) {
+            return visitor.visit(this);
+        }
 
-            Elsif other = (Elsif) node;
+        public Expression getCondition() {
+            return condition;
+        }
 
-            return other.condition.areEqual(this.condition) && Node.areListsEqual(other.statements, this.statements);
+        public List<Statement> getStatements() {
+            return statements;
         }
     }
 
@@ -36,8 +37,12 @@ public class IfStatement extends Statement {
         }
 
         @Override
-        public boolean areEqual(Node node) {
-            return (node instanceof Else) && Node.areListsEqual(((Else) node).statements, this.statements);
+        public <T> T accept(Visitor<T> visitor) {
+            return visitor.visit(this);
+        }
+
+        public List<Statement> getStatements() {
+            return statements;
         }
     }
 
@@ -57,21 +62,19 @@ public class IfStatement extends Statement {
     }
 
     @Override
-    public boolean areEqual(Node node) {
-        if (!(node instanceof IfStatement)) {
-            return false;
-        }
+    public <T> T accept(Visitor<T> visitor) {
+        return visitor.visit(this);
+    }
 
-        IfStatement other = (IfStatement) node;
+    public Expression getCondition() {
+        return condition;
+    }
 
-        if (!other.condition.areEqual(this.condition)) {
-            return false;
-        }
+    public Else getElseBlock() {
+        return elseBlock;
+    }
 
-        if (!Node.checkEqualityWithNull(this.elseBlock, other.elseBlock)) {
-            return false;
-        }
-
-        return this.labelsEqual(other) && Node.areListsEqual(this.elsifList, other.elsifList) && Node.areListsEqual(this.statements, other.statements);
+    public List<Elsif> getElsifList() {
+        return elsifList;
     }
 }

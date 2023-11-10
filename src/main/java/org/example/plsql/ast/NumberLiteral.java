@@ -8,8 +8,13 @@ public class NumberLiteral extends Expression {
         this.value = value;
     }
 
+
     @Override
-    public boolean areEqual(Node node) {
-        return (node instanceof NumberLiteral) && ((NumberLiteral) node).value.equals(this.value);
+    public <T> T accept(Visitor<T> visitor) {
+        return visitor.visit(this);
+    }
+
+    public String getValue() {
+        return value;
     }
 }

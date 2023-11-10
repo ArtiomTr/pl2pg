@@ -9,7 +9,11 @@ public class Block extends Statement {
     }
 
     @Override
-    public boolean areEqual(Node node) {
-        return (node instanceof Block) && this.labelsEqual((Block) node) && ((Block) node).body.areEqual(body);
+    public <T> T accept(Visitor<T> visitor) {
+        return visitor.visit(this);
+    }
+
+    public Body getBody() {
+        return body;
     }
 }

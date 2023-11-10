@@ -31,13 +31,19 @@ public class BinaryExpression extends Expression {
     }
 
     @Override
-    public boolean areEqual(Node node) {
-        if (!(node instanceof BinaryExpression)) {
-            return false;
-        }
+    public <T> T accept(Visitor<T> visitor) {
+        return visitor.visit(this);
+    }
 
-        BinaryExpression other = (BinaryExpression) node;
+    public Expression getLeft() {
+        return left;
+    }
 
-        return other.left.areEqual(this.left) && other.right.areEqual(this.right) && other.operator == this.operator;
+    public Expression getRight() {
+        return right;
+    }
+
+    public Operator getOperator() {
+        return operator;
     }
 }

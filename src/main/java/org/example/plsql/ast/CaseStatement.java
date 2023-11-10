@@ -3,7 +3,6 @@ package org.example.plsql.ast;
 import java.util.List;
 
 public class CaseStatement extends Statement {
-
     public static class When extends Node {
 
         private Expression expression;
@@ -16,14 +15,16 @@ public class CaseStatement extends Statement {
         }
 
         @Override
-        public boolean areEqual(Node node) {
-            if (!(node instanceof When)) {
-                return false;
-            }
+        public <T> T accept(Visitor<T> visitor) {
+            return visitor.visit(this);
+        }
 
-            When other = (When) node;
+        public Statement getThen() {
+            return then;
+        }
 
-            return other.expression.areEqual(this.expression) && other.then.areEqual(this.then);
+        public Expression getExpression() {
+            return expression;
         }
     }
 
@@ -35,8 +36,12 @@ public class CaseStatement extends Statement {
         }
 
         @Override
-        public boolean areEqual(Node node) {
-            return (node instanceof Else) && ((Else) node).then.areEqual(this.then);
+        public <T> T accept(Visitor<T> visitor) {
+            return visitor.visit(this);
+        }
+
+        public Statement getThen() {
+            return then;
         }
     }
 
@@ -53,21 +58,19 @@ public class CaseStatement extends Statement {
     }
 
     @Override
-    public boolean areEqual(Node node) {
-        if (!(node instanceof CaseStatement)) {
-            return false;
-        }
+    public <T> T accept(Visitor<T> visitor) {
+        return visitor.visit(this);
+    }
 
-        CaseStatement other = (CaseStatement) node;
+    public Expression getSelector() {
+        return selector;
+    }
 
-        if (!Node.checkEqualityWithNull(other.selector, this.selector)) {
-            return false;
-        }
+    public Else getElseBlock() {
+        return elseBlock;
+    }
 
-        if (!Node.checkEqualityWithNull(other.elseBlock, this.elseBlock)) {
-            return false;
-        }
-
-        return this.labelsEqual(other) && Node.areListsEqual(other.whens, this.whens);
+    public List<When> getWhens() {
+        return whens;
     }
 }

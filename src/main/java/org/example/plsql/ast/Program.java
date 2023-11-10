@@ -10,23 +10,11 @@ public class Program extends Node {
     }
 
     @Override
-    public boolean areEqual(Node node) {
-        if (!(node instanceof Program)) {
-            return false;
-        }
+    public <T> T accept(Visitor<T> visitor) {
+        return visitor.visit(this);
+    }
 
-        Program b = (Program) node;
-
-        if (b.blocks.size() != this.blocks.size()) {
-            return false;
-        }
-
-        for (int i = 0; i < this.blocks.size(); ++i) {
-            if (!b.blocks.get(i).areEqual(this.blocks.get(i))) {
-                return false;
-            }
-        }
-
-        return true;
+    public List<Block> getBlocks() {
+        return blocks;
     }
 }

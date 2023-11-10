@@ -11,13 +11,15 @@ public class CollectionExistExpression extends Expression {
     }
 
     @Override
-    public boolean areEqual(Node node) {
-        if (!(node instanceof CollectionExistExpression)) {
-            return false;
-        }
+    public <T> T accept(Visitor<T> visitor) {
+        return visitor.visit(this);
+    }
 
-        CollectionExistExpression other = (CollectionExistExpression) node;
+    public Identifier getCollection() {
+        return collection;
+    }
 
-        return this.collection.areEqual(other.collection) && this.index.areEqual(other.index);
+    public Expression getIndex() {
+        return index;
     }
 }

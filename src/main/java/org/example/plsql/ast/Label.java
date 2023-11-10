@@ -13,7 +13,11 @@ public class Label extends Node {
     }
 
     @Override
-    public boolean areEqual(Node node) {
-        return (node instanceof Label) && ((Label) node).name.equals(this.name);
+    public <T> T accept(Visitor<T> visitor) {
+        return visitor.visit(this);
+    }
+
+    public String getName() {
+        return name;
     }
 }

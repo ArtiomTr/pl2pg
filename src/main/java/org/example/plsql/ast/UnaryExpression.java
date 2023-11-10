@@ -17,13 +17,15 @@ public class UnaryExpression extends Expression {
     }
 
     @Override
-    public boolean areEqual(Node node) {
-        if (!(node instanceof UnaryExpression)) {
-            return false;
-        }
+    public <T> T accept(Visitor<T> visitor) {
+        return visitor.visit(this);
+    }
 
-        UnaryExpression other = (UnaryExpression) node;
+    public Expression getArgument() {
+        return argument;
+    }
 
-        return other.argument.areEqual(this.argument) && other.operator == this.operator;
+    public Operator getOperator() {
+        return operator;
     }
 }

@@ -1,7 +1,6 @@
 package org.example.plsql.ast;
 
 public class CursorExpression extends Expression {
-
     public enum Operator {
         FOUND,
         ISOPEN,
@@ -17,13 +16,15 @@ public class CursorExpression extends Expression {
     }
 
     @Override
-    public boolean areEqual(Node node) {
-        if (!(node instanceof CursorExpression)) {
-            return false;
-        }
+    public <T> T accept(Visitor<T> visitor) {
+        return visitor.visit(this);
+    }
 
-        CursorExpression other = (CursorExpression) node;
+    public Operator getOperator() {
+        return operator;
+    }
 
-        return other.operator.equals(this.operator) && other.cursor.areEqual(this.cursor);
+    public Cursor getCursor() {
+        return cursor;
     }
 }

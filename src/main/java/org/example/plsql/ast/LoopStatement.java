@@ -11,27 +11,11 @@ public class LoopStatement extends Statement {
     }
 
     @Override
-    public boolean areEqual(Node node) {
-        if (!(node instanceof LoopStatement)) {
-            return false;
-        }
+    public <T> T accept(Visitor<T> visitor) {
+        return visitor.visit(this);
+    }
 
-        LoopStatement other = (LoopStatement) node;
-
-        if (!this.labelsEqual(other)) {
-            return false;
-        }
-
-        if (other.statements.size() != this.statements.size()) {
-            return false;
-        }
-
-        for (int i = 0; i < this.statements.size(); ++i) {
-            if (!this.statements.get(i).areEqual(other.statements.get(i))) {
-                return false;
-            }
-        }
-
-        return true;
+    public List<Statement> getStatements() {
+        return statements;
     }
 }

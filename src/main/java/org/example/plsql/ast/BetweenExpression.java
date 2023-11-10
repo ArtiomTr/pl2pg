@@ -13,13 +13,19 @@ public class BetweenExpression extends Expression {
     }
 
     @Override
-    public boolean areEqual(Node node) {
-        if (!(node instanceof BetweenExpression)) {
-            return false;
-        }
+    public <T> T accept(Visitor<T> visitor) {
+        return visitor.visit(this);
+    }
 
-        BetweenExpression other = (BetweenExpression) node;
+    public Expression getValue() {
+        return value;
+    }
 
-        return other.value.areEqual(this.value) && other.left.areEqual(this.left) && other.right.areEqual(this.right);
+    public Expression getLeft() {
+        return left;
+    }
+
+    public Expression getRight() {
+        return right;
     }
 }
