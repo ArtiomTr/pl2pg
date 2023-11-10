@@ -77,4 +77,8 @@ public class IfStatement extends Statement {
     public List<Elsif> getElsifList() {
         return elsifList;
     }
+
+    public List<Statement> getStatements() {
+        return statements;
+    }
 }

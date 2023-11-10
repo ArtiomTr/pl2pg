@@ -17,8 +17,47 @@ public class BinaryExpression extends Expression {
         IS,
         NOT,
         AND,
-        OR,
-    };
+        OR;
+
+        public String prettyPrint() {
+            switch (this) {
+                case IS:
+                    return "IS";
+                case AND:
+                    return "AND";
+                case OR:
+                    return "OR";
+                case EQUAL:
+                    return "=";
+                case ADDITION:
+                    return "+";
+                case CONCATENATION:
+                    return "||";
+                case DIVISION:
+                    return "/";
+                case LESS_THAN:
+                    return "<";
+                case NOT:
+                    return "NOT";
+                case SUBTRACTION:
+                    return "-";
+                case EXPONENTIATION:
+                    return "**";
+                case NOT_EQUAL:
+                    return "!=";
+                case MULTIPLICATION:
+                    return "*";
+                case GREATER_THAN:
+                    return ">";
+                case LESS_THAN_OR_EQUAL:
+                    return "<=";
+                case GREATER_THAN_OR_EQUAL:
+                    return ">=";
+                default:
+                    throw new RuntimeException("Cannot pretty-print symbol " + this);
+            }
+        };
+    }
 
     private Expression left;
     private Expression right;

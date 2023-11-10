@@ -252,6 +252,19 @@ public class AstCompare {
             return false;
         }
 
+        List<Statement> aStatements = a.getStatements();
+        List<Statement> bStatements = b.getStatements();
+
+        if (aStatements.size() != bStatements.size()) {
+            return false;
+        }
+
+        for (int i = 0; i < aStatements.size(); ++i) {
+            if (!areEqual(aStatements.get(i), bStatements.get(i))) {
+                return false;
+            }
+        }
+
         List<IfStatement.Elsif> aElsifList = a.getElsifList();
         List<IfStatement.Elsif> bElsifList = b.getElsifList();
 

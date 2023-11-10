@@ -4,7 +4,20 @@ public class CursorExpression extends Expression {
     public enum Operator {
         FOUND,
         ISOPEN,
-        NOTFOUND,
+        NOTFOUND;
+
+        public String prettyPrint() {
+            switch (this) {
+                case FOUND:
+                    return "FOUND";
+                case NOTFOUND:
+                    return "NOTFOUND";
+                case ISOPEN:
+                    return "ISOPEN";
+                default:
+                    throw new RuntimeException("Cannot pretty print " + this);
+            }
+        }
     }
 
     private Operator operator;

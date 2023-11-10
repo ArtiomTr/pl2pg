@@ -4,7 +4,20 @@ public class UnaryExpression extends Expression {
     public enum Operator {
         IDENTITY,
         NEGATION,
-        NOT,
+        NOT;
+
+        public String prettyPrint() {
+            switch (this) {
+                case IDENTITY:
+                    return "+";
+                case NEGATION:
+                    return "-";
+                case NOT:
+                    return "NOT";
+                default:
+                    throw new RuntimeException("Cannot pretty-print operator " + this);
+            }
+        }
     }
 
     private Expression argument;
