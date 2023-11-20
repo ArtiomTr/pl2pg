@@ -1,0 +1,165 @@
+{
+  "blocks": [
+    {
+      "body": {
+        "statements": [
+          {
+            "target": {
+              "name": "smth"
+            },
+            "value": {
+              "value": "1",
+              "class": "org.example.plsql.ast.NumberLiteral"
+            },
+            "labels": [],
+            "class": "org.example.plsql.ast.AssignmentStatement"
+          }
+        ]
+      },
+      "declareSection": {
+        "declarationList": [
+          {
+            "id": {
+              "name": "first"
+            },
+            "typeToken": {
+              "fields": [
+                {
+                  "name": {
+                    "name": "value"
+                  },
+                  "typeToken": {
+                    "typeName": {
+                      "name": "some_type"
+                    },
+                    "class": "org.example.plsql.ast.TypeReference"
+                  }
+                },
+                {
+                  "name": {
+                    "name": "value2"
+                  },
+                  "typeToken": {
+                    "typeName": {
+                      "name": "some_type"
+                    },
+                    "class": "org.example.plsql.ast.TypeReference"
+                  },
+                  "initialValue": {
+                    "value": "12",
+                    "class": "org.example.plsql.ast.NumberLiteral"
+                  }
+                },
+                {
+                  "name": {
+                    "name": "value3"
+                  },
+                  "typeToken": {
+                    "typeName": {
+                      "name": "some_type"
+                    },
+                    "class": "org.example.plsql.ast.TypeReference"
+                  },
+                  "initialValue": {
+                    "class": "org.example.plsql.ast.NullLiteral"
+                  }
+                },
+                {
+                  "name": {
+                    "name": "value4"
+                  },
+                  "typeToken": {
+                    "typeToken": {
+                      "typeName": {
+                        "name": "some_type"
+                      },
+                      "class": "org.example.plsql.ast.TypeReference"
+                    },
+                    "class": "org.example.plsql.ast.NonNullTypeToken"
+                  },
+                  "initialValue": {
+                    "value": "3",
+                    "class": "org.example.plsql.ast.NumberLiteral"
+                  }
+                },
+                {
+                  "name": {
+                    "name": "value5"
+                  },
+                  "typeToken": {
+                    "typeToken": {
+                      "typeName": {
+                        "name": "some_type"
+                      },
+                      "class": "org.example.plsql.ast.TypeReference"
+                    },
+                    "class": "org.example.plsql.ast.NonNullTypeToken"
+                  },
+                  "initialValue": {
+                    "left": {
+                      "left": {
+                        "left": {
+                          "value": "4",
+                          "class": "org.example.plsql.ast.NumberLiteral"
+                        },
+                        "right": {
+                          "value": "2",
+                          "class": "org.example.plsql.ast.NumberLiteral"
+                        },
+                        "operator": "EXPONENTIATION",
+                        "class": "org.example.plsql.ast.BinaryExpression"
+                      },
+                      "right": {
+                        "value": "3",
+                        "class": "org.example.plsql.ast.NumberLiteral"
+                      },
+                      "operator": "SUBTRACTION",
+                      "class": "org.example.plsql.ast.BinaryExpression"
+                    },
+                    "right": {
+                      "argument": {
+                        "identifier": {
+                          "name": "a"
+                        },
+                        "class": "org.example.plsql.ast.ExpressionIdentifier"
+                      },
+                      "operator": "NEGATION",
+                      "class": "org.example.plsql.ast.UnaryExpression"
+                    },
+                    "operator": "ADDITION",
+                    "class": "org.example.plsql.ast.BinaryExpression"
+                  }
+                }
+              ],
+              "class": "org.example.plsql.ast.RecordTypeToken"
+            },
+            "class": "org.example.plsql.ast.TypeDefinition"
+          },
+          {
+            "id": {
+              "name": "second"
+            },
+            "typeToken": {
+              "fields": [
+                {
+                  "name": {
+                    "name": "value"
+                  },
+                  "typeToken": {
+                    "typeName": {
+                      "name": "some_type"
+                    },
+                    "class": "org.example.plsql.ast.TypeReference"
+                  }
+                }
+              ],
+              "class": "org.example.plsql.ast.RecordTypeToken"
+            },
+            "class": "org.example.plsql.ast.TypeDefinition"
+          }
+        ]
+      },
+      "labels": []
+    }
+  ]
+}

@@ -1,0 +1,101 @@
+{
+  "blocks": [
+    {
+      "body": {
+        "statements": [
+          {
+            "target": {
+              "name": "smth"
+            },
+            "value": {
+              "value": "1",
+              "class": "org.example.plsql.ast.NumberLiteral"
+            },
+            "labels": [],
+            "class": "org.example.plsql.ast.AssignmentStatement"
+          }
+        ]
+      },
+      "declareSection": {
+        "declarationList": [
+          {
+            "id": {
+              "name": "first"
+            },
+            "typeToken": {
+              "sizeLimit": {
+                "value": "10"
+              },
+              "dataType": {
+                "typeName": {
+                  "name": "sometype"
+                },
+                "class": "org.example.plsql.ast.TypeReference"
+              },
+              "class": "org.example.plsql.ast.VaryingArrayTypeToken"
+            },
+            "class": "org.example.plsql.ast.TypeDefinition"
+          },
+          {
+            "id": {
+              "name": "second"
+            },
+            "typeToken": {
+              "sizeLimit": {
+                "value": "12"
+              },
+              "dataType": {
+                "name": {
+                  "name": "some_collection"
+                },
+                "class": "org.example.plsql.ast.RowTypeAttribute"
+              },
+              "class": "org.example.plsql.ast.VaryingArrayTypeToken"
+            },
+            "class": "org.example.plsql.ast.TypeDefinition"
+          },
+          {
+            "id": {
+              "name": "third"
+            },
+            "typeToken": {
+              "sizeLimit": {
+                "value": "0"
+              },
+              "dataType": {
+                "name": {
+                  "name": "object_type"
+                },
+                "class": "org.example.plsql.ast.TypeReferenceOperator"
+              },
+              "class": "org.example.plsql.ast.VaryingArrayTypeToken"
+            },
+            "class": "org.example.plsql.ast.TypeDefinition"
+          },
+          {
+            "id": {
+              "name": "fourth"
+            },
+            "typeToken": {
+              "sizeLimit": {
+                "value": "0"
+              },
+              "dataType": {
+                "typeToken": {
+                  "typeName": {
+                    "name": "sometype"
+                  },
+                  "class": "org.example.plsql.ast.TypeReference"
+                },
+                "class": "org.example.plsql.ast.NonNullTypeToken"
+              },
+              "class": "org.example.plsql.ast.VaryingArrayTypeToken"
+            },
+            "class": "org.example.plsql.ast.TypeDefinition"
+          }
+        ]
+      },
+      "labels": []
+    }
+  ]
+}

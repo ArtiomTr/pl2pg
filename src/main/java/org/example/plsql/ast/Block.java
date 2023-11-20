@@ -4,8 +4,11 @@ public class Block extends Statement {
 
     private Body body;
 
-    public Block(Body body) {
+    private DeclareSection declareSection;
+
+    public Block(Body body, DeclareSection declareSection) {
         this.body = body;
+        this.declareSection = declareSection;
     }
 
     @Override
@@ -15,5 +18,9 @@ public class Block extends Statement {
 
     public Body getBody() {
         return body;
+    }
+
+    public DeclareSection getDeclareSection() {
+        return declareSection;
     }
 }

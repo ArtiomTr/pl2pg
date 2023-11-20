@@ -72,16 +72,17 @@ import org.example.plsql.ast.*;
     return factory.newSymbol("EOF", PlSymbol.EOF, start, end);
 %eofval}
 
-EOL                 = \R
-WHITE_SPACE         = \s+
-NUMBER_LITERAL      = [+-]?((\d+(\.\d*)?([eE][+-]?\d+)?)|(\.\d+([eE][+-]?\d+)?))
-IDENTIFIER          = [A-Za-z_$][\w_$]*
-NAMED_CURSOR        = :{IDENTIFIER}
-LABEL               = "<<" {IDENTIFIER} ">>"
-SINGLE_LINE_COMMENT = "--" [^\r\n]* (\r|\n|\r\n)?
-MULTILINE_COMMENT   = "/*" ~"*/"
-COMMENT             = {SINGLE_LINE_COMMENT} | {MULTILINE_COMMENT}
-DELIMITER           = .
+EOL                             = \R
+WHITE_SPACE                     = \s+
+NUMBER_LITERAL                  = [+-]?((\d+\.[eE][+-]?\d+)|(\d+(\.\d+)?([eE][+-]?\d+)?)|(\.\d+([eE][+-]?\d+)?))
+NUMBER_WITHOUT_FRACTION_LITERAL = [+-]?(\d+\.)
+IDENTIFIER                      = [A-Za-z_$][\w_$]*
+NAMED_CURSOR                    = :{IDENTIFIER}
+LABEL                           = "<<" {IDENTIFIER} ">>"
+SINGLE_LINE_COMMENT             = "--" [^\r\n]* (\r|\n|\r\n)?
+MULTILINE_COMMENT               = "/*" ~"*/"
+COMMENT                         = {SINGLE_LINE_COMMENT} | {MULTILINE_COMMENT}
+DELIMITER                       = .
 
 %state SQ_STRING_LITERAL
 %state DQ_STRING_LITERAL
@@ -91,17 +92,40 @@ DELIMITER           = .
 
 <YYINITIAL> {
   /* keywords */
-  "BEGIN"  { return symbol("begin", PlSymbol.BEGIN); }
-  "END"    { return symbol("end", PlSymbol.END); }
-  "LOOP"   { return symbol("loop", PlSymbol.LOOP); }
-  "IF"     { return symbol("if", PlSymbol.IF); }
-  "THEN"   { return symbol("then", PlSymbol.THEN); }
-  "ELSIF"  { return symbol("elsif", PlSymbol.ELSIF); }
-  "ELSE"   { return symbol("else", PlSymbol.ELSE); }
-  "RETURN" { return symbol("return", PlSymbol.RETURN); }
-  "SQL"    { return symbol("implicitcursor", PlSymbol.IMPLICIT_CURSOR); }
-  "CASE"   { return symbol("case", PlSymbol.CASE); }
-  "WHEN"   { return symbol("when", PlSymbol.WHEN); }
+  "BEGIN"          { return symbol("begin", PlSymbol.BEGIN); }
+  "END"            { return symbol("end", PlSymbol.END); }
+  "LOOP"           { return symbol("loop", PlSymbol.LOOP); }
+  "IF"             { return symbol("if", PlSymbol.IF); }
+  "THEN"           { return symbol("then", PlSymbol.THEN); }
+  "ELSIF"          { return symbol("elsif", PlSymbol.ELSIF); }
+  "ELSE"           { return symbol("else", PlSymbol.ELSE); }
+  "RETURN"         { return symbol("return", PlSymbol.RETURN); }
+  "SQL"            { return symbol("implicitcursor", PlSymbol.IMPLICIT_CURSOR); }
+  "CASE"           { return symbol("case", PlSymbol.CASE); }
+  "WHEN"           { return symbol("when", PlSymbol.WHEN); }
+  "DECLARE"        { return symbol("declare", PlSymbol.DECLARE); }
+  "TYPE"           { return symbol("type", PlSymbol.TYPE); }
+  "SUBTYPE"        { return symbol("subtype", PlSymbol.SUBTYPE); }
+  "RANGE"          { return symbol("range", PlSymbol.RANGE); }
+  "CHARACTER"      { return symbol("character", PlSymbol.CHARACTER); }
+  "SET"            { return symbol("set", PlSymbol.SET); }
+  "TABLE"          { return symbol("table", PlSymbol.TABLE); }
+  "OF"             { return symbol("of", PlSymbol.OF); }
+  "INDEX"          { return symbol("index", PlSymbol.INDEX); }
+  "BY"             { return symbol("by", PlSymbol.BY); }
+  "RECORD"         { return symbol("record", PlSymbol.RECORD); }
+  "REF"            { return symbol("ref", PlSymbol.REF); }
+  "CURSOR"         { return symbol("cursor", PlSymbol.CURSOR); }
+  "VARRAY"         { return symbol("varray", PlSymbol.VARRAY); }
+  "ARRAY"          { return symbol("array", PlSymbol.ARRAY); }
+  "VARYING"        { return symbol("varying", PlSymbol.VARYING); }
+  "PLS_INTEGER"    { return symbol("plsinteger", PlSymbol.PLS_INTEGER); }
+  "BINARY_INTEGER" { return symbol("binaryinteger", PlSymbol.BINARY_INTEGER); }
+  "VARCHAR"        { return symbol("varchar", PlSymbol.VARCHAR); }
+  "VARCHAR2"       { return symbol("varchar2", PlSymbol.VARCHAR2); }
+  "STRING"         { return symbol("string", PlSymbol.STRING); }
+  "LONG"           { return symbol("long", PlSymbol.LONG); }
+  "DEFAULT"        { return symbol("default", PlSymbol.DEFAULT); }
 
   /* separators */
   ";" { return symbol("semi", PlSymbol.SEMI); }
@@ -130,6 +154,9 @@ DELIMITER           = .
   "EXISTS"                  { return symbol("exists", PlSymbol.EXISTS_OPERATOR); }
   "BETWEEN"                 { return symbol("between", PlSymbol.BETWEEN_OPERATOR); }
   "IS"                      { return symbol("is", PlSymbol.IS_OPERATOR); }
+  ".."                      { return symbol("rangeoperator", PlSymbol.RANGE_OPERATOR); }
+  "%ROWTYPE"                { return symbol("rowtype", PlSymbol.ROWTYPE_ATTRIBUTE_OPERATOR); }
+  "%TYPE"                   { return symbol("type", PlSymbol.TYPE_ATTRIBUTE_OPERATOR); }
 
   /* cursor operators */
   "%FOUND"                  { return symbol("found", PlSymbol.FOUND_OPERATOR); }
@@ -137,13 +164,15 @@ DELIMITER           = .
   "%NOTFOUND"               { return symbol("notfound", PlSymbol.NOTFOUND_OPERATOR); }
 
   /* literals */
-  "TRUE"              { return symbol("boolliteral", PlSymbol.BOOLEAN_LITERAL, true); }
-  "FALSE"             { return symbol("boolliteral", PlSymbol.BOOLEAN_LITERAL, false); }
-  "NULL"              { return symbol("null", PlSymbol.NULL_LITERAL); }
-  {NUMBER_LITERAL}    { return symbol("number", PlSymbol.NUMBER_LITERAL, yytext()); }
-  \'                  { string.setLength(0); yybegin(SQ_STRING_LITERAL); }
-  \"                  { string.setLength(0); yybegin(DQ_STRING_LITERAL); }
-  q\'{DELIMITER}      { string.setLength(0); this.setDelimiter(yytext().substring(2)); yybegin(CS_STRING_LITERAL); }
+  "TRUE"                  { return symbol("boolliteral", PlSymbol.BOOLEAN_LITERAL, true); }
+  "FALSE"                 { return symbol("boolliteral", PlSymbol.BOOLEAN_LITERAL, false); }
+  "NULL"                  { return symbol("null", PlSymbol.NULL_LITERAL); }
+
+  {NUMBER_WITHOUT_FRACTION_LITERAL}/[^.\d] { return symbol("number", PlSymbol.NUMBER_LITERAL, yytext()); }
+  {NUMBER_LITERAL}        { return symbol("number", PlSymbol.NUMBER_LITERAL, yytext()); }
+  \'                      { string.setLength(0); yybegin(SQ_STRING_LITERAL); }
+  \"                      { string.setLength(0); yybegin(DQ_STRING_LITERAL); }
+  q\'{DELIMITER}          { string.setLength(0); this.setDelimiter(yytext().substring(2)); yybegin(CS_STRING_LITERAL); }
 
   /* identifiers */
   {NAMED_CURSOR} { return symbol("namedcursor", PlSymbol.NAMED_CURSOR, yytext().substring(1)); }

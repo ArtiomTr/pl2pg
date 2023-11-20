@@ -1,0 +1,59 @@
+{
+  "blocks": [
+    {
+      "body": {
+        "statements": [
+          {
+            "target": {
+              "name": "smth"
+            },
+            "value": {
+              "value": "1",
+              "class": "org.example.plsql.ast.NumberLiteral"
+            },
+            "labels": [],
+            "class": "org.example.plsql.ast.AssignmentStatement"
+          }
+        ]
+      },
+      "declareSection": {
+        "declarationList": [
+          {
+            "id": {
+              "name": "first"
+            },
+            "typeToken": {
+              "dataType": {
+                "typeName": {
+                  "name": "sometype"
+                },
+                "class": "org.example.plsql.ast.TypeReference"
+              },
+              "class": "org.example.plsql.ast.NestedTableTypeToken"
+            },
+            "class": "org.example.plsql.ast.TypeDefinition"
+          },
+          {
+            "id": {
+              "name": "second"
+            },
+            "typeToken": {
+              "dataType": {
+                "typeToken": {
+                  "typeName": {
+                    "name": "sometype"
+                  },
+                  "class": "org.example.plsql.ast.TypeReference"
+                },
+                "class": "org.example.plsql.ast.NonNullTypeToken"
+              },
+              "class": "org.example.plsql.ast.NestedTableTypeToken"
+            },
+            "class": "org.example.plsql.ast.TypeDefinition"
+          }
+        ]
+      },
+      "labels": []
+    }
+  ]
+}

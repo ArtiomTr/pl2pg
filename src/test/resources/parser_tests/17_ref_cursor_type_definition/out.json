@@ -1,0 +1,80 @@
+{
+  "blocks": [
+    {
+      "body": {
+        "statements": [
+          {
+            "target": {
+              "name": "smth"
+            },
+            "value": {
+              "value": "1",
+              "class": "org.example.plsql.ast.NumberLiteral"
+            },
+            "labels": [],
+            "class": "org.example.plsql.ast.AssignmentStatement"
+          }
+        ]
+      },
+      "declareSection": {
+        "declarationList": [
+          {
+            "id": {
+              "name": "first"
+            },
+            "typeToken": {
+              "class": "org.example.plsql.ast.RefCursorTypeToken"
+            },
+            "class": "org.example.plsql.ast.TypeDefinition"
+          },
+          {
+            "id": {
+              "name": "second"
+            },
+            "typeToken": {
+              "returnType": {
+                "typeName": {
+                  "name": "some_type"
+                },
+                "class": "org.example.plsql.ast.TypeReference"
+              },
+              "class": "org.example.plsql.ast.RefCursorTypeToken"
+            },
+            "class": "org.example.plsql.ast.TypeDefinition"
+          },
+          {
+            "id": {
+              "name": "third"
+            },
+            "typeToken": {
+              "returnType": {
+                "id": {
+                  "name": "some_record"
+                },
+                "class": "org.example.plsql.ast.TypeAttribute"
+              },
+              "class": "org.example.plsql.ast.RefCursorTypeToken"
+            },
+            "class": "org.example.plsql.ast.TypeDefinition"
+          },
+          {
+            "id": {
+              "name": "fourth"
+            },
+            "typeToken": {
+              "returnType": {
+                "name": {
+                  "name": "cursor_variable"
+                },
+                "class": "org.example.plsql.ast.RowTypeAttribute"
+              },
+              "class": "org.example.plsql.ast.RefCursorTypeToken"
+            },
+            "class": "org.example.plsql.ast.TypeDefinition"
+          }
+        ]
+      },
+      "labels": []
+    }
+  ]
+}

@@ -1,0 +1,197 @@
+{
+  "blocks": [
+    {
+      "body": {
+        "statements": [
+          {
+            "target": {
+              "name": "smth"
+            },
+            "value": {
+              "value": "1",
+              "class": "org.example.plsql.ast.NumberLiteral"
+            },
+            "labels": [],
+            "class": "org.example.plsql.ast.AssignmentStatement"
+          }
+        ]
+      },
+      "declareSection": {
+        "declarationList": [
+          {
+            "id": {
+              "name": "first"
+            },
+            "typeToken": {
+              "rowType": {
+                "typeName": {
+                  "name": "record_type"
+                },
+                "class": "org.example.plsql.ast.TypeReference"
+              },
+              "indexType": {
+                "type": "PLS_INTEGER",
+                "class": "org.example.plsql.ast.BuiltinTypeToken"
+              },
+              "class": "org.example.plsql.ast.AssocArrayTypeToken"
+            },
+            "class": "org.example.plsql.ast.TypeDefinition"
+          },
+          {
+            "id": {
+              "name": "second"
+            },
+            "typeToken": {
+              "rowType": {
+                "name": {
+                  "name": "object_type"
+                },
+                "class": "org.example.plsql.ast.TypeReferenceOperator"
+              },
+              "indexType": {
+                "type": "BINARY_INTEGER",
+                "class": "org.example.plsql.ast.BuiltinTypeToken"
+              },
+              "class": "org.example.plsql.ast.AssocArrayTypeToken"
+            },
+            "class": "org.example.plsql.ast.TypeDefinition"
+          },
+          {
+            "id": {
+              "name": "third"
+            },
+            "typeToken": {
+              "rowType": {
+                "id": {
+                  "name": "some_record"
+                },
+                "class": "org.example.plsql.ast.TypeAttribute"
+              },
+              "indexType": {
+                "type": "LONG",
+                "class": "org.example.plsql.ast.BuiltinTypeToken"
+              },
+              "class": "org.example.plsql.ast.AssocArrayTypeToken"
+            },
+            "class": "org.example.plsql.ast.TypeDefinition"
+          },
+          {
+            "id": {
+              "name": "fourth"
+            },
+            "typeToken": {
+              "rowType": {
+                "name": {
+                  "name": "some_collection"
+                },
+                "class": "org.example.plsql.ast.RowTypeAttribute"
+              },
+              "indexType": {
+                "type": "STRING",
+                "size": {
+                  "value": "10"
+                },
+                "class": "org.example.plsql.ast.BuiltinVaryingTypeToken"
+              },
+              "class": "org.example.plsql.ast.AssocArrayTypeToken"
+            },
+            "class": "org.example.plsql.ast.TypeDefinition"
+          },
+          {
+            "id": {
+              "name": "fifth"
+            },
+            "typeToken": {
+              "rowType": {
+                "typeToken": {
+                  "typeName": {
+                    "name": "record_type"
+                  },
+                  "class": "org.example.plsql.ast.TypeReference"
+                },
+                "class": "org.example.plsql.ast.NonNullTypeToken"
+              },
+              "indexType": {
+                "type": "VARCHAR",
+                "size": {
+                  "value": "15"
+                },
+                "class": "org.example.plsql.ast.BuiltinVaryingTypeToken"
+              },
+              "class": "org.example.plsql.ast.AssocArrayTypeToken"
+            },
+            "class": "org.example.plsql.ast.TypeDefinition"
+          },
+          {
+            "id": {
+              "name": "sixth"
+            },
+            "typeToken": {
+              "rowType": {
+                "typeToken": {
+                  "name": {
+                    "name": "object_type"
+                  },
+                  "class": "org.example.plsql.ast.TypeReferenceOperator"
+                },
+                "class": "org.example.plsql.ast.NonNullTypeToken"
+              },
+              "indexType": {
+                "type": "VARCHAR2",
+                "size": {
+                  "value": "1"
+                },
+                "class": "org.example.plsql.ast.BuiltinVaryingTypeToken"
+              },
+              "class": "org.example.plsql.ast.AssocArrayTypeToken"
+            },
+            "class": "org.example.plsql.ast.TypeDefinition"
+          },
+          {
+            "id": {
+              "name": "seventh"
+            },
+            "typeToken": {
+              "rowType": {
+                "typeName": {
+                  "name": "record_type"
+                },
+                "class": "org.example.plsql.ast.TypeReference"
+              },
+              "indexType": {
+                "id": {
+                  "name": "some_var"
+                },
+                "class": "org.example.plsql.ast.TypeAttribute"
+              },
+              "class": "org.example.plsql.ast.AssocArrayTypeToken"
+            },
+            "class": "org.example.plsql.ast.TypeDefinition"
+          },
+          {
+            "id": {
+              "name": "eighth"
+            },
+            "typeToken": {
+              "rowType": {
+                "typeName": {
+                  "name": "record_type"
+                },
+                "class": "org.example.plsql.ast.TypeReference"
+              },
+              "indexType": {
+                "name": {
+                  "name": "some_collection"
+                },
+                "class": "org.example.plsql.ast.RowTypeAttribute"
+              },
+              "class": "org.example.plsql.ast.AssocArrayTypeToken"
+            },
+            "class": "org.example.plsql.ast.TypeDefinition"
+          }
+        ]
+      },
+      "labels": []
+    }
+  ]
+}

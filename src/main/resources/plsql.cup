@@ -5,8 +5,20 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import org.example.plsql.ast.*;
 
+parser code {:
+    private TypeToken optionalNonNullable(TypeToken t, Boolean nonNullable) {
+        if (nonNullable) {
+            return new NonNullTypeToken(t);
+        } else {
+            return t;
+        }
+    }
+:}
+
 // Keywords
-terminal BEGIN, END, LOOP, IF, THEN, ELSIF, ELSE, RETURN, IMPLICIT_CURSOR, CASE, WHEN;
+terminal BEGIN, END, LOOP, IF, THEN, ELSIF, ELSE, RETURN, IMPLICIT_CURSOR, CASE, WHEN, TYPE, SUBTYPE, RANGE, DECLARE,
+         CHARACTER, SET, TABLE, OF, INDEX, BY, RECORD, REF, CURSOR, VARRAY, VARYING, ARRAY, PLS_INTEGER, BINARY_INTEGER,
+         VARCHAR, VARCHAR2, STRING, LONG, DEFAULT;
 // Punctuation
 terminal SEMI, COMMA, DOT, LEFT_PARENTHESIS, RIGHT_PARENTHESIS;
 // Operators
@@ -14,7 +26,7 @@ terminal ASSIGNMENT_OPERATOR, EQUAL_OPERATOR, NOT_EQUAL_OPERATOR, LESS_THAN_OPER
          LESS_THAN_OR_EQUAL_OPERATOR, GREATER_THAN_OR_EQUAL_OPERATOR, CONCATENATION_OPERATOR, ADDITION_OPERATOR,
          SUBTRACTION_OPERATOR, MULTIPLICATION_OPERATOR, DIVISION_OPERATOR, AND_OPERATOR, OR_OPERATOR, NOT_OPERATOR,
          EXPONENTIATION_OPERATOR, EXISTS_OPERATOR, BETWEEN_OPERATOR, IS_OPERATOR, FOUND_OPERATOR, ISOPEN_OPERATOR,
-         NOTFOUND_OPERATOR;
+         NOTFOUND_OPERATOR, RANGE_OPERATOR, ROWTYPE_ATTRIBUTE_OPERATOR, TYPE_ATTRIBUTE_OPERATOR;
 
 // Literals
 terminal NULL_LITERAL;
@@ -40,12 +52,23 @@ non terminal CaseStatement.When case_when;
 non terminal List<CaseStatement.When> case_when_list;
 non terminal CaseStatement.Else case_else;
 non terminal Body body;
+non terminal DeclareSection declare_section;
+non terminal List<Declaration> declare_item_list;
+non terminal Declaration declaration_item;
+non terminal Boolean opt_not_null;
 non terminal Block plsql_block;
 non terminal List<Block> plsql_block_list;
 non terminal Expression expression, boolean_or_expression, boolean_and_expression, boolean_not_expression,
                         comparison_expression, additive_expression, multiplicative_expression, unary_numeric_expression,
                         exponentiation_expression, expression_atom, boolean_between_expression, boolean_is_expression;
 non terminal Cursor cursor;
+non terminal TypeToken type_def, datatype, index_type;
+non terminal SubtypeDefinition.Constraint constraint;
+non terminal varr, record_initial_value_operator, opt_comma;
+non terminal List<RecordTypeToken.FieldDefinition> record_field_definition_list;
+non terminal RecordTypeToken.FieldDefinition record_field_definition;
+non terminal TypeAttribute type_attribute;
+non terminal RowTypeAttribute rowtype_attribute;
 
 start with program;
 
@@ -55,7 +78,7 @@ plsql_block_list ::= plsql_block_list:l plsql_block:b           {: l.add(b); RES
     | /* empty plsql_block list */                              {: RESULT = new ArrayList<Block>(); :}
     ;
 
-plsql_block ::= body:b                                          {: RESULT = new Block(b); :};
+plsql_block ::= declare_section:d body:b                        {: RESULT = new Block(b, d); :};
 
 body ::= BEGIN statement_list:sl END closing_label:l SEMI       {: RESULT = new Body(sl, l); :};
 
@@ -194,9 +217,102 @@ exponentiation_expression ::=
     | expression_atom:expr                                      {: RESULT = expr; :}
     ;
 
+declare_section ::=
+      DECLARE declare_item_list:l                               {: RESULT = new DeclareSection(l); :}
+    | /* empty declare block */
+    ;
+
+declare_item_list ::=
+      declare_item_list:l declaration_item:i                    {: l.add(i); RESULT = l; :}
+    | declaration_item:i                                        {: RESULT = new ArrayList<Declaration>(Arrays.asList(i)); :}
+    ;
+
+declaration_item ::=
+      TYPE IDENTIFIER:i IS_OPERATOR type_def:t SEMI             {: RESULT = new TypeDefinition(i, t); :}
+      // TODO: base_type could also be builtin PL/SQL data type
+    | SUBTYPE IDENTIFIER:i IS_OPERATOR IDENTIFIER:b
+          constraint:c opt_not_null:n SEMI                      {: RESULT = new SubtypeDefinition(i, optionalNonNullable(new TypeReference(b), n), c); :}
+    ;
+
+constraint ::=
+      NUMBER_LITERAL:precision                                  {: RESULT = new SubtypeDefinition.PrecisionConstraint(new NumberLiteral(precision), null); :}
+    | NUMBER_LITERAL:precision COMMA NUMBER_LITERAL:scale       {: RESULT = new SubtypeDefinition.PrecisionConstraint(new NumberLiteral(precision), new NumberLiteral(scale)); :}
+    | RANGE NUMBER_LITERAL:l RANGE_OPERATOR NUMBER_LITERAL:h    {: RESULT = new SubtypeDefinition.RangeConstraint(new NumberLiteral(l), new NumberLiteral(h)); :}
+    | CHARACTER SET STRING_LITERAL:s                            {: RESULT = new SubtypeDefinition.CharacterSetConstraint(new StringLiteral(s)); :}
+    | /* no constraint */
+    ;
+
+type_def ::=
+      TABLE OF datatype:dt opt_not_null:n                       {: RESULT = new NestedTableTypeToken(optionalNonNullable(dt, n)); :}
+    | TABLE OF datatype:dt opt_not_null:n INDEX BY index_type:t {: RESULT = new AssocArrayTypeToken(optionalNonNullable(dt, n), t); :}
+    | varr LEFT_PARENTHESIS NUMBER_LITERAL:limit RIGHT_PARENTHESIS
+          OF datatype:dt opt_not_null:n                         {: RESULT = new VaryingArrayTypeToken(new NumberLiteral(limit), optionalNonNullable(dt, n)); :}
+    | RECORD LEFT_PARENTHESIS record_field_definition_list:l
+          opt_comma RIGHT_PARENTHESIS                           {: RESULT = new RecordTypeToken(l); :}
+    | REF CURSOR                                                {: RESULT = new RefCursorTypeToken(null); :}
+    | REF CURSOR RETURN IDENTIFIER:i                            {: RESULT = new RefCursorTypeToken(new TypeReference(i)); :}
+    | REF CURSOR RETURN IDENTIFIER:i ROWTYPE_ATTRIBUTE_OPERATOR {: RESULT = new RefCursorTypeToken(new RowTypeAttribute(i)); :}
+    | REF CURSOR RETURN IDENTIFIER:i TYPE_ATTRIBUTE_OPERATOR    {: RESULT = new RefCursorTypeToken(new TypeAttribute(i, null)); :}
+    ;
+
+opt_comma ::= COMMA | ;
+
+opt_not_null ::=
+      NOT_OPERATOR NULL_LITERAL                                 {: RESULT = true; :}
+    | /* nullable */                                            {: RESULT = false; :}
+    ;
+
+varr ::=
+      VARRAY
+    | ARRAY
+    | VARYING ARRAY
+    ;
+
+datatype ::=
+      IDENTIFIER:i                                              {: RESULT = new TypeReference(i); :}
+    | REF IDENTIFIER:ot                                         {: RESULT = new TypeReferenceOperator(ot); :}
+    | type_attribute:t                                          {: RESULT = t; :}
+    | rowtype_attribute:t                                       {: RESULT = t; :}
+    ;
+
+index_type ::=
+      PLS_INTEGER                                               {: RESULT = new BuiltinTypeToken(BuiltinTypeToken.Type.PLS_INTEGER); :}
+    | BINARY_INTEGER                                            {: RESULT = new BuiltinTypeToken(BuiltinTypeToken.Type.BINARY_INTEGER); :}
+    | VARCHAR
+          LEFT_PARENTHESIS NUMBER_LITERAL:sz RIGHT_PARENTHESIS  {: RESULT = new BuiltinVaryingTypeToken(BuiltinVaryingTypeToken.Type.VARCHAR, new NumberLiteral(sz)); :}
+    | VARCHAR2
+          LEFT_PARENTHESIS NUMBER_LITERAL:sz RIGHT_PARENTHESIS  {: RESULT = new BuiltinVaryingTypeToken(BuiltinVaryingTypeToken.Type.VARCHAR2, new NumberLiteral(sz)); :}
+    | STRING
+          LEFT_PARENTHESIS NUMBER_LITERAL:sz RIGHT_PARENTHESIS  {: RESULT = new BuiltinVaryingTypeToken(BuiltinVaryingTypeToken.Type.STRING, new NumberLiteral(sz)); :}
+    | LONG                                                      {: RESULT = new BuiltinTypeToken(BuiltinTypeToken.Type.LONG); :}
+    | type_attribute:t                                          {: RESULT = t; :}
+    | rowtype_attribute:t                                       {: RESULT = t; :}
+    ;
+
+type_attribute ::=
+      IDENTIFIER:id TYPE_ATTRIBUTE_OPERATOR                     {: RESULT = new TypeAttribute(id, null); :}
+    | IDENTIFIER:id DOT IDENTIFIER:f TYPE_ATTRIBUTE_OPERATOR    {: RESULT = new TypeAttribute(id, f);    :}
+    ;
+
+rowtype_attribute ::= IDENTIFIER:id ROWTYPE_ATTRIBUTE_OPERATOR  {: RESULT = new RowTypeAttribute(id); :};
+
+record_field_definition_list ::=
+      record_field_definition_list:l COMMA
+          record_field_definition:d                             {: l.add(d); RESULT = l; :}
+    | record_field_definition:d                                 {: RESULT = new ArrayList(Arrays.asList(d)); :}
+    ;
+
+record_field_definition ::=
+      IDENTIFIER:f datatype:dt                                  {: RESULT = new RecordTypeToken.FieldDefinition(f, dt, null); :}
+    | IDENTIFIER:f datatype:dt opt_not_null:n
+          record_initial_value_operator expression:initial      {: RESULT = new RecordTypeToken.FieldDefinition(f, optionalNonNullable(dt, n), initial); :}
+    ;
+
+record_initial_value_operator ::= DEFAULT | ASSIGNMENT_OPERATOR;
+
 cursor ::=
-      NAMED_CURSOR:c                                              {: RESULT = new NamedCursor(c); :}
-    | IMPLICIT_CURSOR                                             {: RESULT = new ImplicitCursor(); :}
+      NAMED_CURSOR:c                                            {: RESULT = new NamedCursor(c); :}
+    | IMPLICIT_CURSOR                                           {: RESULT = new ImplicitCursor(); :}
     ;
 
 expression_atom ::=

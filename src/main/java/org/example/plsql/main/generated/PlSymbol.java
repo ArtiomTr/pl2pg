@@ -8,53 +8,79 @@ package org.example.plsql.main.generated;
 /** CUP generated class containing symbol constants. */
 public class PlSymbol {
   /* terminals */
-  public static final int WHEN = 12;
-  public static final int STRING_LITERAL = 41;
-  public static final int NAMED_CURSOR = 44;
-  public static final int LESS_THAN_OPERATOR = 21;
-  public static final int LESS_THAN_OR_EQUAL_OPERATOR = 23;
-  public static final int DIVISION_OPERATOR = 29;
+  public static final int GREATER_THAN_OPERATOR = 45;
+  public static final int VARCHAR2 = 32;
+  public static final int IDENTIFIER = 72;
+  public static final int ASSIGNMENT_OPERATOR = 41;
+  public static final int TYPE = 13;
+  public static final int SUBTYPE = 14;
+  public static final int ISOPEN_OPERATOR = 61;
+  public static final int TABLE = 19;
+  public static final int SEMI = 36;
   public static final int ELSIF = 7;
-  public static final int CONCATENATION_OPERATOR = 25;
-  public static final int NUMBER_LITERAL = 42;
-  public static final int CASE = 11;
-  public static final int SEMI = 13;
-  public static final int EXPONENTIATION_OPERATOR = 33;
-  public static final int IMPLICIT_CURSOR = 10;
-  public static final int BOOLEAN_LITERAL = 43;
-  public static final int NOT_OPERATOR = 32;
-  public static final int ISOPEN_OPERATOR = 38;
-  public static final int COMMA = 14;
-  public static final int BEGIN = 2;
-  public static final int EQUAL_OPERATOR = 19;
-  public static final int RIGHT_PARENTHESIS = 17;
+  public static final int GREATER_THAN_OR_EQUAL_OPERATOR = 47;
+  public static final int COMMA = 37;
+  public static final int ADDITION_OPERATOR = 49;
+  public static final int RIGHT_PARENTHESIS = 40;
+  public static final int LESS_THAN_OR_EQUAL_OPERATOR = 46;
+  public static final int NOTFOUND_OPERATOR = 62;
+  public static final int DECLARE = 16;
   public static final int LOOP = 4;
-  public static final int NULL_LITERAL = 40;
-  public static final int MULTIPLICATION_OPERATOR = 28;
-  public static final int IF = 5;
-  public static final int IS_OPERATOR = 36;
-  public static final int DOT = 15;
-  public static final int EOF = 0;
-  public static final int GREATER_THAN_OR_EQUAL_OPERATOR = 24;
-  public static final int RETURN = 9;
-  public static final int NOTFOUND_OPERATOR = 39;
-  public static final int error = 1;
-  public static final int AND_OPERATOR = 30;
-  public static final int EXISTS_OPERATOR = 34;
-  public static final int SUBTRACTION_OPERATOR = 27;
-  public static final int NOT_EQUAL_OPERATOR = 20;
-  public static final int ADDITION_OPERATOR = 26;
-  public static final int BETWEEN_OPERATOR = 35;
-  public static final int ELSE = 8;
-  public static final int FOUND_OPERATOR = 37;
-  public static final int ASSIGNMENT_OPERATOR = 18;
+  public static final int PLS_INTEGER = 29;
+  public static final int ARRAY = 28;
   public static final int THEN = 6;
-  public static final int GREATER_THAN_OPERATOR = 22;
+  public static final int VARYING = 27;
+  public static final int RECORD = 23;
+  public static final int IMPLICIT_CURSOR = 10;
+  public static final int NUMBER_LITERAL = 68;
+  public static final int CHARACTER = 17;
+  public static final int BOOLEAN_LITERAL = 69;
+  public static final int WHEN = 12;
+  public static final int LONG = 34;
+  public static final int NOT_OPERATOR = 55;
+  public static final int INDEX = 21;
+  public static final int BINARY_INTEGER = 30;
+  public static final int CONCATENATION_OPERATOR = 48;
+  public static final int MULTIPLICATION_OPERATOR = 51;
+  public static final int ROWTYPE_ATTRIBUTE_OPERATOR = 64;
+  public static final int AND_OPERATOR = 53;
+  public static final int RETURN = 9;
+  public static final int ELSE = 8;
+  public static final int DOT = 38;
+  public static final int NULL_LITERAL = 66;
+  public static final int FOUND_OPERATOR = 60;
+  public static final int BETWEEN_OPERATOR = 58;
+  public static final int STRING_LITERAL = 67;
+  public static final int EOF = 0;
+  public static final int DEFAULT = 35;
+  public static final int VARRAY = 26;
+  public static final int LABEL = 71;
+  public static final int TYPE_ATTRIBUTE_OPERATOR = 65;
+  public static final int EXPONENTIATION_OPERATOR = 56;
+  public static final int DIVISION_OPERATOR = 52;
+  public static final int EQUAL_OPERATOR = 42;
+  public static final int SET = 18;
+  public static final int error = 1;
+  public static final int LESS_THAN_OPERATOR = 44;
+  public static final int SUBTRACTION_OPERATOR = 50;
+  public static final int IF = 5;
+  public static final int CURSOR = 25;
+  public static final int OF = 20;
   public static final int END = 3;
-  public static final int OR_OPERATOR = 31;
-  public static final int LABEL = 45;
-  public static final int LEFT_PARENTHESIS = 16;
-  public static final int IDENTIFIER = 46;
+  public static final int LEFT_PARENTHESIS = 39;
+  public static final int OR_OPERATOR = 54;
+  public static final int BY = 22;
+  public static final int RANGE_OPERATOR = 63;
+  public static final int REF = 24;
+  public static final int VARCHAR = 31;
+  public static final int BEGIN = 2;
+  public static final int CASE = 11;
+  public static final int NOT_EQUAL_OPERATOR = 43;
+  public static final int NAMED_CURSOR = 70;
+  public static final int STRING = 33;
+  public static final int RANGE = 15;
+  public static final int EXISTS_OPERATOR = 57;
+  public static final int IS_OPERATOR = 59;
   public static final String[] terminalNames = new String[] {
   "EOF",
   "error",
@@ -69,6 +95,29 @@ public class PlSymbol {
   "IMPLICIT_CURSOR",
   "CASE",
   "WHEN",
+  "TYPE",
+  "SUBTYPE",
+  "RANGE",
+  "DECLARE",
+  "CHARACTER",
+  "SET",
+  "TABLE",
+  "OF",
+  "INDEX",
+  "BY",
+  "RECORD",
+  "REF",
+  "CURSOR",
+  "VARRAY",
+  "VARYING",
+  "ARRAY",
+  "PLS_INTEGER",
+  "BINARY_INTEGER",
+  "VARCHAR",
+  "VARCHAR2",
+  "STRING",
+  "LONG",
+  "DEFAULT",
   "SEMI",
   "COMMA",
   "DOT",
@@ -96,6 +145,9 @@ public class PlSymbol {
   "FOUND_OPERATOR",
   "ISOPEN_OPERATOR",
   "NOTFOUND_OPERATOR",
+  "RANGE_OPERATOR",
+  "ROWTYPE_ATTRIBUTE_OPERATOR",
+  "TYPE_ATTRIBUTE_OPERATOR",
   "NULL_LITERAL",
   "STRING_LITERAL",
   "NUMBER_LITERAL",

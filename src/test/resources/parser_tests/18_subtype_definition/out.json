@@ -1,0 +1,155 @@
+{
+  "blocks": [
+    {
+      "body": {
+        "statements": [
+          {
+            "target": {
+              "name": "smth"
+            },
+            "value": {
+              "value": "1",
+              "class": "org.example.plsql.ast.NumberLiteral"
+            },
+            "labels": [],
+            "class": "org.example.plsql.ast.AssignmentStatement"
+          }
+        ]
+      },
+      "declareSection": {
+        "declarationList": [
+          {
+            "name": {
+              "name": "first"
+            },
+            "baseType": {
+              "typeName": {
+                "name": "some_base_type"
+              },
+              "class": "org.example.plsql.ast.TypeReference"
+            },
+            "class": "org.example.plsql.ast.SubtypeDefinition"
+          },
+          {
+            "name": {
+              "name": "second"
+            },
+            "baseType": {
+              "typeName": {
+                "name": "some_base_type"
+              },
+              "class": "org.example.plsql.ast.TypeReference"
+            },
+            "constraint": {
+              "characterSet": {
+                "value": "utf-8"
+              },
+              "class": "org.example.plsql.ast.SubtypeDefinition$CharacterSetConstraint"
+            },
+            "class": "org.example.plsql.ast.SubtypeDefinition"
+          },
+          {
+            "name": {
+              "name": "third"
+            },
+            "baseType": {
+              "typeName": {
+                "name": "some_base_type"
+              },
+              "class": "org.example.plsql.ast.TypeReference"
+            },
+            "constraint": {
+              "precision": {
+                "value": "5"
+              },
+              "class": "org.example.plsql.ast.SubtypeDefinition$PrecisionConstraint"
+            },
+            "class": "org.example.plsql.ast.SubtypeDefinition"
+          },
+          {
+            "name": {
+              "name": "fourth"
+            },
+            "baseType": {
+              "typeName": {
+                "name": "some_base_type"
+              },
+              "class": "org.example.plsql.ast.TypeReference"
+            },
+            "constraint": {
+              "precision": {
+                "value": "5"
+              },
+              "scale": {
+                "value": "6"
+              },
+              "class": "org.example.plsql.ast.SubtypeDefinition$PrecisionConstraint"
+            },
+            "class": "org.example.plsql.ast.SubtypeDefinition"
+          },
+          {
+            "name": {
+              "name": "fifth"
+            },
+            "baseType": {
+              "typeName": {
+                "name": "some_base_type"
+              },
+              "class": "org.example.plsql.ast.TypeReference"
+            },
+            "constraint": {
+              "lowValue": {
+                "value": "120"
+              },
+              "highValue": {
+                "value": "380"
+              },
+              "class": "org.example.plsql.ast.SubtypeDefinition$RangeConstraint"
+            },
+            "class": "org.example.plsql.ast.SubtypeDefinition"
+          },
+          {
+            "name": {
+              "name": "sixth"
+            },
+            "baseType": {
+              "typeToken": {
+                "typeName": {
+                  "name": "some_base_type"
+                },
+                "class": "org.example.plsql.ast.TypeReference"
+              },
+              "class": "org.example.plsql.ast.NonNullTypeToken"
+            },
+            "class": "org.example.plsql.ast.SubtypeDefinition"
+          },
+          {
+            "name": {
+              "name": "seventh"
+            },
+            "baseType": {
+              "typeToken": {
+                "typeName": {
+                  "name": "some_base_type"
+                },
+                "class": "org.example.plsql.ast.TypeReference"
+              },
+              "class": "org.example.plsql.ast.NonNullTypeToken"
+            },
+            "constraint": {
+              "precision": {
+                "value": "4"
+              },
+              "scale": {
+                "value": "3"
+              },
+              "class": "org.example.plsql.ast.SubtypeDefinition$PrecisionConstraint"
+            },
+            "class": "org.example.plsql.ast.SubtypeDefinition"
+          }
+        ]
+      },
+      "labels": []
+    }
+  ]
+}
