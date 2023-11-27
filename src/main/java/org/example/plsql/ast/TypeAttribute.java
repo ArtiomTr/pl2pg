@@ -13,7 +13,6 @@ public class TypeAttribute extends TypeToken {
 
     @Override
     public <T> T accept(Visitor<T> visitor) {
-        // TODO:
-        throw new RuntimeException("not implemented");
+        return visitor.visit(this);
     }
 }

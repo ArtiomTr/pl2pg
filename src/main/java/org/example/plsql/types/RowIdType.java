@@ -1,8 +1,6 @@
 package org.example.plsql.types;
 
-public class Subtype extends Type {
-
-    private Type baseType;
+public class RowIdType extends ScalarType {
 
     @Override
     public boolean canCastTo(Type targetType) {

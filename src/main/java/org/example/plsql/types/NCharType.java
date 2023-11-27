@@ -1,8 +1,12 @@
 package org.example.plsql.types;
 
-public class Subtype extends Type {
+public class NCharType extends CharacterType {
 
-    private Type baseType;
+    private Integer maxSize;
+
+    public NCharType(Integer maxSize) {
+        this.maxSize = maxSize;
+    }
 
     @Override
     public boolean canCastTo(Type targetType) {

@@ -1,5 +1,7 @@
 package org.example.plsql.ast;
 
+import org.example.plsql.types.Type;
+
 public class PrettyPrintVisitor implements Visitor<String> {
 
     private int currentIndent;
@@ -286,5 +288,107 @@ public class PrettyPrintVisitor implements Visitor<String> {
     @Override
     public String visit(UnaryExpression expression) {
         return expression.getOperator().prettyPrint() + " " + expression.getArgument().accept(this);
+    }
+
+    @Override
+    public String visit(AssocArrayTypeToken assocArray) {
+        // TODO:
+        throw new RuntimeException("not implemented");
+    }
+
+    @Override
+    public String visit(BuiltinTypeToken builtin) {
+        // TODO:
+        throw new RuntimeException("not implemented");
+    }
+
+    @Override
+    public String visit(DeclareSection section) {
+        // TODO:
+        throw new RuntimeException("not implemented");
+    }
+
+    @Override
+    public String visit(NestedTableTypeToken nestedTable) {
+        // TODO:
+        throw new RuntimeException("not implemented");
+    }
+
+    @Override
+    public String visit(NonNullTypeToken nonNull) {
+        // TODO:
+        throw new RuntimeException("not implemented");
+    }
+
+    @Override
+    public String visit(RecordTypeToken record) {
+        // TODO:
+        throw new RuntimeException("not implemented");
+    }
+
+    @Override
+    public String visit(RecordTypeToken.FieldDefinition fieldDefinition) {
+        // TODO:
+        throw new RuntimeException("not implemented");
+    }
+
+    @Override
+    public String visit(RefCursorTypeToken refCursor) {
+        // TODO:
+        throw new RuntimeException("not implemented");
+    }
+
+    @Override
+    public String visit(RowTypeAttribute rowTypeAttribute) {
+        // TODO:
+        throw new RuntimeException("not implemented");
+    }
+
+    @Override
+    public String visit(SubtypeDefinition subtype) {
+        // TODO:
+        throw new RuntimeException("not implemented");
+    }
+
+    @Override
+    public String visit(SubtypeDefinition.CharacterSetConstraint constraint) {
+        // TODO:
+        throw new RuntimeException("not implemented");
+    }
+
+    @Override
+    public String visit(SubtypeDefinition.PrecisionConstraint constraint) {
+        // TODO:
+        throw new RuntimeException("not implemented");
+    }
+
+    @Override
+    public String visit(SubtypeDefinition.RangeConstraint constraint) {
+        // TODO:
+        throw new RuntimeException("not implemented");
+    }
+
+    @Override
+    public String visit(TypeAttribute typeAttribute) {
+        // TODO:
+        throw new RuntimeException("not implemented");
+    }
+
+    @Override
+    public String visit(TypeDefinition type) {
+        // TODO:
+        throw new RuntimeException("not implemented");
+    }
+
+    @Override
+    public String visit(VaryingArrayTypeToken varyingArray) {
+        // TODO:
+        throw new RuntimeException("not implemented");
+    }
+
+    @Override
+    public String visit(VariableDeclaration declaration) {
+        // TODO:
+        throw new RuntimeException("not implemented");
     }
 }

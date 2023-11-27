@@ -1,8 +1,12 @@
 package org.example.plsql.types;
 
-public class Subtype extends Type {
+public class RawType extends ScalarType {
 
-    private Type baseType;
+    private Integer maxSize;
+
+    public RawType(Integer maxSize) {
+        this.maxSize = maxSize;
+    }
 
     @Override
     public boolean canCastTo(Type targetType) {

@@ -64,7 +64,7 @@ non terminal Expression expression, boolean_or_expression, boolean_and_expressio
 non terminal Cursor cursor;
 non terminal TypeToken type_def, datatype, index_type;
 non terminal SubtypeDefinition.Constraint constraint;
-non terminal varr, record_initial_value_operator, opt_comma;
+non terminal varr, initial_value_operator, opt_comma;
 non terminal List<RecordTypeToken.FieldDefinition> record_field_definition_list;
 non terminal RecordTypeToken.FieldDefinition record_field_definition;
 non terminal TypeAttribute type_attribute;
@@ -230,8 +230,12 @@ declare_item_list ::=
 declaration_item ::=
       TYPE IDENTIFIER:i IS_OPERATOR type_def:t SEMI             {: RESULT = new TypeDefinition(i, t); :}
       // TODO: base_type could also be builtin PL/SQL data type
-    | SUBTYPE IDENTIFIER:i IS_OPERATOR IDENTIFIER:b
-          constraint:c opt_not_null:n SEMI                      {: RESULT = new SubtypeDefinition(i, optionalNonNullable(new TypeReference(b), n), c); :}
+    | SUBTYPE IDENTIFIER:i IS_OPERATOR type:b
+          constraint:c opt_not_null:n SEMI                      {: RESULT = new SubtypeDefinition(i, optionalNonNullable(b, n), c); :}
+    // variable_declaration
+    | IDENTIFIER:i datatype:dt SEMI                             {: RESULT = new VariableDeclaration(i, dt, null); :}
+    | IDENTIFIER:i datatype:dt opt_not_null:n
+          initial_value_operator expression:value SEMI          {: RESULT = new VariableDeclaration(i, optionalNonNullable(dt, n), value); :}
     ;
 
 constraint ::=
@@ -269,10 +273,14 @@ varr ::=
     ;
 
 datatype ::=
-      IDENTIFIER:i                                              {: RESULT = new TypeReference(i); :}
+      type:t                                                    {: RESULT = t; :}
     | REF IDENTIFIER:ot                                         {: RESULT = new TypeReferenceOperator(ot); :}
     | type_attribute:t                                          {: RESULT = t; :}
     | rowtype_attribute:t                                       {: RESULT = t; :}
+    ;
+
+type ::=
+    | IDENTIFIER:i                                              {: RESULT = new TypeReference(i); :}
     ;
 
 index_type ::=
@@ -305,10 +313,10 @@ record_field_definition_list ::=
 record_field_definition ::=
       IDENTIFIER:f datatype:dt                                  {: RESULT = new RecordTypeToken.FieldDefinition(f, dt, null); :}
     | IDENTIFIER:f datatype:dt opt_not_null:n
-          record_initial_value_operator expression:initial      {: RESULT = new RecordTypeToken.FieldDefinition(f, optionalNonNullable(dt, n), initial); :}
+          initial_value_operator expression:initial             {: RESULT = new RecordTypeToken.FieldDefinition(f, optionalNonNullable(dt, n), initial); :}
     ;
 
-record_initial_value_operator ::= DEFAULT | ASSIGNMENT_OPERATOR;
+initial_value_operator ::= DEFAULT | ASSIGNMENT_OPERATOR;
 
 cursor ::=
       NAMED_CURSOR:c                                            {: RESULT = new NamedCursor(c); :}

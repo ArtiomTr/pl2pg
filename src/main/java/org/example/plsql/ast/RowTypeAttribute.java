@@ -10,7 +10,6 @@ public class RowTypeAttribute extends TypeToken {
 
     @Override
     public <T> T accept(Visitor<T> visitor) {
-        // TODO:
-        throw new RuntimeException("Not implemented");
+        return visitor.visit(this);
     }
 }

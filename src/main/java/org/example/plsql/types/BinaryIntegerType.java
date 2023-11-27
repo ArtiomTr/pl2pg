@@ -1,8 +1,6 @@
 package org.example.plsql.types;
 
-public class Subtype extends Type {
-
-    private Type baseType;
+public class BinaryIntegerType extends NumericType {
 
     @Override
     public boolean canCastTo(Type targetType) {

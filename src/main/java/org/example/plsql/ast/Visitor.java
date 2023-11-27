@@ -51,4 +51,42 @@ public interface Visitor<T> {
     T visit(StringLiteral literal);
 
     T visit(UnaryExpression expression);
+
+    T visit(AssocArrayTypeToken assocArray);
+
+    T visit(BuiltinTypeToken builtin);
+
+    T visit(DeclareSection section);
+
+    T visit(NestedTableTypeToken nestedTable);
+
+    T visit(NonNullTypeToken nonNull);
+
+    T visit(RecordTypeToken record);
+
+    T visit(RecordTypeToken.FieldDefinition fieldDefinition);
+
+    T visit(RefCursorTypeToken refCursor);
+
+    T visit(RowTypeAttribute rowTypeAttribute);
+
+    T visit(SubtypeDefinition subtype);
+
+    T visit(SubtypeDefinition.CharacterSetConstraint constraint);
+
+    T visit(SubtypeDefinition.PrecisionConstraint constraint);
+
+    T visit(SubtypeDefinition.RangeConstraint constraint);
+
+    T visit(TypeAttribute typeAttribute);
+
+    T visit(TypeDefinition type);
+
+    T visit(VaryingArrayTypeToken varyingArray);
+
+    T visit(VariableDeclaration declaration);
+
+    T visit(TypeReference reference);
+
+    T visit(TypeReferenceOperator referenceOperator);
 }

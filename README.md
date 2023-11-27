@@ -34,3 +34,6 @@ It will automatically run tests.
 ## Tests
 
 All tests are in `./src/test` directory. For more information, see [tests documentation](./src/test/README.md).
+
+## Tasks
+

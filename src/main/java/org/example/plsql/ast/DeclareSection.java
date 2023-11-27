@@ -10,13 +10,12 @@ public class DeclareSection extends Node {
         this.declarationList = declarationList;
     }
 
-    @Override
-    public <T> T accept(Visitor<T> visitor) {
-        // TODO:
-        throw new RuntimeException("Not implemented!");
-    }
-
     public List<Declaration> getDeclarationList() {
         return declarationList;
+    }
+
+    @Override
+    public <T> T accept(Visitor<T> visitor) {
+        return visitor.visit(this);
     }
 }

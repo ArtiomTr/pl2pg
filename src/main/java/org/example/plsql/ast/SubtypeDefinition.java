@@ -16,8 +16,7 @@ public class SubtypeDefinition extends Declaration {
 
         @Override
         public <T> T accept(Visitor<T> visitor) {
-            // TODO:
-            throw new RuntimeException("not implemented");
+            return visitor.visit(this);
         }
     }
 
@@ -34,8 +33,7 @@ public class SubtypeDefinition extends Declaration {
 
         @Override
         public <T> T accept(Visitor<T> visitor) {
-            // TODO:
-            throw new RuntimeException("not implemented");
+            return visitor.visit(this);
         }
     }
 
@@ -52,8 +50,7 @@ public class SubtypeDefinition extends Declaration {
 
         @Override
         public <T> T accept(Visitor<T> visitor) {
-            // TODO:
-            throw new RuntimeException("not implemented");
+            return visitor.visit(this);
         }
     }
 
@@ -71,7 +68,6 @@ public class SubtypeDefinition extends Declaration {
 
     @Override
     public <T> T accept(Visitor<T> visitor) {
-        // TODO:
-        throw new RuntimeException("not implemented");
+        return visitor.visit(this);
     }
 }

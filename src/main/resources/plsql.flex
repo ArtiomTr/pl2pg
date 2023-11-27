@@ -14,6 +14,7 @@ import org.example.plsql.ast.*;
 %column
 %char
 %cup
+%caseless
 
 %{
     StringBuffer string = new StringBuffer();
