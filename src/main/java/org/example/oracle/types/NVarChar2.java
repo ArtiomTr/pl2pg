@@ -7,10 +7,4 @@ public class NVarChar2 extends CharacterType {
     public NVarChar2(Integer maxSize) {
         this.maxSize = maxSize;
     }
-
-    @Override
-    public boolean canCastTo(Type targetType) {
-        // TODO:
-        throw new RuntimeException("not implemented");
-    }
 }

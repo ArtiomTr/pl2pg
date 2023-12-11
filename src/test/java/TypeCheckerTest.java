@@ -3,6 +3,7 @@ import com.google.gson.stream.JsonReader;
 import org.example.oracle.ast.Program;
 import org.example.oracle.main.ParseException;
 import org.example.oracle.main.Parser;
+import org.example.oracle.main.TypeCheckException;
 import org.example.oracle.main.TypeChecker;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -13,6 +14,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.net.URL;
 import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.Arrays;
 import java.util.Objects;
 
@@ -36,7 +38,7 @@ public class TypeCheckerTest {
                 continue;
             }
 
-            Path testPath = Path.of(testFolder.getPath(), test);
+            Path testPath = Paths.get(testFolder.getPath(), test);
             File inputFile = testPath.resolve("in.pls").toFile();
             File outputFile = testPath.resolve("out.json").toFile();
 
@@ -77,7 +79,7 @@ public class TypeCheckerTest {
                 if (!expected) {
                     Assertions.fail("Type checker expected to fail, but instead, it passed.");
                 }
-            } catch (Exception e) {
+            } catch (TypeCheckException e) {
                 if (expected) {
                     e.printStackTrace();
                     Assertions.fail("Type checker expected to pass - instead, it failed with exception" + e);

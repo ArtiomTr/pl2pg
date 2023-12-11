@@ -1,5 +1,7 @@
 package org.example.oracle.ast;
 
+import org.example.utils.StringUtils;
+
 public class PrettyPrintVisitor implements Visitor<String> {
 
     private int currentIndent;
@@ -38,7 +40,7 @@ public class PrettyPrintVisitor implements Visitor<String> {
 
     @Override
     public String visit(Body body) {
-        StringBuilder output = new StringBuilder(" ".repeat(currentIndent) + "BEGIN\n");
+        StringBuilder output = new StringBuilder(StringUtils.repeat(" ", currentIndent) + "BEGIN\n");
 
         currentIndent += indent;
         for (Statement statement : body.getStatements()) {
@@ -46,7 +48,7 @@ public class PrettyPrintVisitor implements Visitor<String> {
             output.append('\n');
         }
         currentIndent -= indent;
-        output.append(" ".repeat(currentIndent)).append("END;");
+        output.append(StringUtils.repeat(" ", currentIndent)).append("END;");
 
         return output.toString();
     }
@@ -58,7 +60,7 @@ public class PrettyPrintVisitor implements Visitor<String> {
             output.append(label.accept(this));
             output.append('\n');
         }
-        output.append(" ".repeat(currentIndent));
+        output.append(StringUtils.repeat(" ", currentIndent));
         output.append(statement.getTarget().accept(this));
         output.append(" := ");
         output.append(statement.getValue().accept(this));
@@ -96,7 +98,7 @@ public class PrettyPrintVisitor implements Visitor<String> {
             output.append('\n');
         }
 
-        output.append(" ".repeat(currentIndent));
+        output.append(StringUtils.repeat(" ", currentIndent));
         output.append("CASE");
         if (statement.getSelector() != null) {
             output.append(' ');
@@ -115,7 +117,7 @@ public class PrettyPrintVisitor implements Visitor<String> {
             output.append('\n');
         }
         currentIndent -= indent;
-        output.append(" ".repeat(currentIndent));
+        output.append(StringUtils.repeat(" ", currentIndent));
         output.append("END CASE;");
 
         return output.toString();
@@ -123,7 +125,7 @@ public class PrettyPrintVisitor implements Visitor<String> {
 
     @Override
     public String visit(CaseStatement.Else elseStatement) {
-        StringBuilder output = new StringBuilder(" ".repeat(currentIndent) + "ELSE\n");
+        StringBuilder output = new StringBuilder(StringUtils.repeat(" ", currentIndent) + "ELSE\n");
 
         currentIndent += indent;
         output.append(elseStatement.getThen().accept(this));
@@ -134,7 +136,7 @@ public class PrettyPrintVisitor implements Visitor<String> {
 
     @Override
     public String visit(CaseStatement.When whenStatement) {
-        StringBuilder output = new StringBuilder(" ".repeat(currentIndent) + "WHEN ");
+        StringBuilder output = new StringBuilder(StringUtils.repeat(" ", currentIndent) + "WHEN ");
         output.append(whenStatement.getExpression().accept(this));
         output.append(" THEN\n");
         currentIndent += indent;
@@ -171,7 +173,7 @@ public class PrettyPrintVisitor implements Visitor<String> {
             output.append('\n');
         }
 
-        output.append(" ".repeat(currentIndent));
+        output.append(StringUtils.repeat(" ", currentIndent));
         output.append("IF ");
         output.append(statement.getCondition().accept(this));
         output.append(" THEN\n");
@@ -191,7 +193,7 @@ public class PrettyPrintVisitor implements Visitor<String> {
             output.append(statement.getElseBlock().accept(this));
         }
 
-        output.append(" ".repeat(currentIndent));
+        output.append(StringUtils.repeat(" ", currentIndent));
         output.append("END IF;");
         return output.toString();
     }
@@ -199,7 +201,7 @@ public class PrettyPrintVisitor implements Visitor<String> {
     @Override
     public String visit(IfStatement.Else elseStatement) {
         StringBuilder output = new StringBuilder();
-        output.append(" ".repeat(currentIndent));
+        output.append(StringUtils.repeat(" ", currentIndent));
         output.append("ELSE\n");
 
         currentIndent += indent;
@@ -215,7 +217,7 @@ public class PrettyPrintVisitor implements Visitor<String> {
     @Override
     public String visit(IfStatement.Elsif elsifStatement) {
         StringBuilder output = new StringBuilder();
-        output.append(" ".repeat(currentIndent));
+        output.append(StringUtils.repeat(" ", currentIndent));
         output.append("ELSIF ");
         output.append(elsifStatement.getCondition().accept(this));
         output.append(" THEN\n");
@@ -237,7 +239,7 @@ public class PrettyPrintVisitor implements Visitor<String> {
 
     @Override
     public String visit(Label label) {
-        return " ".repeat(currentIndent) + "<<" + label.getName() + ">>";
+        return StringUtils.repeat(" ", currentIndent) + "<<" + label.getName() + ">>";
     }
 
     @Override
@@ -248,7 +250,7 @@ public class PrettyPrintVisitor implements Visitor<String> {
             output.append('\n');
         }
 
-        output.append(" ".repeat(currentIndent));
+        output.append(StringUtils.repeat(" ", currentIndent));
         output.append("LOOP\n");
 
         currentIndent += indent;
@@ -257,7 +259,7 @@ public class PrettyPrintVisitor implements Visitor<String> {
             output.append('\n');
         }
         currentIndent -= indent;
-        output.append(" ".repeat(currentIndent));
+        output.append(StringUtils.repeat(" ", currentIndent));
         output.append("END LOOP;");
 
         return output.toString();

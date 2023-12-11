@@ -1,0 +1,8 @@
+DO $$
+DECLARE
+    a VARCHAR := '';
+    b VARCHAR;
+BEGIN
+    b := coalesce(a, '');
+END;
+$$;

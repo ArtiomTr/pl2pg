@@ -122,13 +122,7 @@ public class TypeCheckVisitor implements Visitor<Type> {
 
     @Override
     public Type visit(AssignmentStatement statement) {
-        Identifier target = statement.getTarget();
-
-        Type targetType = this.table.lookupVariable(target.getName());
-
-        if (targetType == null) {
-            throw new TypeCheckError("Use of undeclared variable \"" + target.getName() + "\"");
-        }
+        Type targetType = statement.getTarget().accept(this);
 
         Type valueType = statement.getValue().accept(this);
 
@@ -192,14 +186,19 @@ public class TypeCheckVisitor implements Visitor<Type> {
 
     @Override
     public Type visit(ExpressionIdentifier identifier) {
-        // TODO:
-        throw new RuntimeException("not implemented");
+        Type t = identifier.getIdentifier().accept(this);
+        identifier.setResolvedType(t);
+        return t;
     }
 
     @Override
     public Type visit(Identifier identifier) {
-        // TODO:
-        throw new RuntimeException("not implemented");
+        Type type = table.lookupVariable(identifier.getName());
+        if (type == null) {
+            throw new TypeCheckError("Use of undeclared variable");
+        }
+        identifier.setResolvedType(type);
+        return type;
     }
 
     @Override
@@ -246,8 +245,9 @@ public class TypeCheckVisitor implements Visitor<Type> {
 
     @Override
     public Type visit(NullLiteral literal) {
-        // TODO:
-        throw new RuntimeException("not implemented");
+        Type type = new NullType();
+        literal.setResolvedType(type);
+        return type;
     }
 
     @Override
@@ -390,6 +390,8 @@ public class TypeCheckVisitor implements Visitor<Type> {
         }
 
         this.table.addVariable(declaration.getId().getName(), variableType);
+
+        declaration.setResolvedType(variableType);
 
         return null;
     }
