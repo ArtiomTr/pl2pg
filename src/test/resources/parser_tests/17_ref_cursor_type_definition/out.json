@@ -9,10 +9,10 @@
             },
             "value": {
               "value": "1",
-              "class": "org.example.plsql.ast.NumberLiteral"
+              "class": "org.example.oracle.ast.NumberLiteral"
             },
             "labels": [],
-            "class": "org.example.plsql.ast.AssignmentStatement"
+            "class": "org.example.oracle.ast.AssignmentStatement"
           }
         ]
       },
@@ -23,9 +23,9 @@
               "name": "first"
             },
             "typeToken": {
-              "class": "org.example.plsql.ast.RefCursorTypeToken"
+              "class": "org.example.oracle.ast.RefCursorTypeToken"
             },
-            "class": "org.example.plsql.ast.TypeDefinition"
+            "class": "org.example.oracle.ast.TypeDefinition"
           },
           {
             "id": {
@@ -36,11 +36,11 @@
                 "typeName": {
                   "name": "some_type"
                 },
-                "class": "org.example.plsql.ast.TypeReference"
+                "class": "org.example.oracle.ast.TypeReference"
               },
-              "class": "org.example.plsql.ast.RefCursorTypeToken"
+              "class": "org.example.oracle.ast.RefCursorTypeToken"
             },
-            "class": "org.example.plsql.ast.TypeDefinition"
+            "class": "org.example.oracle.ast.TypeDefinition"
           },
           {
             "id": {
@@ -51,11 +51,11 @@
                 "id": {
                   "name": "some_record"
                 },
-                "class": "org.example.plsql.ast.TypeAttribute"
+                "class": "org.example.oracle.ast.TypeAttribute"
               },
-              "class": "org.example.plsql.ast.RefCursorTypeToken"
+              "class": "org.example.oracle.ast.RefCursorTypeToken"
             },
-            "class": "org.example.plsql.ast.TypeDefinition"
+            "class": "org.example.oracle.ast.TypeDefinition"
           },
           {
             "id": {
@@ -66,11 +66,11 @@
                 "name": {
                   "name": "cursor_variable"
                 },
-                "class": "org.example.plsql.ast.RowTypeAttribute"
+                "class": "org.example.oracle.ast.RowTypeAttribute"
               },
-              "class": "org.example.plsql.ast.RefCursorTypeToken"
+              "class": "org.example.oracle.ast.RefCursorTypeToken"
             },
-            "class": "org.example.plsql.ast.TypeDefinition"
+            "class": "org.example.oracle.ast.TypeDefinition"
           }
         ]
       },

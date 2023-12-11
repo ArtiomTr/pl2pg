@@ -9,10 +9,10 @@
             },
             "value": {
               "value": "Hello, \"world\"!",
-              "class": "org.example.plsql.ast.StringLiteral"
+              "class": "org.example.oracle.ast.StringLiteral"
             },
             "labels": [],
-            "class": "org.example.plsql.ast.AssignmentStatement"
+            "class": "org.example.oracle.ast.AssignmentStatement"
           },
           {
             "target": {
@@ -20,10 +20,10 @@
             },
             "value": {
               "value": "Hello, \u0027world\u0027!",
-              "class": "org.example.plsql.ast.StringLiteral"
+              "class": "org.example.oracle.ast.StringLiteral"
             },
             "labels": [],
-            "class": "org.example.plsql.ast.AssignmentStatement"
+            "class": "org.example.oracle.ast.AssignmentStatement"
           },
           {
             "target": {
@@ -31,10 +31,10 @@
             },
             "value": {
               "value": "Hello, \u0027world\"!",
-              "class": "org.example.plsql.ast.StringLiteral"
+              "class": "org.example.oracle.ast.StringLiteral"
             },
             "labels": [],
-            "class": "org.example.plsql.ast.AssignmentStatement"
+            "class": "org.example.oracle.ast.AssignmentStatement"
           },
           {
             "target": {
@@ -42,10 +42,10 @@
             },
             "value": {
               "value": "Hello, \"world\u0027",
-              "class": "org.example.plsql.ast.StringLiteral"
+              "class": "org.example.oracle.ast.StringLiteral"
             },
             "labels": [],
-            "class": "org.example.plsql.ast.AssignmentStatement"
+            "class": "org.example.oracle.ast.AssignmentStatement"
           },
           {
             "target": {
@@ -53,10 +53,10 @@
             },
             "value": {
               "value": "Hello, \"world\u0027!",
-              "class": "org.example.plsql.ast.StringLiteral"
+              "class": "org.example.oracle.ast.StringLiteral"
             },
             "labels": [],
-            "class": "org.example.plsql.ast.AssignmentStatement"
+            "class": "org.example.oracle.ast.AssignmentStatement"
           },
           {
             "target": {
@@ -64,10 +64,10 @@
             },
             "value": {
               "value": "",
-              "class": "org.example.plsql.ast.StringLiteral"
+              "class": "org.example.oracle.ast.StringLiteral"
             },
             "labels": [],
-            "class": "org.example.plsql.ast.AssignmentStatement"
+            "class": "org.example.oracle.ast.AssignmentStatement"
           },
           {
             "target": {
@@ -75,10 +75,10 @@
             },
             "value": {
               "value": true,
-              "class": "org.example.plsql.ast.BooleanLiteral"
+              "class": "org.example.oracle.ast.BooleanLiteral"
             },
             "labels": [],
-            "class": "org.example.plsql.ast.AssignmentStatement"
+            "class": "org.example.oracle.ast.AssignmentStatement"
           },
           {
             "target": {
@@ -86,20 +86,20 @@
             },
             "value": {
               "value": false,
-              "class": "org.example.plsql.ast.BooleanLiteral"
+              "class": "org.example.oracle.ast.BooleanLiteral"
             },
             "labels": [],
-            "class": "org.example.plsql.ast.AssignmentStatement"
+            "class": "org.example.oracle.ast.AssignmentStatement"
           },
           {
             "target": {
               "name": "c"
             },
             "value": {
-              "class": "org.example.plsql.ast.NullLiteral"
+              "class": "org.example.oracle.ast.NullLiteral"
             },
             "labels": [],
-            "class": "org.example.plsql.ast.AssignmentStatement"
+            "class": "org.example.oracle.ast.AssignmentStatement"
           },
           {
             "target": {
@@ -107,10 +107,10 @@
             },
             "value": {
               "value": "147",
-              "class": "org.example.plsql.ast.NumberLiteral"
+              "class": "org.example.oracle.ast.NumberLiteral"
             },
             "labels": [],
-            "class": "org.example.plsql.ast.AssignmentStatement"
+            "class": "org.example.oracle.ast.AssignmentStatement"
           },
           {
             "target": {
@@ -118,10 +118,10 @@
             },
             "value": {
               "value": "-15",
-              "class": "org.example.plsql.ast.NumberLiteral"
+              "class": "org.example.oracle.ast.NumberLiteral"
             },
             "labels": [],
-            "class": "org.example.plsql.ast.AssignmentStatement"
+            "class": "org.example.oracle.ast.AssignmentStatement"
           },
           {
             "target": {
@@ -129,10 +129,10 @@
             },
             "value": {
               "value": "+15",
-              "class": "org.example.plsql.ast.NumberLiteral"
+              "class": "org.example.oracle.ast.NumberLiteral"
             },
             "labels": [],
-            "class": "org.example.plsql.ast.AssignmentStatement"
+            "class": "org.example.oracle.ast.AssignmentStatement"
           },
           {
             "target": {
@@ -140,10 +140,10 @@
             },
             "value": {
               "value": "1.123",
-              "class": "org.example.plsql.ast.NumberLiteral"
+              "class": "org.example.oracle.ast.NumberLiteral"
             },
             "labels": [],
-            "class": "org.example.plsql.ast.AssignmentStatement"
+            "class": "org.example.oracle.ast.AssignmentStatement"
           },
           {
             "target": {
@@ -151,10 +151,10 @@
             },
             "value": {
               "value": "+0.0015",
-              "class": "org.example.plsql.ast.NumberLiteral"
+              "class": "org.example.oracle.ast.NumberLiteral"
             },
             "labels": [],
-            "class": "org.example.plsql.ast.AssignmentStatement"
+            "class": "org.example.oracle.ast.AssignmentStatement"
           },
           {
             "target": {
@@ -162,10 +162,10 @@
             },
             "value": {
               "value": "-173.12",
-              "class": "org.example.plsql.ast.NumberLiteral"
+              "class": "org.example.oracle.ast.NumberLiteral"
             },
             "labels": [],
-            "class": "org.example.plsql.ast.AssignmentStatement"
+            "class": "org.example.oracle.ast.AssignmentStatement"
           },
           {
             "target": {
@@ -173,10 +173,10 @@
             },
             "value": {
               "value": "19.",
-              "class": "org.example.plsql.ast.NumberLiteral"
+              "class": "org.example.oracle.ast.NumberLiteral"
             },
             "labels": [],
-            "class": "org.example.plsql.ast.AssignmentStatement"
+            "class": "org.example.oracle.ast.AssignmentStatement"
           },
           {
             "target": {
@@ -184,10 +184,10 @@
             },
             "value": {
               "value": ".1",
-              "class": "org.example.plsql.ast.NumberLiteral"
+              "class": "org.example.oracle.ast.NumberLiteral"
             },
             "labels": [],
-            "class": "org.example.plsql.ast.AssignmentStatement"
+            "class": "org.example.oracle.ast.AssignmentStatement"
           },
           {
             "target": {
@@ -195,10 +195,10 @@
             },
             "value": {
               "value": "-.47",
-              "class": "org.example.plsql.ast.NumberLiteral"
+              "class": "org.example.oracle.ast.NumberLiteral"
             },
             "labels": [],
-            "class": "org.example.plsql.ast.AssignmentStatement"
+            "class": "org.example.oracle.ast.AssignmentStatement"
           },
           {
             "target": {
@@ -206,10 +206,10 @@
             },
             "value": {
               "value": "+156.",
-              "class": "org.example.plsql.ast.NumberLiteral"
+              "class": "org.example.oracle.ast.NumberLiteral"
             },
             "labels": [],
-            "class": "org.example.plsql.ast.AssignmentStatement"
+            "class": "org.example.oracle.ast.AssignmentStatement"
           },
           {
             "target": {
@@ -217,10 +217,10 @@
             },
             "value": {
               "value": "12e19",
-              "class": "org.example.plsql.ast.NumberLiteral"
+              "class": "org.example.oracle.ast.NumberLiteral"
             },
             "labels": [],
-            "class": "org.example.plsql.ast.AssignmentStatement"
+            "class": "org.example.oracle.ast.AssignmentStatement"
           },
           {
             "target": {
@@ -228,10 +228,10 @@
             },
             "value": {
               "value": "-15E8",
-              "class": "org.example.plsql.ast.NumberLiteral"
+              "class": "org.example.oracle.ast.NumberLiteral"
             },
             "labels": [],
-            "class": "org.example.plsql.ast.AssignmentStatement"
+            "class": "org.example.oracle.ast.AssignmentStatement"
           },
           {
             "target": {
@@ -239,10 +239,10 @@
             },
             "value": {
               "value": "1e-8",
-              "class": "org.example.plsql.ast.NumberLiteral"
+              "class": "org.example.oracle.ast.NumberLiteral"
             },
             "labels": [],
-            "class": "org.example.plsql.ast.AssignmentStatement"
+            "class": "org.example.oracle.ast.AssignmentStatement"
           },
           {
             "target": {
@@ -250,10 +250,10 @@
             },
             "value": {
               "value": "93e+8",
-              "class": "org.example.plsql.ast.NumberLiteral"
+              "class": "org.example.oracle.ast.NumberLiteral"
             },
             "labels": [],
-            "class": "org.example.plsql.ast.AssignmentStatement"
+            "class": "org.example.oracle.ast.AssignmentStatement"
           },
           {
             "target": {
@@ -261,10 +261,10 @@
             },
             "value": {
               "value": "1.152e-2",
-              "class": "org.example.plsql.ast.NumberLiteral"
+              "class": "org.example.oracle.ast.NumberLiteral"
             },
             "labels": [],
-            "class": "org.example.plsql.ast.AssignmentStatement"
+            "class": "org.example.oracle.ast.AssignmentStatement"
           },
           {
             "target": {
@@ -272,10 +272,10 @@
             },
             "value": {
               "value": ".3E+12",
-              "class": "org.example.plsql.ast.NumberLiteral"
+              "class": "org.example.oracle.ast.NumberLiteral"
             },
             "labels": [],
-            "class": "org.example.plsql.ast.AssignmentStatement"
+            "class": "org.example.oracle.ast.AssignmentStatement"
           },
           {
             "target": {
@@ -283,10 +283,10 @@
             },
             "value": {
               "value": "12.e3",
-              "class": "org.example.plsql.ast.NumberLiteral"
+              "class": "org.example.oracle.ast.NumberLiteral"
             },
             "labels": [],
-            "class": "org.example.plsql.ast.AssignmentStatement"
+            "class": "org.example.oracle.ast.AssignmentStatement"
           }
         ]
       },

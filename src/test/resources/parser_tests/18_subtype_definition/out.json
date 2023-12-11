@@ -9,10 +9,10 @@
             },
             "value": {
               "value": "1",
-              "class": "org.example.plsql.ast.NumberLiteral"
+              "class": "org.example.oracle.ast.NumberLiteral"
             },
             "labels": [],
-            "class": "org.example.plsql.ast.AssignmentStatement"
+            "class": "org.example.oracle.ast.AssignmentStatement"
           }
         ]
       },
@@ -26,9 +26,9 @@
               "typeName": {
                 "name": "some_base_type"
               },
-              "class": "org.example.plsql.ast.TypeReference"
+              "class": "org.example.oracle.ast.TypeReference"
             },
-            "class": "org.example.plsql.ast.SubtypeDefinition"
+            "class": "org.example.oracle.ast.SubtypeDefinition"
           },
           {
             "name": {
@@ -38,15 +38,15 @@
               "typeName": {
                 "name": "some_base_type"
               },
-              "class": "org.example.plsql.ast.TypeReference"
+              "class": "org.example.oracle.ast.TypeReference"
             },
             "constraint": {
               "characterSet": {
                 "value": "utf-8"
               },
-              "class": "org.example.plsql.ast.SubtypeDefinition$CharacterSetConstraint"
+              "class": "org.example.oracle.ast.SubtypeDefinition$CharacterSetConstraint"
             },
-            "class": "org.example.plsql.ast.SubtypeDefinition"
+            "class": "org.example.oracle.ast.SubtypeDefinition"
           },
           {
             "name": {
@@ -56,15 +56,15 @@
               "typeName": {
                 "name": "some_base_type"
               },
-              "class": "org.example.plsql.ast.TypeReference"
+              "class": "org.example.oracle.ast.TypeReference"
             },
             "constraint": {
               "precision": {
                 "value": "5"
               },
-              "class": "org.example.plsql.ast.SubtypeDefinition$PrecisionConstraint"
+              "class": "org.example.oracle.ast.SubtypeDefinition$PrecisionConstraint"
             },
-            "class": "org.example.plsql.ast.SubtypeDefinition"
+            "class": "org.example.oracle.ast.SubtypeDefinition"
           },
           {
             "name": {
@@ -74,7 +74,7 @@
               "typeName": {
                 "name": "some_base_type"
               },
-              "class": "org.example.plsql.ast.TypeReference"
+              "class": "org.example.oracle.ast.TypeReference"
             },
             "constraint": {
               "precision": {
@@ -83,9 +83,9 @@
               "scale": {
                 "value": "6"
               },
-              "class": "org.example.plsql.ast.SubtypeDefinition$PrecisionConstraint"
+              "class": "org.example.oracle.ast.SubtypeDefinition$PrecisionConstraint"
             },
-            "class": "org.example.plsql.ast.SubtypeDefinition"
+            "class": "org.example.oracle.ast.SubtypeDefinition"
           },
           {
             "name": {
@@ -95,7 +95,7 @@
               "typeName": {
                 "name": "some_base_type"
               },
-              "class": "org.example.plsql.ast.TypeReference"
+              "class": "org.example.oracle.ast.TypeReference"
             },
             "constraint": {
               "lowValue": {
@@ -104,9 +104,9 @@
               "highValue": {
                 "value": "380"
               },
-              "class": "org.example.plsql.ast.SubtypeDefinition$RangeConstraint"
+              "class": "org.example.oracle.ast.SubtypeDefinition$RangeConstraint"
             },
-            "class": "org.example.plsql.ast.SubtypeDefinition"
+            "class": "org.example.oracle.ast.SubtypeDefinition"
           },
           {
             "name": {
@@ -117,11 +117,11 @@
                 "typeName": {
                   "name": "some_base_type"
                 },
-                "class": "org.example.plsql.ast.TypeReference"
+                "class": "org.example.oracle.ast.TypeReference"
               },
-              "class": "org.example.plsql.ast.NonNullTypeToken"
+              "class": "org.example.oracle.ast.NonNullTypeToken"
             },
-            "class": "org.example.plsql.ast.SubtypeDefinition"
+            "class": "org.example.oracle.ast.SubtypeDefinition"
           },
           {
             "name": {
@@ -132,9 +132,9 @@
                 "typeName": {
                   "name": "some_base_type"
                 },
-                "class": "org.example.plsql.ast.TypeReference"
+                "class": "org.example.oracle.ast.TypeReference"
               },
-              "class": "org.example.plsql.ast.NonNullTypeToken"
+              "class": "org.example.oracle.ast.NonNullTypeToken"
             },
             "constraint": {
               "precision": {
@@ -143,9 +143,9 @@
               "scale": {
                 "value": "3"
               },
-              "class": "org.example.plsql.ast.SubtypeDefinition$PrecisionConstraint"
+              "class": "org.example.oracle.ast.SubtypeDefinition$PrecisionConstraint"
             },
-            "class": "org.example.plsql.ast.SubtypeDefinition"
+            "class": "org.example.oracle.ast.SubtypeDefinition"
           }
         ]
       },

@@ -8,19 +8,19 @@
               "identifier": {
                 "name": "x"
               },
-              "class": "org.example.plsql.ast.ExpressionIdentifier"
+              "class": "org.example.oracle.ast.ExpressionIdentifier"
             },
             "statements": [],
             "elsifList": [],
             "labels": [],
-            "class": "org.example.plsql.ast.IfStatement"
+            "class": "org.example.oracle.ast.IfStatement"
           },
           {
             "condition": {
               "identifier": {
                 "name": "x"
               },
-              "class": "org.example.plsql.ast.ExpressionIdentifier"
+              "class": "org.example.oracle.ast.ExpressionIdentifier"
             },
             "statements": [
               {
@@ -29,15 +29,15 @@
                 },
                 "value": {
                   "value": "15",
-                  "class": "org.example.plsql.ast.NumberLiteral"
+                  "class": "org.example.oracle.ast.NumberLiteral"
                 },
                 "labels": [],
-                "class": "org.example.plsql.ast.AssignmentStatement"
+                "class": "org.example.oracle.ast.AssignmentStatement"
               }
             ],
             "elsifList": [],
             "labels": [],
-            "class": "org.example.plsql.ast.IfStatement"
+            "class": "org.example.oracle.ast.IfStatement"
           },
           {
             "condition": {
@@ -48,43 +48,43 @@
                       "identifier": {
                         "name": "x"
                       },
-                      "class": "org.example.plsql.ast.ExpressionIdentifier"
+                      "class": "org.example.oracle.ast.ExpressionIdentifier"
                     },
                     "right": {
                       "value": "2",
-                      "class": "org.example.plsql.ast.NumberLiteral"
+                      "class": "org.example.oracle.ast.NumberLiteral"
                     },
                     "operator": "EXPONENTIATION",
-                    "class": "org.example.plsql.ast.BinaryExpression"
+                    "class": "org.example.oracle.ast.BinaryExpression"
                   },
                   "right": {
                     "value": "3",
-                    "class": "org.example.plsql.ast.NumberLiteral"
+                    "class": "org.example.oracle.ast.NumberLiteral"
                   },
                   "operator": "DIVISION",
-                  "class": "org.example.plsql.ast.BinaryExpression"
+                  "class": "org.example.oracle.ast.BinaryExpression"
                 },
                 "right": {
                   "value": "2",
-                  "class": "org.example.plsql.ast.NumberLiteral"
+                  "class": "org.example.oracle.ast.NumberLiteral"
                 },
                 "operator": "ADDITION",
-                "class": "org.example.plsql.ast.BinaryExpression"
+                "class": "org.example.oracle.ast.BinaryExpression"
               },
               "right": {
                 "left": {
                   "value": "4",
-                  "class": "org.example.plsql.ast.NumberLiteral"
+                  "class": "org.example.oracle.ast.NumberLiteral"
                 },
                 "right": {
                   "value": "15",
-                  "class": "org.example.plsql.ast.NumberLiteral"
+                  "class": "org.example.oracle.ast.NumberLiteral"
                 },
                 "operator": "MULTIPLICATION",
-                "class": "org.example.plsql.ast.BinaryExpression"
+                "class": "org.example.oracle.ast.BinaryExpression"
               },
               "operator": "NOT_EQUAL",
-              "class": "org.example.plsql.ast.BinaryExpression"
+              "class": "org.example.oracle.ast.BinaryExpression"
             },
             "statements": [
               {
@@ -93,20 +93,20 @@
                 },
                 "value": {
                   "value": "2",
-                  "class": "org.example.plsql.ast.NumberLiteral"
+                  "class": "org.example.oracle.ast.NumberLiteral"
                 },
                 "labels": [],
-                "class": "org.example.plsql.ast.AssignmentStatement"
+                "class": "org.example.oracle.ast.AssignmentStatement"
               }
             ],
             "elsifList": [],
             "labels": [],
-            "class": "org.example.plsql.ast.IfStatement"
+            "class": "org.example.oracle.ast.IfStatement"
           },
           {
             "condition": {
               "value": true,
-              "class": "org.example.plsql.ast.BooleanLiteral"
+              "class": "org.example.oracle.ast.BooleanLiteral"
             },
             "statements": [
               {
@@ -115,10 +115,10 @@
                 },
                 "value": {
                   "value": "2",
-                  "class": "org.example.plsql.ast.NumberLiteral"
+                  "class": "org.example.oracle.ast.NumberLiteral"
                 },
                 "labels": [],
-                "class": "org.example.plsql.ast.AssignmentStatement"
+                "class": "org.example.oracle.ast.AssignmentStatement"
               }
             ],
             "elsifList": [],
@@ -130,15 +130,15 @@
                   },
                   "value": {
                     "value": "3",
-                    "class": "org.example.plsql.ast.NumberLiteral"
+                    "class": "org.example.oracle.ast.NumberLiteral"
                   },
                   "labels": [],
-                  "class": "org.example.plsql.ast.AssignmentStatement"
+                  "class": "org.example.oracle.ast.AssignmentStatement"
                 }
               ]
             },
             "labels": [],
-            "class": "org.example.plsql.ast.IfStatement"
+            "class": "org.example.oracle.ast.IfStatement"
           },
           {
             "condition": {
@@ -146,14 +146,14 @@
                 "identifier": {
                   "name": "x"
                 },
-                "class": "org.example.plsql.ast.ExpressionIdentifier"
+                "class": "org.example.oracle.ast.ExpressionIdentifier"
               },
               "right": {
                 "value": "2",
-                "class": "org.example.plsql.ast.NumberLiteral"
+                "class": "org.example.oracle.ast.NumberLiteral"
               },
               "operator": "EQUAL",
-              "class": "org.example.plsql.ast.BinaryExpression"
+              "class": "org.example.oracle.ast.BinaryExpression"
             },
             "statements": [
               {
@@ -165,17 +165,17 @@
                     "identifier": {
                       "name": "x"
                     },
-                    "class": "org.example.plsql.ast.ExpressionIdentifier"
+                    "class": "org.example.oracle.ast.ExpressionIdentifier"
                   },
                   "right": {
                     "value": "1",
-                    "class": "org.example.plsql.ast.NumberLiteral"
+                    "class": "org.example.oracle.ast.NumberLiteral"
                   },
                   "operator": "ADDITION",
-                  "class": "org.example.plsql.ast.BinaryExpression"
+                  "class": "org.example.oracle.ast.BinaryExpression"
                 },
                 "labels": [],
-                "class": "org.example.plsql.ast.AssignmentStatement"
+                "class": "org.example.oracle.ast.AssignmentStatement"
               }
             ],
             "elsifList": [
@@ -185,14 +185,14 @@
                     "identifier": {
                       "name": "x"
                     },
-                    "class": "org.example.plsql.ast.ExpressionIdentifier"
+                    "class": "org.example.oracle.ast.ExpressionIdentifier"
                   },
                   "right": {
                     "value": "2",
-                    "class": "org.example.plsql.ast.NumberLiteral"
+                    "class": "org.example.oracle.ast.NumberLiteral"
                   },
                   "operator": "LESS_THAN",
-                  "class": "org.example.plsql.ast.BinaryExpression"
+                  "class": "org.example.oracle.ast.BinaryExpression"
                 },
                 "statements": [
                   {
@@ -204,23 +204,23 @@
                         "identifier": {
                           "name": "x"
                         },
-                        "class": "org.example.plsql.ast.ExpressionIdentifier"
+                        "class": "org.example.oracle.ast.ExpressionIdentifier"
                       },
                       "right": {
                         "value": "1",
-                        "class": "org.example.plsql.ast.NumberLiteral"
+                        "class": "org.example.oracle.ast.NumberLiteral"
                       },
                       "operator": "SUBTRACTION",
-                      "class": "org.example.plsql.ast.BinaryExpression"
+                      "class": "org.example.oracle.ast.BinaryExpression"
                     },
                     "labels": [],
-                    "class": "org.example.plsql.ast.AssignmentStatement"
+                    "class": "org.example.oracle.ast.AssignmentStatement"
                   }
                 ]
               }
             ],
             "labels": [],
-            "class": "org.example.plsql.ast.IfStatement"
+            "class": "org.example.oracle.ast.IfStatement"
           },
           {
             "condition": {
@@ -228,14 +228,14 @@
                 "identifier": {
                   "name": "x"
                 },
-                "class": "org.example.plsql.ast.ExpressionIdentifier"
+                "class": "org.example.oracle.ast.ExpressionIdentifier"
               },
               "right": {
                 "value": "2",
-                "class": "org.example.plsql.ast.NumberLiteral"
+                "class": "org.example.oracle.ast.NumberLiteral"
               },
               "operator": "EQUAL",
-              "class": "org.example.plsql.ast.BinaryExpression"
+              "class": "org.example.oracle.ast.BinaryExpression"
             },
             "statements": [
               {
@@ -244,10 +244,10 @@
                 },
                 "value": {
                   "value": "1",
-                  "class": "org.example.plsql.ast.NumberLiteral"
+                  "class": "org.example.oracle.ast.NumberLiteral"
                 },
                 "labels": [],
-                "class": "org.example.plsql.ast.AssignmentStatement"
+                "class": "org.example.oracle.ast.AssignmentStatement"
               }
             ],
             "elsifList": [
@@ -257,14 +257,14 @@
                     "identifier": {
                       "name": "x"
                     },
-                    "class": "org.example.plsql.ast.ExpressionIdentifier"
+                    "class": "org.example.oracle.ast.ExpressionIdentifier"
                   },
                   "right": {
                     "value": "2",
-                    "class": "org.example.plsql.ast.NumberLiteral"
+                    "class": "org.example.oracle.ast.NumberLiteral"
                   },
                   "operator": "LESS_THAN",
-                  "class": "org.example.plsql.ast.BinaryExpression"
+                  "class": "org.example.oracle.ast.BinaryExpression"
                 },
                 "statements": [
                   {
@@ -273,10 +273,10 @@
                     },
                     "value": {
                       "value": "2",
-                      "class": "org.example.plsql.ast.NumberLiteral"
+                      "class": "org.example.oracle.ast.NumberLiteral"
                     },
                     "labels": [],
-                    "class": "org.example.plsql.ast.AssignmentStatement"
+                    "class": "org.example.oracle.ast.AssignmentStatement"
                   }
                 ]
               },
@@ -286,14 +286,14 @@
                     "identifier": {
                       "name": "x"
                     },
-                    "class": "org.example.plsql.ast.ExpressionIdentifier"
+                    "class": "org.example.oracle.ast.ExpressionIdentifier"
                   },
                   "right": {
                     "value": "2",
-                    "class": "org.example.plsql.ast.NumberLiteral"
+                    "class": "org.example.oracle.ast.NumberLiteral"
                   },
                   "operator": "GREATER_THAN",
-                  "class": "org.example.plsql.ast.BinaryExpression"
+                  "class": "org.example.oracle.ast.BinaryExpression"
                 },
                 "statements": [
                   {
@@ -302,10 +302,10 @@
                     },
                     "value": {
                       "value": "3",
-                      "class": "org.example.plsql.ast.NumberLiteral"
+                      "class": "org.example.oracle.ast.NumberLiteral"
                     },
                     "labels": [],
-                    "class": "org.example.plsql.ast.AssignmentStatement"
+                    "class": "org.example.oracle.ast.AssignmentStatement"
                   }
                 ]
               },
@@ -315,14 +315,14 @@
                     "identifier": {
                       "name": "x"
                     },
-                    "class": "org.example.plsql.ast.ExpressionIdentifier"
+                    "class": "org.example.oracle.ast.ExpressionIdentifier"
                   },
                   "right": {
                     "value": "5",
-                    "class": "org.example.plsql.ast.NumberLiteral"
+                    "class": "org.example.oracle.ast.NumberLiteral"
                   },
                   "operator": "GREATER_THAN",
-                  "class": "org.example.plsql.ast.BinaryExpression"
+                  "class": "org.example.oracle.ast.BinaryExpression"
                 },
                 "statements": [
                   {
@@ -331,16 +331,16 @@
                     },
                     "value": {
                       "value": "4",
-                      "class": "org.example.plsql.ast.NumberLiteral"
+                      "class": "org.example.oracle.ast.NumberLiteral"
                     },
                     "labels": [],
-                    "class": "org.example.plsql.ast.AssignmentStatement"
+                    "class": "org.example.oracle.ast.AssignmentStatement"
                   }
                 ]
               }
             ],
             "labels": [],
-            "class": "org.example.plsql.ast.IfStatement"
+            "class": "org.example.oracle.ast.IfStatement"
           },
           {
             "condition": {
@@ -348,14 +348,14 @@
                 "identifier": {
                   "name": "x"
                 },
-                "class": "org.example.plsql.ast.ExpressionIdentifier"
+                "class": "org.example.oracle.ast.ExpressionIdentifier"
               },
               "right": {
                 "value": "2",
-                "class": "org.example.plsql.ast.NumberLiteral"
+                "class": "org.example.oracle.ast.NumberLiteral"
               },
               "operator": "EQUAL",
-              "class": "org.example.plsql.ast.BinaryExpression"
+              "class": "org.example.oracle.ast.BinaryExpression"
             },
             "statements": [
               {
@@ -364,10 +364,10 @@
                 },
                 "value": {
                   "value": "1",
-                  "class": "org.example.plsql.ast.NumberLiteral"
+                  "class": "org.example.oracle.ast.NumberLiteral"
                 },
                 "labels": [],
-                "class": "org.example.plsql.ast.AssignmentStatement"
+                "class": "org.example.oracle.ast.AssignmentStatement"
               }
             ],
             "elsifList": [
@@ -377,14 +377,14 @@
                     "identifier": {
                       "name": "x"
                     },
-                    "class": "org.example.plsql.ast.ExpressionIdentifier"
+                    "class": "org.example.oracle.ast.ExpressionIdentifier"
                   },
                   "right": {
                     "value": "3",
-                    "class": "org.example.plsql.ast.NumberLiteral"
+                    "class": "org.example.oracle.ast.NumberLiteral"
                   },
                   "operator": "EQUAL",
-                  "class": "org.example.plsql.ast.BinaryExpression"
+                  "class": "org.example.oracle.ast.BinaryExpression"
                 },
                 "statements": [
                   {
@@ -393,10 +393,10 @@
                     },
                     "value": {
                       "value": "4",
-                      "class": "org.example.plsql.ast.NumberLiteral"
+                      "class": "org.example.oracle.ast.NumberLiteral"
                     },
                     "labels": [],
-                    "class": "org.example.plsql.ast.AssignmentStatement"
+                    "class": "org.example.oracle.ast.AssignmentStatement"
                   }
                 ]
               },
@@ -406,14 +406,14 @@
                     "identifier": {
                       "name": "x"
                     },
-                    "class": "org.example.plsql.ast.ExpressionIdentifier"
+                    "class": "org.example.oracle.ast.ExpressionIdentifier"
                   },
                   "right": {
                     "value": "4",
-                    "class": "org.example.plsql.ast.NumberLiteral"
+                    "class": "org.example.oracle.ast.NumberLiteral"
                   },
                   "operator": "EQUAL",
-                  "class": "org.example.plsql.ast.BinaryExpression"
+                  "class": "org.example.oracle.ast.BinaryExpression"
                 },
                 "statements": [
                   {
@@ -422,10 +422,10 @@
                     },
                     "value": {
                       "value": "5",
-                      "class": "org.example.plsql.ast.NumberLiteral"
+                      "class": "org.example.oracle.ast.NumberLiteral"
                     },
                     "labels": [],
-                    "class": "org.example.plsql.ast.AssignmentStatement"
+                    "class": "org.example.oracle.ast.AssignmentStatement"
                   }
                 ]
               }
@@ -437,15 +437,15 @@
                     "name": "x"
                   },
                   "value": {
-                    "class": "org.example.plsql.ast.NullLiteral"
+                    "class": "org.example.oracle.ast.NullLiteral"
                   },
                   "labels": [],
-                  "class": "org.example.plsql.ast.AssignmentStatement"
+                  "class": "org.example.oracle.ast.AssignmentStatement"
                 }
               ]
             },
             "labels": [],
-            "class": "org.example.plsql.ast.IfStatement"
+            "class": "org.example.oracle.ast.IfStatement"
           }
         ]
       },

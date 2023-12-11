@@ -9,10 +9,10 @@
             },
             "value": {
               "value": "1",
-              "class": "org.example.plsql.ast.NumberLiteral"
+              "class": "org.example.oracle.ast.NumberLiteral"
             },
             "labels": [],
-            "class": "org.example.plsql.ast.AssignmentStatement"
+            "class": "org.example.oracle.ast.AssignmentStatement"
           }
         ]
       },
@@ -27,17 +27,17 @@
                 "typeName": {
                   "name": "record_type"
                 },
-                "class": "org.example.plsql.ast.TypeReference"
+                "class": "org.example.oracle.ast.TypeReference"
               },
               "indexType": {
                 "typeName": {
                   "name": "PLS_INTEGER"
                 },
-                "class": "org.example.plsql.ast.TypeReference"
+                "class": "org.example.oracle.ast.TypeReference"
               },
-              "class": "org.example.plsql.ast.AssocArrayTypeToken"
+              "class": "org.example.oracle.ast.AssocArrayTypeToken"
             },
-            "class": "org.example.plsql.ast.TypeDefinition"
+            "class": "org.example.oracle.ast.TypeDefinition"
           },
           {
             "id": {
@@ -48,17 +48,17 @@
                 "name": {
                   "name": "object_type"
                 },
-                "class": "org.example.plsql.ast.TypeReferenceOperator"
+                "class": "org.example.oracle.ast.TypeReferenceOperator"
               },
               "indexType": {
                 "typeName": {
                   "name": "BINARY_INTEGER"
                 },
-                "class": "org.example.plsql.ast.TypeReference"
+                "class": "org.example.oracle.ast.TypeReference"
               },
-              "class": "org.example.plsql.ast.AssocArrayTypeToken"
+              "class": "org.example.oracle.ast.AssocArrayTypeToken"
             },
-            "class": "org.example.plsql.ast.TypeDefinition"
+            "class": "org.example.oracle.ast.TypeDefinition"
           },
           {
             "id": {
@@ -69,17 +69,17 @@
                 "id": {
                   "name": "some_record"
                 },
-                "class": "org.example.plsql.ast.TypeAttribute"
+                "class": "org.example.oracle.ast.TypeAttribute"
               },
               "indexType": {
                 "typeName": {
                   "name": "LONG"
                 },
-                "class": "org.example.plsql.ast.TypeReference"
+                "class": "org.example.oracle.ast.TypeReference"
               },
-              "class": "org.example.plsql.ast.AssocArrayTypeToken"
+              "class": "org.example.oracle.ast.AssocArrayTypeToken"
             },
-            "class": "org.example.plsql.ast.TypeDefinition"
+            "class": "org.example.oracle.ast.TypeDefinition"
           },
           {
             "id": {
@@ -90,17 +90,17 @@
                 "name": {
                   "name": "some_collection"
                 },
-                "class": "org.example.plsql.ast.RowTypeAttribute"
+                "class": "org.example.oracle.ast.RowTypeAttribute"
               },
               "indexType": {
                 "typeName": {
                   "name": "STRING"
                 },
-                "class": "org.example.plsql.ast.TypeReference"
+                "class": "org.example.oracle.ast.TypeReference"
               },
-              "class": "org.example.plsql.ast.AssocArrayTypeToken"
+              "class": "org.example.oracle.ast.AssocArrayTypeToken"
             },
-            "class": "org.example.plsql.ast.TypeDefinition"
+            "class": "org.example.oracle.ast.TypeDefinition"
           },
           {
             "id": {
@@ -112,19 +112,19 @@
                   "typeName": {
                     "name": "record_type"
                   },
-                  "class": "org.example.plsql.ast.TypeReference"
+                  "class": "org.example.oracle.ast.TypeReference"
                 },
-                "class": "org.example.plsql.ast.NonNullTypeToken"
+                "class": "org.example.oracle.ast.NonNullTypeToken"
               },
               "indexType": {
                 "typeName": {
                   "name": "VARCHAR"
                 },
-                "class": "org.example.plsql.ast.TypeReference"
+                "class": "org.example.oracle.ast.TypeReference"
               },
-              "class": "org.example.plsql.ast.AssocArrayTypeToken"
+              "class": "org.example.oracle.ast.AssocArrayTypeToken"
             },
-            "class": "org.example.plsql.ast.TypeDefinition"
+            "class": "org.example.oracle.ast.TypeDefinition"
           },
           {
             "id": {
@@ -136,19 +136,19 @@
                   "name": {
                     "name": "object_type"
                   },
-                  "class": "org.example.plsql.ast.TypeReferenceOperator"
+                  "class": "org.example.oracle.ast.TypeReferenceOperator"
                 },
-                "class": "org.example.plsql.ast.NonNullTypeToken"
+                "class": "org.example.oracle.ast.NonNullTypeToken"
               },
               "indexType": {
                 "typeName": {
                   "name": "VARCHAR2"
                 },
-                "class": "org.example.plsql.ast.TypeReference"
+                "class": "org.example.oracle.ast.TypeReference"
               },
-              "class": "org.example.plsql.ast.AssocArrayTypeToken"
+              "class": "org.example.oracle.ast.AssocArrayTypeToken"
             },
-            "class": "org.example.plsql.ast.TypeDefinition"
+            "class": "org.example.oracle.ast.TypeDefinition"
           },
           {
             "id": {
@@ -159,17 +159,17 @@
                 "typeName": {
                   "name": "record_type"
                 },
-                "class": "org.example.plsql.ast.TypeReference"
+                "class": "org.example.oracle.ast.TypeReference"
               },
               "indexType": {
                 "id": {
                   "name": "some_var"
                 },
-                "class": "org.example.plsql.ast.TypeAttribute"
+                "class": "org.example.oracle.ast.TypeAttribute"
               },
-              "class": "org.example.plsql.ast.AssocArrayTypeToken"
+              "class": "org.example.oracle.ast.AssocArrayTypeToken"
             },
-            "class": "org.example.plsql.ast.TypeDefinition"
+            "class": "org.example.oracle.ast.TypeDefinition"
           },
           {
             "id": {
@@ -180,17 +180,17 @@
                 "typeName": {
                   "name": "record_type"
                 },
-                "class": "org.example.plsql.ast.TypeReference"
+                "class": "org.example.oracle.ast.TypeReference"
               },
               "indexType": {
                 "name": {
                   "name": "some_collection"
                 },
-                "class": "org.example.plsql.ast.RowTypeAttribute"
+                "class": "org.example.oracle.ast.RowTypeAttribute"
               },
-              "class": "org.example.plsql.ast.AssocArrayTypeToken"
+              "class": "org.example.oracle.ast.AssocArrayTypeToken"
             },
-            "class": "org.example.plsql.ast.TypeDefinition"
+            "class": "org.example.oracle.ast.TypeDefinition"
           }
         ]
       },

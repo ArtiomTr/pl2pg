@@ -9,10 +9,10 @@
             },
             "value": {
               "value": "1",
-              "class": "org.example.plsql.ast.NumberLiteral"
+              "class": "org.example.oracle.ast.NumberLiteral"
             },
             "labels": [],
-            "class": "org.example.plsql.ast.AssignmentStatement"
+            "class": "org.example.oracle.ast.AssignmentStatement"
           }
         ]
       },
@@ -26,9 +26,9 @@
               "typeName": {
                 "name": "some_type"
               },
-              "class": "org.example.plsql.ast.TypeReference"
+              "class": "org.example.oracle.ast.TypeReference"
             },
-            "class": "org.example.plsql.ast.VariableDeclaration"
+            "class": "org.example.oracle.ast.VariableDeclaration"
           },
           {
             "id": {
@@ -39,23 +39,23 @@
                 "typeName": {
                   "name": "some_type"
                 },
-                "class": "org.example.plsql.ast.TypeReference"
+                "class": "org.example.oracle.ast.TypeReference"
               },
-              "class": "org.example.plsql.ast.NonNullTypeToken"
+              "class": "org.example.oracle.ast.NonNullTypeToken"
             },
             "defaultValue": {
               "left": {
                 "value": "12",
-                "class": "org.example.plsql.ast.NumberLiteral"
+                "class": "org.example.oracle.ast.NumberLiteral"
               },
               "right": {
                 "value": "13",
-                "class": "org.example.plsql.ast.NumberLiteral"
+                "class": "org.example.oracle.ast.NumberLiteral"
               },
               "operator": "MULTIPLICATION",
-              "class": "org.example.plsql.ast.BinaryExpression"
+              "class": "org.example.oracle.ast.BinaryExpression"
             },
-            "class": "org.example.plsql.ast.VariableDeclaration"
+            "class": "org.example.oracle.ast.VariableDeclaration"
           }
         ]
       },

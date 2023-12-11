@@ -9,10 +9,10 @@
             },
             "value": {
               "value": "1",
-              "class": "org.example.plsql.ast.NumberLiteral"
+              "class": "org.example.oracle.ast.NumberLiteral"
             },
             "labels": [],
-            "class": "org.example.plsql.ast.AssignmentStatement"
+            "class": "org.example.oracle.ast.AssignmentStatement"
           }
         ]
       },
@@ -30,11 +30,11 @@
                 "typeName": {
                   "name": "sometype"
                 },
-                "class": "org.example.plsql.ast.TypeReference"
+                "class": "org.example.oracle.ast.TypeReference"
               },
-              "class": "org.example.plsql.ast.VaryingArrayTypeToken"
+              "class": "org.example.oracle.ast.VaryingArrayTypeToken"
             },
-            "class": "org.example.plsql.ast.TypeDefinition"
+            "class": "org.example.oracle.ast.TypeDefinition"
           },
           {
             "id": {
@@ -48,11 +48,11 @@
                 "name": {
                   "name": "some_collection"
                 },
-                "class": "org.example.plsql.ast.RowTypeAttribute"
+                "class": "org.example.oracle.ast.RowTypeAttribute"
               },
-              "class": "org.example.plsql.ast.VaryingArrayTypeToken"
+              "class": "org.example.oracle.ast.VaryingArrayTypeToken"
             },
-            "class": "org.example.plsql.ast.TypeDefinition"
+            "class": "org.example.oracle.ast.TypeDefinition"
           },
           {
             "id": {
@@ -66,11 +66,11 @@
                 "name": {
                   "name": "object_type"
                 },
-                "class": "org.example.plsql.ast.TypeReferenceOperator"
+                "class": "org.example.oracle.ast.TypeReferenceOperator"
               },
-              "class": "org.example.plsql.ast.VaryingArrayTypeToken"
+              "class": "org.example.oracle.ast.VaryingArrayTypeToken"
             },
-            "class": "org.example.plsql.ast.TypeDefinition"
+            "class": "org.example.oracle.ast.TypeDefinition"
           },
           {
             "id": {
@@ -85,13 +85,13 @@
                   "typeName": {
                     "name": "sometype"
                   },
-                  "class": "org.example.plsql.ast.TypeReference"
+                  "class": "org.example.oracle.ast.TypeReference"
                 },
-                "class": "org.example.plsql.ast.NonNullTypeToken"
+                "class": "org.example.oracle.ast.NonNullTypeToken"
               },
-              "class": "org.example.plsql.ast.VaryingArrayTypeToken"
+              "class": "org.example.oracle.ast.VaryingArrayTypeToken"
             },
-            "class": "org.example.plsql.ast.TypeDefinition"
+            "class": "org.example.oracle.ast.TypeDefinition"
           }
         ]
       },

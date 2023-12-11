@@ -10,21 +10,21 @@
             "value": {
               "left": {
                 "value": "10",
-                "class": "org.example.plsql.ast.NumberLiteral"
+                "class": "org.example.oracle.ast.NumberLiteral"
               },
               "right": {
                 "value": "15",
-                "class": "org.example.plsql.ast.NumberLiteral"
+                "class": "org.example.oracle.ast.NumberLiteral"
               },
               "operator": "ADDITION",
-              "class": "org.example.plsql.ast.BinaryExpression"
+              "class": "org.example.oracle.ast.BinaryExpression"
             },
             "labels": [
               {
                 "name": "hello"
               }
             ],
-            "class": "org.example.plsql.ast.AssignmentStatement"
+            "class": "org.example.oracle.ast.AssignmentStatement"
           },
           {
             "target": {
@@ -32,7 +32,7 @@
             },
             "value": {
               "value": "4",
-              "class": "org.example.plsql.ast.NumberLiteral"
+              "class": "org.example.oracle.ast.NumberLiteral"
             },
             "labels": [
               {
@@ -45,7 +45,7 @@
                 "name": "stmt_label_3"
               }
             ],
-            "class": "org.example.plsql.ast.AssignmentStatement"
+            "class": "org.example.oracle.ast.AssignmentStatement"
           },
           {
             "body": {
@@ -56,10 +56,10 @@
                   },
                   "value": {
                     "value": "2",
-                    "class": "org.example.plsql.ast.NumberLiteral"
+                    "class": "org.example.oracle.ast.NumberLiteral"
                   },
                   "labels": [],
-                  "class": "org.example.plsql.ast.AssignmentStatement"
+                  "class": "org.example.oracle.ast.AssignmentStatement"
                 }
               ],
               "closingLabel": {
@@ -71,7 +71,7 @@
                 "name": "block_label"
               }
             ],
-            "class": "org.example.plsql.ast.Block"
+            "class": "org.example.oracle.ast.Block"
           }
         ]
       },

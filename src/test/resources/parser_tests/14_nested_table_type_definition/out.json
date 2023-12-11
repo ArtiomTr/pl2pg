@@ -9,10 +9,10 @@
             },
             "value": {
               "value": "1",
-              "class": "org.example.plsql.ast.NumberLiteral"
+              "class": "org.example.oracle.ast.NumberLiteral"
             },
             "labels": [],
-            "class": "org.example.plsql.ast.AssignmentStatement"
+            "class": "org.example.oracle.ast.AssignmentStatement"
           }
         ]
       },
@@ -27,11 +27,11 @@
                 "typeName": {
                   "name": "sometype"
                 },
-                "class": "org.example.plsql.ast.TypeReference"
+                "class": "org.example.oracle.ast.TypeReference"
               },
-              "class": "org.example.plsql.ast.NestedTableTypeToken"
+              "class": "org.example.oracle.ast.NestedTableTypeToken"
             },
-            "class": "org.example.plsql.ast.TypeDefinition"
+            "class": "org.example.oracle.ast.TypeDefinition"
           },
           {
             "id": {
@@ -43,13 +43,13 @@
                   "typeName": {
                     "name": "sometype"
                   },
-                  "class": "org.example.plsql.ast.TypeReference"
+                  "class": "org.example.oracle.ast.TypeReference"
                 },
-                "class": "org.example.plsql.ast.NonNullTypeToken"
+                "class": "org.example.oracle.ast.NonNullTypeToken"
               },
-              "class": "org.example.plsql.ast.NestedTableTypeToken"
+              "class": "org.example.oracle.ast.NestedTableTypeToken"
             },
-            "class": "org.example.plsql.ast.TypeDefinition"
+            "class": "org.example.oracle.ast.TypeDefinition"
           }
         ]
       },
