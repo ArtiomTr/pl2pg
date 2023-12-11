@@ -1,0 +1,65 @@
+{
+  "blocks": [
+    {
+      "body": {
+        "statements": [
+          {
+            "target": {
+              "name": "a"
+            },
+            "value": {
+              "value": "1",
+              "class": "org.example.plsql.ast.NumberLiteral"
+            },
+            "labels": [],
+            "class": "org.example.plsql.ast.AssignmentStatement"
+          }
+        ]
+      },
+      "declareSection": {
+        "declarationList": [
+          {
+            "id": {
+              "name": "a"
+            },
+            "type": {
+              "typeName": {
+                "name": "some_type"
+              },
+              "class": "org.example.plsql.ast.TypeReference"
+            },
+            "class": "org.example.plsql.ast.VariableDeclaration"
+          },
+          {
+            "id": {
+              "name": "a"
+            },
+            "type": {
+              "typeToken": {
+                "typeName": {
+                  "name": "some_type"
+                },
+                "class": "org.example.plsql.ast.TypeReference"
+              },
+              "class": "org.example.plsql.ast.NonNullTypeToken"
+            },
+            "defaultValue": {
+              "left": {
+                "value": "12",
+                "class": "org.example.plsql.ast.NumberLiteral"
+              },
+              "right": {
+                "value": "13",
+                "class": "org.example.plsql.ast.NumberLiteral"
+              },
+              "operator": "MULTIPLICATION",
+              "class": "org.example.plsql.ast.BinaryExpression"
+            },
+            "class": "org.example.plsql.ast.VariableDeclaration"
+          }
+        ]
+      },
+      "labels": []
+    }
+  ]
+}

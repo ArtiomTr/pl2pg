@@ -1,25 +1,26 @@
-import com.google.gson.stream.JsonReader;
 import com.google.gson.Gson;
-import org.example.oracle.ast.*;
+import com.google.gson.stream.JsonReader;
+import org.example.oracle.ast.Program;
 import org.example.oracle.main.ParseException;
 import org.example.oracle.main.Parser;
+import org.example.oracle.main.TypeChecker;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import java.io.*;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.net.URL;
 import java.nio.file.Path;
 import java.util.Arrays;
 import java.util.Objects;
 
-import static org.assertj.core.api.Assertions.*;
-
-
-public class ParserTest {
+public class TypeCheckerTest {
 
     @Test
-    void parseVariousInputs() {
-        URL url = this.getClass().getResource("/parser_tests");
+    void typeCheckVariousInputs() {
+        URL url = this.getClass().getResource("/type_checker_tests");
         Assertions.assertNotNull(url);
         File testsFolder = new File(url.getFile());
         String[] tests = Arrays.stream(Objects.requireNonNull(testsFolder.list())).sorted().toArray(String[]::new);
@@ -39,10 +40,10 @@ public class ParserTest {
             File inputFile = testPath.resolve("in.pls").toFile();
             File outputFile = testPath.resolve("out.json").toFile();
 
-            Program expected = null;
+            Boolean expected = null;
 
             try (JsonReader reader = new JsonReader(new FileReader(outputFile))) {
-                expected = gson.fromJson(reader, Utils.PROGRAM_TYPE);
+                expected = gson.fromJson(reader, Boolean.class);
             } catch (FileNotFoundException exception) {
                 Assertions.fail("Invalid test resources folder structure - folder \"" + testPath + "\" must contain:\n" +
                         " - `in.pls` file, which contains parser input;\n" +
@@ -66,15 +67,21 @@ public class ParserTest {
                 Assertions.fail("Failed to read \"" + testPath.resolve("in.pls") + "\". Unexpected error occurred:\n" +
                         "    " + exception);
             } catch (ParseException e) {
-                if (expected != null) {
-                    Assertions.fail("Failed to parse file \"" + testPath.resolve("in.pls") + "\". " + e);
-                }
+                Assertions.fail("Failed to parse file \"" + testPath.resolve("in.pls") + "\". " + e);
             }
 
-            if (expected == null) {
-                Assertions.assertEquals(expected, received, "Expected parser to fail, but instead, it returned " + gson.toJson(received, Utils.PROGRAM_TYPE));
-            } else {
-                assertThat(received).usingRecursiveComparison().isEqualTo(expected);
+            try {
+                TypeChecker typeChecker = new TypeChecker();
+                typeChecker.doTypeCheck(received);
+
+                if (!expected) {
+                    Assertions.fail("Type checker expected to fail, but instead, it passed.");
+                }
+            } catch (Exception e) {
+                if (expected) {
+                    e.printStackTrace();
+                    Assertions.fail("Type checker expected to pass - instead, it failed with exception" + e);
+                }
             }
         }
     }

@@ -1,9 +1,9 @@
-package org.example.plsql.main.generated;
+package org.example.oracle.main.generated;
 
 import java_cup.runtime.Symbol;
 import java_cup.runtime.ComplexSymbolFactory;
 import java_cup.runtime.ComplexSymbolFactory.Location;
-import org.example.plsql.ast.*;
+import org.example.oracle.ast.*;
 
 %%
 
@@ -120,12 +120,6 @@ DELIMITER                       = .
   "VARRAY"         { return symbol("varray", PlSymbol.VARRAY); }
   "ARRAY"          { return symbol("array", PlSymbol.ARRAY); }
   "VARYING"        { return symbol("varying", PlSymbol.VARYING); }
-  "PLS_INTEGER"    { return symbol("plsinteger", PlSymbol.PLS_INTEGER); }
-  "BINARY_INTEGER" { return symbol("binaryinteger", PlSymbol.BINARY_INTEGER); }
-  "VARCHAR"        { return symbol("varchar", PlSymbol.VARCHAR); }
-  "VARCHAR2"       { return symbol("varchar2", PlSymbol.VARCHAR2); }
-  "STRING"         { return symbol("string", PlSymbol.STRING); }
-  "LONG"           { return symbol("long", PlSymbol.LONG); }
   "DEFAULT"        { return symbol("default", PlSymbol.DEFAULT); }
 
   /* separators */

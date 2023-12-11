@@ -6,5 +6,5 @@ DECLARE
     a some_type;
     a some_type NOT NULL DEFAULT 12 * 13;
 BEGIN
-
+    a := 1;
 END;

@@ -30,8 +30,10 @@
                 "class": "org.example.plsql.ast.TypeReference"
               },
               "indexType": {
-                "type": "PLS_INTEGER",
-                "class": "org.example.plsql.ast.BuiltinTypeToken"
+                "typeName": {
+                  "name": "PLS_INTEGER"
+                },
+                "class": "org.example.plsql.ast.TypeReference"
               },
               "class": "org.example.plsql.ast.AssocArrayTypeToken"
             },
@@ -49,8 +51,10 @@
                 "class": "org.example.plsql.ast.TypeReferenceOperator"
               },
               "indexType": {
-                "type": "BINARY_INTEGER",
-                "class": "org.example.plsql.ast.BuiltinTypeToken"
+                "typeName": {
+                  "name": "BINARY_INTEGER"
+                },
+                "class": "org.example.plsql.ast.TypeReference"
               },
               "class": "org.example.plsql.ast.AssocArrayTypeToken"
             },
@@ -68,8 +72,10 @@
                 "class": "org.example.plsql.ast.TypeAttribute"
               },
               "indexType": {
-                "type": "LONG",
-                "class": "org.example.plsql.ast.BuiltinTypeToken"
+                "typeName": {
+                  "name": "LONG"
+                },
+                "class": "org.example.plsql.ast.TypeReference"
               },
               "class": "org.example.plsql.ast.AssocArrayTypeToken"
             },
@@ -87,11 +93,10 @@
                 "class": "org.example.plsql.ast.RowTypeAttribute"
               },
               "indexType": {
-                "type": "STRING",
-                "size": {
-                  "value": "10"
+                "typeName": {
+                  "name": "STRING"
                 },
-                "class": "org.example.plsql.ast.BuiltinVaryingTypeToken"
+                "class": "org.example.plsql.ast.TypeReference"
               },
               "class": "org.example.plsql.ast.AssocArrayTypeToken"
             },
@@ -112,11 +117,10 @@
                 "class": "org.example.plsql.ast.NonNullTypeToken"
               },
               "indexType": {
-                "type": "VARCHAR",
-                "size": {
-                  "value": "15"
+                "typeName": {
+                  "name": "VARCHAR"
                 },
-                "class": "org.example.plsql.ast.BuiltinVaryingTypeToken"
+                "class": "org.example.plsql.ast.TypeReference"
               },
               "class": "org.example.plsql.ast.AssocArrayTypeToken"
             },
@@ -137,11 +141,10 @@
                 "class": "org.example.plsql.ast.NonNullTypeToken"
               },
               "indexType": {
-                "type": "VARCHAR2",
-                "size": {
-                  "value": "1"
+                "typeName": {
+                  "name": "VARCHAR2"
                 },
-                "class": "org.example.plsql.ast.BuiltinVaryingTypeToken"
+                "class": "org.example.plsql.ast.TypeReference"
               },
               "class": "org.example.plsql.ast.AssocArrayTypeToken"
             },

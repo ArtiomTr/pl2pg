@@ -1,9 +1,9 @@
-package org.example.plsql.main.generated;
+package org.example.oracle.main.generated;
 
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Arrays;
-import org.example.plsql.ast.*;
+import org.example.oracle.ast.*;
 
 parser code {:
     private TypeToken optionalNonNullable(TypeToken t, Boolean nonNullable) {
@@ -17,8 +17,7 @@ parser code {:
 
 // Keywords
 terminal BEGIN, END, LOOP, IF, THEN, ELSIF, ELSE, RETURN, IMPLICIT_CURSOR, CASE, WHEN, TYPE, SUBTYPE, RANGE, DECLARE,
-         CHARACTER, SET, TABLE, OF, INDEX, BY, RECORD, REF, CURSOR, VARRAY, VARYING, ARRAY, PLS_INTEGER, BINARY_INTEGER,
-         VARCHAR, VARCHAR2, STRING, LONG, DEFAULT;
+         CHARACTER, SET, TABLE, OF, INDEX, BY, RECORD, REF, CURSOR, VARRAY, VARYING, ARRAY, DEFAULT;
 // Punctuation
 terminal SEMI, COMMA, DOT, LEFT_PARENTHESIS, RIGHT_PARENTHESIS;
 // Operators
@@ -62,7 +61,7 @@ non terminal Expression expression, boolean_or_expression, boolean_and_expressio
                         comparison_expression, additive_expression, multiplicative_expression, unary_numeric_expression,
                         exponentiation_expression, expression_atom, boolean_between_expression, boolean_is_expression;
 non terminal Cursor cursor;
-non terminal TypeToken type_def, datatype, index_type;
+non terminal TypeToken type_def, datatype, index_type, type;
 non terminal SubtypeDefinition.Constraint constraint;
 non terminal varr, initial_value_operator, opt_comma;
 non terminal List<RecordTypeToken.FieldDefinition> record_field_definition_list;
@@ -229,7 +228,6 @@ declare_item_list ::=
 
 declaration_item ::=
       TYPE IDENTIFIER:i IS_OPERATOR type_def:t SEMI             {: RESULT = new TypeDefinition(i, t); :}
-      // TODO: base_type could also be builtin PL/SQL data type
     | SUBTYPE IDENTIFIER:i IS_OPERATOR type:b
           constraint:c opt_not_null:n SEMI                      {: RESULT = new SubtypeDefinition(i, optionalNonNullable(b, n), c); :}
     // variable_declaration
@@ -280,19 +278,18 @@ datatype ::=
     ;
 
 type ::=
-    | IDENTIFIER:i                                              {: RESULT = new TypeReference(i); :}
+      IDENTIFIER:id                                             {: RESULT = new TypeReference(id); :}
+    // TODO: respect size
+    | IDENTIFIER:id
+          LEFT_PARENTHESIS NUMBER_LITERAL:sz RIGHT_PARENTHESIS  {: RESULT = new TypeReference(id); :}
+    // TODO: respect precision, scale
+    | IDENTIFIER:id
+          LEFT_PARENTHESIS NUMBER_LITERAL:precision
+              COMMA NUMBER_LITERAL:scale RIGHT_PARENTHESIS      {: RESULT = new TypeReference(id); :}
     ;
 
 index_type ::=
-      PLS_INTEGER                                               {: RESULT = new BuiltinTypeToken(BuiltinTypeToken.Type.PLS_INTEGER); :}
-    | BINARY_INTEGER                                            {: RESULT = new BuiltinTypeToken(BuiltinTypeToken.Type.BINARY_INTEGER); :}
-    | VARCHAR
-          LEFT_PARENTHESIS NUMBER_LITERAL:sz RIGHT_PARENTHESIS  {: RESULT = new BuiltinVaryingTypeToken(BuiltinVaryingTypeToken.Type.VARCHAR, new NumberLiteral(sz)); :}
-    | VARCHAR2
-          LEFT_PARENTHESIS NUMBER_LITERAL:sz RIGHT_PARENTHESIS  {: RESULT = new BuiltinVaryingTypeToken(BuiltinVaryingTypeToken.Type.VARCHAR2, new NumberLiteral(sz)); :}
-    | STRING
-          LEFT_PARENTHESIS NUMBER_LITERAL:sz RIGHT_PARENTHESIS  {: RESULT = new BuiltinVaryingTypeToken(BuiltinVaryingTypeToken.Type.STRING, new NumberLiteral(sz)); :}
-    | LONG                                                      {: RESULT = new BuiltinTypeToken(BuiltinTypeToken.Type.LONG); :}
+    | type:t                                                    {: RESULT = t; :}
     | type_attribute:t                                          {: RESULT = t; :}
     | rowtype_attribute:t                                       {: RESULT = t; :}
     ;
