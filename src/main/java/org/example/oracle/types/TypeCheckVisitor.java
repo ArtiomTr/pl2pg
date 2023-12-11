@@ -20,12 +20,18 @@ public class TypeCheckVisitor implements Visitor<Type> {
                 if (Arrays.stream(types).allMatch((v) -> v.canCastTo(targetType))) {
                     return targetType;
                 } else {
-                    throw new TypeCheckError("Incorrect types supplied to BETWEEN operator - cannot convert to numeric.");
+                    return null;
                 }
             }
 
             // When comparing a character value with `DATE` value, Oracle converts the character data to `DATE`
 //            if (Arrays.stream(types).anyMatch())
+
+            // If not a special case, try to cast all types to the first one
+            if (Arrays.stream(types).skip(1).allMatch((v) -> v.canCastTo(types[0]))) {
+                return types[0];
+            }
+
             return null;
         }
 
@@ -139,13 +145,71 @@ public class TypeCheckVisitor implements Visitor<Type> {
         Type leftType = expression.getLeft().accept(this);
         Type rightType = expression.getRight().accept(this);
 
-        return Utils.performComparisonImplicitTypeConversion(valueType, leftType, rightType);
+        Type outputType = Utils.performComparisonImplicitTypeConversion(valueType, leftType, rightType);
+        if (outputType == null) {
+            throw new TypeCheckError("Incorrect types supplied to BETWEEN operator - cannot convert to numeric.");
+        }
+
+        return outputType;
     }
 
     @Override
     public Type visit(BinaryExpression expression) {
-        // TODO:
-        throw new RuntimeException("not implemented");
+        Type leftType = expression.getLeft().accept(this);
+        Type rightType = expression.getRight().accept(this);
+
+        BinaryExpression.Operator operator = expression.getOperator();
+
+        Type returnType = null;
+
+        switch (operator) {
+            case ADDITION:
+            case SUBTRACTION:
+            case MULTIPLICATION:
+            case EXPONENTIATION:
+            case DIVISION:
+                if (leftType instanceof NumericType && rightType instanceof NumericType) {
+                    returnType = Utils.getLargestNumericType((NumericType) leftType, (NumericType) rightType);
+                } else if (leftType.canCastTo(new NumberType(null, null)) && rightType.canCastTo(new NumberType(null, null))) {
+                    returnType = new NumberType(null, null);
+                }
+                break;
+            case EQUAL:
+            case GREATER_THAN:
+            case GREATER_THAN_OR_EQUAL:
+            case LESS_THAN:
+            case LESS_THAN_OR_EQUAL:
+            case NOT_EQUAL:
+                if (Utils.performComparisonImplicitTypeConversion(leftType, rightType) != null) {
+                    returnType = new BooleanType();
+                }
+
+                break;
+            case AND:
+            case OR:
+                if (leftType.canCastTo(new BooleanType()) && rightType.canCastTo(new BooleanType())) {
+                    returnType = new BooleanType();
+                }
+                break;
+            case CONCATENATION:
+                if (leftType.canCastTo(new VarChar2Type(null, null)) && rightType.canCastTo(new VarChar2Type(null, null))) {
+                    returnType = leftType;
+                }
+                break;
+            case IS:
+                if (rightType.canCastTo(new NullType())) {
+                    returnType = new BooleanType();
+                }
+                break;
+        }
+
+        if (returnType == null) {
+            throw new TypeCheckError("Invalid `" + operator.prettyPrint() + "` operator operands - expected numeric types, but got " + leftType + " and " + rightType);
+        }
+
+        expression.setResolvedType(returnType);
+
+        return returnType;
     }
 
     @Override
@@ -156,20 +220,42 @@ public class TypeCheckVisitor implements Visitor<Type> {
 
     @Override
     public Type visit(CaseStatement statement) {
-        // TODO:
-        throw new RuntimeException("not implemented");
+        Expression selector = statement.getSelector();
+
+        Type targetType;
+        if (selector != null) {
+            targetType = selector.accept(this);
+        } else {
+            targetType = new BooleanType();
+        }
+
+        for (CaseStatement.When when : statement.getWhens()) {
+            Type type = when.accept(this);
+            if (!type.canCastTo(targetType)) {
+                throw new TypeCheckError("Invalid case statement - when clause must have same type, as selector (expected " + targetType + ", but found " + type + ")");
+            }
+        }
+
+        CaseStatement.Else elseBlock = statement.getElseBlock();
+        if (elseBlock != null) {
+            elseBlock.accept(this);
+        }
+
+        statement.setResolvedType(targetType);
+        return targetType;
     }
 
     @Override
     public Type visit(CaseStatement.Else elseStatement) {
-        // TODO:
-        throw new RuntimeException("not implemented");
+        Type type = elseStatement.getThen().accept(this);
+        elseStatement.setResolvedType(type);
+        return type;
     }
 
     @Override
     public Type visit(CaseStatement.When whenStatement) {
-        // TODO:
-        throw new RuntimeException("not implemented");
+        whenStatement.getThen().accept(this);
+        return whenStatement.getExpression().accept(this);
     }
 
     @Override
@@ -252,12 +338,16 @@ public class TypeCheckVisitor implements Visitor<Type> {
 
     @Override
     public Type visit(NumberLiteral literal) {
-        return new NumberType(null, null);
+        Type t = new NumberType(null, null);
+        literal.setResolvedType(t);
+        return t;
     }
 
     @Override
     public Type visit(StringLiteral literal) {
-        return new VarChar2Type(null, null);
+        Type type = new VarChar2Type(null, null);
+        literal.setResolvedType(type);
+        return type;
     }
 
     @Override

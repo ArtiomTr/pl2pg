@@ -6,6 +6,6 @@ COPY pom.xml .
 
 RUN mvn dependency:go-offline -B
 
-copy ./src ./src
+copy ./src ./src/
 
-RUN mvn package
+RUN mvn

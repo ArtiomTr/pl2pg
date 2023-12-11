@@ -12,7 +12,7 @@ public class GeneratorVisitor implements Visitor<String> {
     private static class Utils {
 
         public static String stringifyExpressionWithTargetType(GeneratorVisitor visitor, Expression expression, Type targetType) {
-            if (!(targetType instanceof CharacterType)) {
+            if (!(targetType instanceof CharacterType) || expression instanceof ExpressionIdentifier) {
                 return expression.accept(visitor);
             }
 
@@ -89,7 +89,9 @@ public class GeneratorVisitor implements Visitor<String> {
 
     @Override
     public String visit(BinaryExpression expression) {
-        return "(" + expression.getLeft().accept(this) + " " + expression.getOperator().prettyPrint() + " " + expression.getRight().accept(this) + ")";
+        Type targetType = expression.getResolvedType();
+
+        return "(" + Utils.stringifyExpressionWithTargetType(this, expression.getLeft(), targetType) + " " + expression.getOperator().prettyPrint() + " " + Utils.stringifyExpressionWithTargetType(this, expression.getRight(), targetType) + ")";
     }
 
     @Override

@@ -1,0 +1,13 @@
+DO $$
+DECLARE
+    a VARCHAR := '';
+    b INT := 0;
+BEGIN
+    CASE
+        WHEN (coalesce(a, '') = '') THEN
+            b := 12;
+        ELSE
+            a := (coalesce(a, '') || '');
+    END CASE;
+END;
+$$;

@@ -15,7 +15,6 @@ public class BinaryExpression extends Expression {
         EQUAL,
         NOT_EQUAL,
         IS,
-        NOT,
         AND,
         OR;
 
@@ -37,8 +36,6 @@ public class BinaryExpression extends Expression {
                     return "/";
                 case LESS_THAN:
                     return "<";
-                case NOT:
-                    return "NOT";
                 case SUBTRACTION:
                     return "-";
                 case EXPONENTIATION:
