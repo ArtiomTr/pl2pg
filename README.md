@@ -2,24 +2,15 @@ PL/SQL parser
 
 ## Building project
 
-### Using Intellij IDEA
-
-It's recommended to open this project with [Intellij IDEA Community Edition](https://www.jetbrains.com/idea/). IDE will
-automatically configure this project.
-
 ### Using plain maven setup
 
 For initial setup, run following command:
 
 ```
-mvn clean install
+mvn
 ```
 
-Run project tests with command:
-
-```
-mvn test
-```
+Built program will appear in `bin` directory.
 
 ### Using Docker
 
@@ -34,6 +25,3 @@ It will automatically run tests.
 ## Tests
 
 All tests are in `./src/test` directory. For more information, see [tests documentation](./src/test/README.md).
-
-## Tasks
-
